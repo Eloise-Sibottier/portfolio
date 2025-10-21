@@ -362,33 +362,84 @@
 
 
 
+<!-- Cartes -->
+<section class="card-custom">
+  <h2>Cartes — Scores observés & Prédictions</h2>
+  <p class="text-muted">
+    1) Carte des scores PISA observés — 2) Carte des prédictions (pays non testés) avec intervalles de confiance.
+  </p>
 
+  <div class="row">
+    <!-- ========== COLONNE GAUCHE (inchangée) ========== -->
+    <div class="col-md-6">
+      <div class="visual-container" style="padding: 0; margin: 0;">
+        <div style="width:100%; max-width:1200px; margin:0 auto; padding:0; display:flex; flex-direction:column; gap:0;">
+          <!-- Carte observée (widget déjà bon) -->
+          <iframe
+            id="map-iframe"
+            src="assets/Carte_PISA_nolegend.html"
+            style="width:100%; border:none; display:block; background:transparent;"
+            title="Carte interactive PISA"
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-forms"
+          ></iframe>
 
-
-    <!-- Prédictions -->
-    <section class="card-custom">
-      <h2>Prédictions & intervalles de confiance</h2>
-      <p class="text-muted">Prédictions effectuées pour 71 pays non testés ; attention aux largeurs d'IC (plus larges pour l'Afrique).</p>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="visual-container" style="height:250px;">
-            <p class="text-muted">[Prédictions + barres d'erreur — remplace par image]</p>
-          </div>
-          <p class="small text-muted">Exemples : Zimbabwe, Libéria (forte incertitude).</p>
-        </div>
-        <div class="col-md-6">
-          <div class="visual-container" style="height:250px;">
-            <p class="text-muted">[Carte d'incertitude — remplace par image]</p>
-          </div>
-          <p class="small text-muted">Plus la nuance est rouge, plus l'IC est large.</p>
+          <!-- Légende observée (widget déjà bon) -->
+          <iframe
+            id="legend-iframe"
+            src="assets/legend_pisa.html"
+            style="width:100%; max-width:900px; border:none; display:block; background:transparent;"
+            title="Légende PISA"
+            loading="lazy"
+          ></iframe>
         </div>
       </div>
-    </section>
+      <p class="small text-muted mt-2">Survolez un pays pour voir son score PISA et sa catégorie.</p>
+    </div>
 
-    <footer>
-      <small>© Éloïse Sibottier — Analyse PISA</small>
-    </footer>
-  </main>
+    <!-- ========== COLONNE DROITE (prévisions + légende) ========== -->
+    <div class="col-md-6">
+      <div class="visual-container" style="padding: 0; margin: 0;">
+        <div style="width:100%; max-width:1200px; margin:0 auto; padding:0; display:flex; flex-direction:column; gap:0;">
+          <!-- Carte prévision (plotly ggplotly converti) -->
+          <iframe
+            id="map2-iframe"
+            src="assets/Carte_prevision_interactive.html"
+            style="width:100%; height:520px; border:none; display:block; background:transparent;"
+            title="Carte prévision PISA"
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-forms"
+          ></iframe>
+
+          <!-- Légende prévision (générée via R) -->
+          <iframe
+            id="legend2-iframe"
+            src="assets/legend_pisa2.html"
+            style="width:100%; max-width:900px; height:120px; border:none; display:block; background:transparent;"
+            title="Légende prévision PISA"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+      <p class="small text-muted">Carte des prédictions avec intervalles de confiance.</p>
+    </div>
+  </div>
+
+  <!-- Optionnel : afficher le scatter (intervalles de confiance) -->
+  <div class="row mt-3">
+    <div class="col-12">
+      <iframe
+        id="scatter-iframe"
+        src="assets/Intervalles_confiance_plotly.html"
+        style="width:100%; height:600px; border:none; display:block; background:transparent;"
+        title="Intervalles de confiance PISA - scatter"
+        loading="lazy"
+        sandbox="allow-scripts allow-same-origin allow-forms"
+      ></iframe>
+      <p class="small text-muted">Graphique interactif des prédictions par pays avec leurs intervalles de confiance.</p>
+    </div>
+  </div>
+</section>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
