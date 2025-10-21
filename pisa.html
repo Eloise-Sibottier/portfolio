@@ -249,79 +249,125 @@
       </div>
     </section>
 
-    <!-- Régression — Modèle final (synthèse) -->
-<section class="card-custom" id="regression-synthese">
-  <h2>Régression linéaire — Modèle final (synthèse)</h2>
-
-  <p class="text-muted">
-    Nous avons estimé plusieurs spécifications (variables différentes, interactions, transformations) et retenu le modèle ci-dessous car il combine un bon pouvoir explicatif et une interprétation robuste des coefficients sur les variables clés. 
-    <strong>Pourquoi ce modèle ?</strong> Parce qu'il maximise l'explicativité (R² élevé) tout en conservant des coefficients stables et interprétables pour les variables politiques et socio-économiques (PIB/hab, sous-alimentation, scolarisation).
-  </p>
-
-  <!-- Modèle -->
-  <div style="background:#f8f9fa;padding:12px;border-radius:8px;margin:12px 0;">
-    <strong>Forme retenue :</strong>
-    <pre style="margin:8px 0 0 0; white-space:pre-wrap;">ln(PISA) = β₀ + β₁·dépense_éducation + β₂·ln(PIB/hab) + β₃·scolarisation_primaire
-+ β₄·sous_alimentation + β₅·OCDE + β₆·(scolarisation_maternelle × OCDE) + ε</pre>
-  </div>
-
-  <!-- Explications courtes -->
-  <div style="display:grid; grid-template-columns:1fr; gap:10px; margin-bottom:8px;">
+   <!-- ======= RÉGRESSION AMÉLIORÉE (COLLER ICI) ======= -->
+<section class="card-custom" id="regression-section">
+  <div class="d-flex justify-content-between align-items-start">
     <div>
-      <strong>Que signifie <em>ln(PISA)</em> ?</strong>
-      <p class="text-muted" style="margin:6px 0;">
-        Nous modélisons le logarithme du score PISA : cela stabilise la variance et permet d’interpréter les coefficients en variations relatives (≈ pourcentages). Par exemple, un coefficient β₂ = 0.10 pour ln(PIB/hab) signifie qu'une hausse de 1% du PIB/hab est associée à ≈0.1% d'augmentation du score PISA en moyenne (approximativement).
-      </p>
+      <h2 style="margin-bottom:0.25rem;">Régression linéaire — Modèle final</h2>
+      <p class="text-muted small mb-2">Synthèse du modèle explicatif retenu et interprétations principales.</p>
     </div>
-
-    <div>
-      <strong>Que veut dire l'interaction <em>scolarisation_maternelle × OCDE</em> ?</strong>
-      <p class="text-muted" style="margin:6px 0;">
-        L'interaction teste si l'effet de la scolarisation maternelle diffère entre pays OCDE et non-OCDE. Interprétation : <em>dans les pays hors OCDE, l'effet positif de la scolarisation maternelle sur le score PISA est plus important</em> — autrement dit, l'accès à la maternelle a un impact plus marqué dans les contextes moins riches.
-      </p>
-    </div>
-
-    <div>
-      <strong>Variables retirées (non significatives)</strong>
-      <p class="text-muted" style="margin:6px 0;">
-        Lors de la sélection nous avons écarté les variables suivantes car elles n’apportaient pas d’information statistiquement utile : <em>dépense_par_élève (si présente), couverture secondaire (non significative), indicateur X</em>.  
-        (Conserver les variables pertinentes améliore la clarté du modèle et évite le sur-ajustement.)
-      </p>
+    <div style="text-align:right;">
+      <span class="kpi-badge" aria-hidden="true">R² ajusté ≈ 0.717</span><br>
+      <small class="text-muted">Modèle final (MCO4) — ln(PISA)</small>
     </div>
   </div>
 
-  <!-- Interprétations clés agréables à lire -->
-  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:8px;">
-    <div style="background:#ffffff;border-radius:8px;padding:12px;box-shadow:0 1px 4px rgba(0,0,0,0.04);">
-      <strong style="display:block;margin-bottom:6px;">PIB/hab (log)</strong>
-      <p class="text-muted" style="margin:0;">Effet positif robuste : pays plus riches tendent à avoir des scores PISA plus élevés, toutes choses égales par ailleurs.</p>
+  <!-- FORMULE + EXPLICATION -->
+  <div class="row g-3 mt-3">
+    <div class="col-lg-7">
+      <div style="background:#fff; padding:16px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+        <h5 style="margin-top:0; margin-bottom:0.5rem;">Forme retenue</h5>
+        <pre style="background:#f8f9fa; padding:12px; border-radius:6px; margin-bottom:8px; white-space:pre-wrap;">
+ln(PISA) = β₀ + β₁ · dépense_éducation
+           + β₂ · ln(PIB/hab)
+           + β₃ · scolarisation_primaire
+           + β₄ · sous-alimentation
+           + β₅ · OCDE
+           + β₆ · (scolarisation_maternelle × OCDE) + ε
+        </pre>
+
+        <p class="text-muted" style="margin-bottom:6px;">
+          Le modèle final explique ~74% de la variance (R² ajusté ≈ 0.717). :contentReference[oaicite:0]{index=0}
+        </p>
+
+        <div class="row">
+          <div class="col-6">
+            <strong>Pourquoi log(PISA) ?</strong>
+            <p class="text-muted small" style="margin-bottom:0.25rem;">
+              Le modèle log-transformé (MCO2) améliore l’ajustement : R² ajusté ≈ 0.70 vs 0.68 et une erreur moyenne bien plus faible, d’où le choix de ln(PISA). :contentReference[oaicite:1]{index=1}
+            </p>
+          </div>
+          <div class="col-6">
+            <strong>Test d’interaction</strong>
+            <p class="text-muted small" style="margin-bottom:0.25rem;">
+              Seule l’interaction scolarisation_maternelle × OCDE est statistiquement significative : son coefficient est négatif (effet de la maternelle est plus marqué hors-OCDE). :contentReference[oaicite:2]{index=2}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div style="background:#ffffff;border-radius:8px;padding:12px;box-shadow:0 1px 4px rgba(0,0,0,0.04);">
-      <strong style="display:block;margin-bottom:6px;">Sous-alimentation</strong>
-      <p class="text-muted" style="margin:0;">Effet négatif significatif : des niveaux élevés de sous-alimentation sont associés à des baisses notables du score PISA.</p>
-    </div>
+    <!-- INTERPRÉTATIONS RAPIDES -->
+    <div class="col-lg-5">
+      <div style="background:#fff; padding:14px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+        <h5 style="margin-top:0; margin-bottom:0.5rem;">Interprétations clés</h5>
 
-    <div style="background:#ffffff;border-radius:8px;padding:12px;box-shadow:0 1px 4px rgba(0,0,0,0.04);">
-      <strong style="display:block;margin-bottom:6px;">Scolarisation maternelle × OCDE</strong>
-      <p class="text-muted" style="margin:0;">L’effet bénéfique de la maternelle est plus fort hors OCDE — utile pour orienter les priorités d’intervention ciblée.</p>
+        <ul style="padding-left:1rem; margin-bottom:0.5rem;">
+          <li class="text-muted small"><strong>PIB/hab (log)</strong> : effet positif robuste — richesse nationale liée à de meilleurs scores. :contentReference[oaicite:3]{index=3}</li>
+          <li class="text-muted small"><strong>Sous-alimentation</strong> : effet négatif significatif — la malnutrition réduit les capacités d’apprentissage. :contentReference[oaicite:4]{index=4}</li>
+          <li class="text-muted small"><strong>Scolarisation maternelle</strong> : effet positif global mais modulé par OCDE (interaction négative). :contentReference[oaicite:5]{index=5}</li>
+          <li class="text-muted small"><strong>Dépense éducative</strong> : coefficient négatif dans le modèle — résultat paradoxal à interpréter avec prudence (effet de ratio vs montant absolu / efficacité des dépenses). :contentReference[oaicite:6]{index=6}</li>
+        </ul>
+
+        <div style="margin-top:8px;">
+          <a href="/mnt/data/Rapport PISA final.pdf" class="btn btn-primary btn-sm" download>
+            <i class="bi bi-file-earmark-text me-1"></i>Voir la méthodologie complète
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Visuels recommandés (clairs et concrets) -->
-  <div style="margin-top:14px;">
-    <strong>Visuels recommandés (à insérer ici pour appuyer l’interprétation) :</strong>
-    <ul class="text-muted" style="margin-top:8px;">
-      <li><strong>Diagramme des coefficients</strong> (forest plot) : montre le signe et l'amplitude des coefficients avec intervalles de confiance.</li>
-      <li><strong>Effets marginaux de l'interaction</strong> : courbe/graphique montrant l'impact de la scolarisation maternelle séparément pour pays OCDE et non-OCDE.</li>
-      <li><strong>Carte des résidus</strong> : carte choroplèthe montrant où le modèle sous-/surestime le score (utile pour diagnostics géographiques et prochaines itérations).</li>
+  <!-- TABLEAU RÉCAP (petit) + VISU DIAGNOSTICS -->
+  <div class="row g-3 mt-3">
+    <div class="col-md-5">
+      <div style="background:#fff; padding:12px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+        <h6 style="margin-top:0; margin-bottom:8px;">Résumé statistique</h6>
+        <table class="table table-sm" style="margin-bottom:0;">
+          <tbody>
+            <tr><td><small class="text-muted">Échantillon (used)</small></td><td><small>73 pays (modèle) + 71 pays pour prédictions</small></td></tr>
+            <tr><td><small class="text-muted">R² ajusté</small></td><td><strong>≈ 0.717</strong></td></tr>
+            <tr><td><small class="text-muted">Choix de la cible</small></td><td><small>ln(PISA) (MCO2) — meilleur ajustement</small></td></tr>
+            <tr><td><small class="text-muted">Prédictions</small></td><td><small>71 pays non testés avec IC 95% (incertitudes + larges en Afrique).</small></td></tr>
+          </tbody>
+        </table>
+        <p class="text-muted small mt-2 mb-0">Sources et détails méthodologiques dans le rapport. :contentReference[oaicite:7]{index=7}</p>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <div style="background:#fff; padding:12px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+        <h6 style="margin-top:0; margin-bottom:8px;">Visuels recommandés (à insérer)</h6>
+
+        <div class="row g-2">
+          <div class="col-6">
+            <div class="visual-container" style="height:120px; min-height:120px; align-items:center; justify-content:center;">
+              <small class="text-muted">Résidus vs prédits (PNG)</small>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="visual-container" style="height:120px; min-height:120px; align-items:center; justify-content:center;">
+              <small class="text-muted">Barres d'erreur — Prédictions (PNG)</small>
+            </div>
+          </div>
+          <div class="col-12 mt-2">
+            <small class="text-muted">Remplace les placeholders par tes exports ggplot/plotly pour afficher diagnostics & intervalles (utile pour la discussion sur l’incertitude). :contentReference[oaicite:8]{index=8}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIMITES & DIAGNOSTICS -->
+  <div class="mt-3" style="background:#fff; padding:12px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+    <h6 style="margin-top:0;">Diagnostics & limites — points à mentionner dans le rapport</h6>
+    <ul class="text-muted" style="margin-bottom:0.25rem;">
+      <li>Vérifier l'homoscédasticité (Breusch-Pagan) et la normalité des résidus (QQ-plot).</li>
+      <li>Examiner l'influence (Cook's distance) — plusieurs pays extrêmes peuvent tirer les coefficients.</li>
+      <li>Attention à l'interprétation de la dépense éducative en % du PIB : rapport vs montant absolu (biais possible). :contentReference[oaicite:9]{index=9}</li>
+      <li>Prudence sur les prédictions pour l'Afrique : intervalles de confiance larges (modèle entraîné sur pays majoritairement occidentaux). :contentReference[oaicite:10]{index=10}</li>
     </ul>
   </div>
-
-  <!-- Conclusion courte -->
-  <p class="text-muted" style="margin-top:10px;">
-    <strong>Conclusion :</strong> le modèle retenu identifie des leviers clairs (PIB/hab, sécurité alimentaire, accès maternelle) et met en évidence que l'investissement précoce en éducation semble particulièrement rentable dans les pays hors OCDE. Ces résultats servent de base à des recommandations politiques ciblées, tout en restant prudents sur la causalité (analyse observationnelle).
-  </p>
 </section>
 
 
