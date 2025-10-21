@@ -252,106 +252,113 @@
 
 
 
-
-
-    
-<section class="card-custom" id="regression-final-text" style="font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; max-width: 900px; margin: 0 auto; padding: 24px; background: #f8f9fa; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);">
-  <!-- En-tête avec titre et KPI -->
-  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+<!-- ======== RÉGRESSION — VERSION FINALE ÉPURÉE ET ESTHÉTIQUE ======== -->
+<section class="card-custom" id="regression-final-text" style="overflow:hidden;">
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-start flex-wrap">
     <div>
-      <h2 style="margin: 0 0 8px 0; color: #2c3e50; font-weight: 600; font-size: 1.75rem;">Régression linéaire — Modèle final</h2>
-      <p style="color: #6c757d; font-size: 0.9rem; margin: 0;">
-        Nous avons estimé plusieurs spécifications (modèle sur le score brut, modèle sur le log du score, modèles avec interactions) et choisi la spécification offrant le meilleur compromis entre qualité d’ajustement et interprétabilité.
+      <h2 class="mb-1" style="font-weight:600;">Régression linéaire — Modèle final</h2>
+      <p class="text-muted small mb-2">
+        Nous avons estimé plusieurs spécifications (modèle sur le score brut, modèle sur le log du score, modèles avec interactions)
+        et choisi la spécification offrant le meilleur compromis entre qualité d’ajustement et interprétabilité.
       </p>
     </div>
-    <div style="text-align: right;">
-      <div style="background: #e3f2fd; color: #1976d2; padding: 6px 12px; border-radius: 20px; font-weight: 600; font-size: 0.9rem; display: inline-block;">R² ajusté ≈ 0.717</div>
-      <div style="color: #6c757d; font-size: 0.8rem; margin-top: 4px;">Modèle final (appelé MCO4 dans le rapport)</div>
+    <div class="text-end">
+      <span class="kpi-badge" aria-hidden="true" style="font-size:.95rem;">R² ajusté ≈ 0.717</span><br>
+      <small class="text-muted">Modèle final (MCO4)</small>
     </div>
   </div>
 
-  <!-- Section : Choix du modèle et log(PISA) -->
-  <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);">
-    <h3 style="margin: 0 0 12px 0; color: #2c3e50; font-size: 1.25rem; font-weight: 600;">Quel modèle avons-nous retenu — et pourquoi ?</h3>
-    <p style="color: #6c757d; font-size: 0.9rem; margin: 0 0 16px 0; line-height: 1.5;">
-      Le rapport compare deux spécifications initiales : <strong>MCO1</strong> (score PISA brut) et <strong>MCO2</strong> (ln(PISA)). MCO2 présente un R² ajusté légèrement supérieur (≈ 0.70 vs 0.68), une erreur moyenne bien moindre et rend une variable supplémentaire significative ; pour ces raisons la transformation logarithmique a été retenue (MCO2), puis complétée jusqu’au modèle final.
+  <!-- Bloc 1 : choix du modèle -->
+  <div class="mt-4 p-4 rounded shadow-sm" style="background:linear-gradient(180deg,#ffffff 0%,#f9fbfd 100%); border-left:4px solid #3498db;">
+    <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-question-circle me-1 text-primary"></i>Quel modèle avons-nous retenu — et pourquoi ?</h5>
+    <p class="text-muted small mb-3">
+      Deux spécifications initiales ont été testées : MCO1 (score PISA brut) et MCO2 (ln(PISA)).
+      MCO2 présente un R² ajusté légèrement supérieur (≈ 0.70 vs 0.68), une erreur moyenne plus faible et rend une variable supplémentaire significative.
+      Pour ces raisons, la transformation logarithmique a été retenue, puis complétée jusqu’au modèle final.
     </p>
-    <h4 style="margin: 0 0 10px 0; color: #2c3e50; font-size: 1.1rem; font-weight: 600;">Que signifie travailler sur ln(PISA) ?</h4>
-    <ul style="padding-left: 20px; margin: 0 0 0 0;">
-      <li style="color: #6c757d; font-size: 0.9rem; margin-bottom: 6px; line-height: 1.5;">
-        La transformation logarithmique stabilise la variance et réduit l’influence des observations extrêmes (outliers).
-      </li>
-      <li style="color: #6c757d; font-size: 0.9rem; margin-bottom: 6px; line-height: 1.5;">
-        Elle permet d’interpréter certains coefficients comme des élasticités (par exemple, un coefficient sur ln(PIB/hab) s’interprète approximativement en % de variation du score pour 1% de variation du PIB/hab).
-      </li>
-      <li style="color: #6c757d; font-size: 0.9rem; margin-bottom: 0; line-height: 1.5;">
-        Concrètement, le rapport constate que MCO2 améliore l’ajustement et la précision des erreurs, d’où le choix définitif d’un modèle basé sur ln(PISA).
-      </li>
+
+    <h6 class="mb-2 text-primary" style="font-weight:600;">Que signifie travailler sur ln(PISA) ?</h6>
+    <ul class="text-muted small mb-0" style="padding-left:1rem;">
+      <li>La transformation logarithmique stabilise la variance et réduit l’influence des observations extrêmes.</li>
+      <li>Elle permet d’interpréter certains coefficients comme des élasticités (ex. un coefficient sur ln(PIB/hab) ≈ % de variation du score pour 1% de variation du PIB/hab).</li>
+      <li>Cette approche améliore l’ajustement et la précision des erreurs, d’où le choix définitif d’un modèle basé sur ln(PISA).</li>
     </ul>
   </div>
 
-  <!-- Section : Modèle final et interprétation -->
-  <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);">
-    <h3 style="margin: 0 0 12px 0; color: #2c3e50; font-size: 1.25rem; font-weight: 600;">Forme du modèle final (MCO4) et principaux résultats</h3>
-    <p style="color: #6c757d; font-size: 0.9rem; margin: 0 0 16px 0; line-height: 1.5;">
-      Le modèle final retenu dans le rapport est :
-      <br>
-      <em style="color: #495057; font-style: italic;">ln_PISA = β₀ + β₁ · dépense_éducation + β₂ · ln(PIB/hab) + β₃ · scolarisation_primaire + β₄ · sous-alimentation + β₅ · OCDE + β₆ · (scolarisation_maternelle × OCDE) + ε</em>.
-      <br>
-      Le rapport indique que ce modèle explique environ 74% de la variance (R² ajusté ≈ 0.717).
+  <!-- Bloc 2 : modèle final -->
+  <div class="mt-4 p-4 rounded shadow-sm" style="background:#fff; border-left:4px solid #2ecc71;">
+    <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-bar-chart-line me-1 text-success"></i>Forme du modèle final (MCO4) et principaux résultats</h5>
+    <p class="text-muted small mb-3">
+      Le modèle final retenu est :
+      <br><em>ln_PISA = β₀ + β₁ · dépense_éducation + β₂ · ln(PIB/hab) + β₃ · scolarisation_primaire + β₄ · sous-alimentation + β₅ · OCDE + β₆ · (scolarisation_maternelle × OCDE) + ε</em>.
+      Ce modèle explique environ 74% de la variance (R² ajusté ≈ 0.717).
     </p>
-    <h4 style="margin: 0 0 10px 0; color: #2c3e50; font-size: 1.1rem; font-weight: 600;">Interprétations directes :</h4>
-    <ul style="padding-left: 20px; margin: 0 0 0 0;">
-      <li style="color: #6c757d; font-size: 0.9rem; margin-bottom: 6px; line-height: 1.5;">
-        <strong>ln(PIB/hab)</strong> : effet positif robuste — plus un pays est riche, meilleurs sont ses résultats PISA.
-      </li>
-      <li style="color: #6c757d; font-size: 0.9rem; margin-bottom: 6px; line-height: 1.5;">
-        <strong>Sous-alimentation</strong> : effet négatif significatif — la malnutrition est associée à des scores plus faibles.
-      </li>
-      <li style="color: #6c757d; font-size: 0.9rem; margin-bottom: 0; line-height: 1.5;">
-        <strong>Dépense publique d’éducation</strong> : coefficient significativement négatif dans le modèle — résultat paradoxal que le rapport commente et contextualise.
-      </li>
+
+    <p class="text-muted small mb-2"><strong>Interprétations directes :</strong></p>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="p-3 rounded text-center h-100" style="background:#f5faf6; border-left:4px solid #2ecc71;">
+          <strong class="d-block mb-1">ln(PIB/hab)</strong>
+          <small class="text-muted">Effet positif robuste — plus un pays est riche, meilleurs sont ses résultats PISA.</small>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 rounded text-center h-100" style="background:#fff8f7; border-left:4px solid #e74c3c;">
+          <strong class="d-block mb-1">Sous-alimentation</strong>
+          <small class="text-muted">Effet négatif significatif — la malnutrition est associée à des scores plus faibles.</small>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 rounded text-center h-100" style="background:#fdfaf2; border-left:4px solid #f1c40f;">
+          <strong class="d-block mb-1">Dépense éducative</strong>
+          <small class="text-muted">Coefficient négatif — résultat paradoxal qui doit être interprété avec prudence.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bloc 3 : interaction -->
+  <div class="mt-4 p-4 rounded shadow-sm" style="background:linear-gradient(180deg,#ffffff 0%,#f8faff 100%); border-left:4px solid #9b59b6;">
+    <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-shuffle me-1 text-purple"></i>Interaction : scolarisation maternelle × OCDE — ce que ça veut dire</h5>
+    <p class="text-muted small mb-2">
+      Le test d’interaction montre que seule l’interaction entre la scolarisation en maternelle et l’appartenance à l’OCDE est significative.
+      Le coefficient de cette interaction est négatif : la scolarisation en maternelle apporte un bénéfice plus fort
+      dans les pays <em>non-OCDE</em> que dans les pays OCDE — autrement dit, la hausse du taux de scolarisation maternelle est associée à un gain de score PISA plus marqué hors OCDE.
+    </p>
+    <div class="d-flex flex-wrap gap-2 mt-2">
+      <div class="flex-fill text-center p-2 rounded" style="background:#eef6ff; border-left:4px solid #3498db;">
+        <strong class="d-block">Hors OCDE</strong>
+        <small class="text-muted">Effet maternelle plus fort</small>
+      </div>
+      <div class="flex-fill text-center p-2 rounded" style="background:#faf3ff; border-left:4px solid #9b59b6;">
+        <strong class="d-block">OCDE</strong>
+        <small class="text-muted">Effet atténué</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bloc 4 : variables non significatives -->
+  <div class="mt-4 p-4 rounded shadow-sm" style="background:#fff; border-left:4px solid #95a5a6;">
+    <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-slash-circle me-1 text-secondary"></i>Variables supprimées / non significatives</h5>
+    <p class="text-muted small mb-2">
+      Pour obtenir le modèle final, seules les variables significatives ont été conservées et celles n’apportant pas d’explication supplémentaire ont été retirées.
+    </p>
+    <ul class="text-muted small mb-0" style="padding-left:1rem;">
+      <li>Le taux de scolarisation en primaire a été retiré du modèle final.</li>
+      <li>Le ratio élèves/enseignant a aussi été retiré dans la version finale, bien qu’il soit corrélé descriptivement.</li>
     </ul>
   </div>
 
-  <!-- Section : Interaction -->
-  <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);">
-    <h3 style="margin: 0 0 12px 0; color: #2c3e50; font-size: 1.25rem; font-weight: 600;">Interaction : scolarisation maternelle × OCDE — ce que ça veut dire</h3>
-    <p style="color: #6c757d; font-size: 0.9rem; margin: 0; line-height: 1.5;">
-      Le test d’interaction (test de Chow avec indicatrices) montre que <strong>seule</strong> l’interaction entre la scolarisation en maternelle et l’appartenance à l’OCDE est significative. Le coefficient de cette interaction est négatif : cela signifie, comme l’explique le rapport, que la scolarisation en maternelle apporte un bénéfice observé plus fort dans les pays <em>non-OCDE</em> que dans les pays OCDE — autrement dit, la hausse du taux de scolarisation maternelle est associée à un gain de score PISA plus marqué hors OCDE.
-    </p>
-  </div>
-
-  <!-- Section : Variables non-significatives -->
-  <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);">
-    <h3 style="margin: 0 0 12px 0; color: #2c3e50; font-size: 1.25rem; font-weight: 600;">Variables supprimées / non significatives</h3>
-    <p style="color: #6c757d; font-size: 0.9rem; margin: 0 0 12px 0; line-height: 1.5;">
-      Pour obtenir le modèle final (MCO4), le rapport a retenu les variables qui se révélèrent significatives et a supprimé celles qui n’apportaient pas d’explication supplémentaire une fois les autres contrôles inclus. Conformément au document :
-    </p>
-    <ul style="padding-left: 20px; margin: 0 0 0 0;">
-      <li style="color: #6c757d; font-size: 0.9rem; margin-bottom: 6px; line-height: 1.5;">
-        Le taux de scolarisation en primaire a été retiré du modèle final.
-      </li>
-      <li style="color: #6c757d; font-size: 0.9rem; margin-bottom: 0; line-height: 1.5;">
-        Le ratio élèves/enseignant a aussi été retiré dans la version finale (même s’il était corrélé descriptivement, il n’était pas significatif dans la spécification finale retenue).
-      </li>
-    </ul>
-  </div>
-
-  <!-- Section : Remarques finales -->
-  <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);">
-    <h3 style="margin: 0 0 12px 0; color: #2c3e50; font-size: 1.25rem; font-weight: 600;">Remarques finales (extraites du rapport)</h3>
-    <ul style="padding-left: 20px; margin: 0 0 0 0;">
-      <li style="color: #6c757d; font-size: 0.9rem; margin-bottom: 8px; line-height: 1.5;">
-        Le rapport attire l’attention sur l’interprétation délicate du coefficient de dépense éducative : un ratio élevé dépense/PIB peut refléter un PIB faible (donc peu de moyens en valeur absolue) ou des problèmes d’efficacité des dépenses — le résultat négatif appelle donc à la prudence et à des analyses complémentaires.
-      </li>
-      <li style="color: #6c757d; font-size: 0.9rem; margin-bottom: 0; line-height: 1.5;">
-        Le modèle a servi ensuite à produire des prédictions pour 71 pays non testés (avec IC à 95%) ; le rapport signale que ces prédictions présentent des intervalles de confiance particulièrement larges pour plusieurs pays africains, car le modèle a été entraîné sur un échantillon majoritairement composé de pays proches économiquement des membres de l’OCDE.
-      </li>
+  <!-- Bloc 5 : remarques finales -->
+  <div class="mt-4 p-4 rounded shadow-sm" style="background:linear-gradient(180deg,#ffffff 0%,#f9fbfc 100%); border-left:4px solid #34495e;">
+    <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-lightbulb me-1 text-dark"></i>Remarques finales</h5>
+    <ul class="text-muted small mb-0" style="padding-left:1rem;">
+      <li>Le coefficient de dépense éducative doit être interprété avec prudence : un ratio élevé dépense/PIB peut refléter un PIB faible ou une efficacité moindre des dépenses.</li>
+      <li>Les prédictions pour 71 pays non testés (IC 95%) présentent des intervalles de confiance plus larges pour plusieurs pays africains, l’échantillon étant dominé par des pays économiquement proches de l’OCDE.</li>
     </ul>
   </div>
 </section>
-
 
 
 
