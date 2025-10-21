@@ -361,61 +361,48 @@
 </section>
 
 
-<!-- ===== Section : Carte IC (gauche) + Prédictions (droite) ===== -->
-<section class="card-custom" id="pisa-maps-and-preds">
-  <h2>Cartes — Observés & Prédictions PISA</h2>
-  <p class="text-muted">
-    1) Carte : largeur des intervalles de confiance (gauche) — 2) Prédictions par pays avec intervalles de confiance (droite).
-  </p>
+    <!-- SECTION : Carte IC (gauche) + Prédictions (droite) (corrigé) -->
+    <section class="card-custom" id="pisa-maps-and-preds">
+      <h2>Cartes — Observés & Prédictions PISA</h2>
+      <p class="text-muted">1) Carte : largeur des intervalles de confiance (gauche) — 2) Prédictions par pays avec intervalles de confiance (droite).</p>
 
-  <div class="row">
-    <!-- ========== COLONNE GAUCHE : CARTE IC ========== -->
-    <div class="col-md-6">
-      <div class="visual-container" style="padding:0; margin:0;">
-        <div style="max-width:1200px; margin:0 auto; display:flex; flex-direction:column; gap:8px;">
-          <!-- Carte Intervalles de confiance -->
-  <iframe
-    id="map-ic-iframe"
-    src="assets/Carte_IC_nolegend.html"
-    style="width:100%; border:none; display:block; background:transparent;"
-    title="Carte Intervalles de confiance PISA"
-    loading="lazy"
-    sandbox="allow-scripts allow-same-origin allow-forms">
-  </iframe>
-</div>
-
-
-          <!-- petite description / légende statique si tu veux -->
-          <div class="legend-caption small text-muted" style="padding:6px 0 0 0;">
-            Survolez un pays pour voir sa largeur d'intervalle de confiance (en %).
+      <div class="row g-3 align-items-start">
+        <!-- Carte IC (gauche) -->
+        <div class="col-md-6">
+          <div class="visual-container" style="padding:0; margin:0;">
+            <div style="width:100%; max-width:1200px; margin:0 auto; padding:0;">
+              <iframe
+                id="map-ic-iframe"
+                class="responsive-iframe map-iframe"
+                src="assets/Carte_IC_nolegend.html"
+                title="Carte Intervalles de confiance PISA"
+                loading="lazy"
+                sandbox="allow-scripts allow-same-origin allow-forms"
+              ></iframe>
+            </div>
           </div>
+          <div class="legend-caption small text-muted">Survolez un pays pour voir sa largeur d'intervalle de confiance (en %).</div>
+        </div>
+
+        <!-- Prédictions (droite) -->
+        <div class="col-md-6">
+          <div class="visual-container" style="padding:0; margin:0;">
+            <div style="width:100%; max-width:1200px; margin:0 auto; padding:0;">
+              <iframe
+                id="iframe-predictions-IC"
+                class="responsive-iframe pred-iframe"
+                src="assets/PISA_predictions_with_IC_interactive.html"
+                title="Prédictions PISA par pays avec intervalles de confiance"
+                aria-label="Graphique interactif des prédictions PISA par pays avec intervalles de confiance"
+                loading="lazy"
+                sandbox="allow-scripts allow-same-origin allow-forms"
+              ></iframe>
+            </div>
+          </div>
+          <div class="legend-caption small text-muted">Points = prédictions ; barres = intervalles de confiance. Les pays sont triés par prédiction.</div>
         </div>
       </div>
-    </div>
-
-    <!-- ========== COLONNE DROITE : PREDICTIONS + IC ========== -->
-    <div class="col-md-6">
-      <div class="visual-container" style="padding:0; margin:0;">
-        <div style="max-width:1200px; margin:0 auto; display:flex; flex-direction:column; gap:8px;">
-          <!-- Scatter interactif (généré par saveWidget(..., file = "assets/PISA_predictions_with_IC_interactive.html")) -->
-          <iframe
-            id="iframe-predictions-IC"
-            src="assets/PISA_predictions_with_IC_interactive.html"
-            title="Prédictions PISA par pays avec intervalles de confiance"
-            aria-label="Graphique interactif des prédictions PISA par pays avec intervalles de confiance"
-            class="responsive-iframe tall"
-            loading="lazy"
-            sandbox="allow-scripts allow-same-origin allow-forms"
-          ></iframe>
-
-          <div class="legend-caption small text-muted" style="padding:6px 0 0 0;">
-            Points = prédictions ; barres = intervalles de confiance. Les pays sont triés par prédiction.
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 <!-- ===== Styles utilitaires (si non présents, ajoute dans ton CSS global) ===== -->
 <style>
