@@ -361,92 +361,83 @@
 </section>
 
 
-
-<!-- ===== Section Cartes & Prédictions (version réécrite) ===== -->
-<section class="card-custom" id="pisa-maps-predictions">
-  <h2>Cartes — Observés et Prédictions PISA</h2>
+<!-- ===== Section : Carte IC (gauche) + Prédictions (droite) ===== -->
+<section class="card-custom" id="pisa-maps-and-preds">
+  <h2>Cartes — Observés & Prédictions PISA</h2>
   <p class="text-muted">
-    1) Carte observée — 2) Carte de prédictions (pays non testés) avec intervalles de confiance — 3) Graphique interactif des prédictions par pays.
+    1) Carte : largeur des intervalles de confiance (gauche) — 2) Prédictions par pays avec intervalles de confiance (droite).
   </p>
 
   <div class="row">
-    <!-- COLONNE GAUCHE : carte observée + légende -->
+    <!-- ========== COLONNE GAUCHE : CARTE IC ========== -->
     <div class="col-md-6">
       <div class="visual-container" style="padding:0; margin:0;">
         <div style="max-width:1200px; margin:0 auto; display:flex; flex-direction:column; gap:8px;">
-          <!-- Carte observée (widget stocké en assets) -->
+          <!-- Carte IC (générée par saveWidget(..., file = "assets/Carte_IC.html")) -->
           <iframe
-            id="pisa-observed-map"
-            src="assets/pisa_observed_map.html"
-            title="Carte observée des scores PISA"
-            aria-label="Carte interactive des scores PISA observés"
+            id="iframe-carte-IC"
+            src="assets/Carte_IC.html"
+            title="Carte : largeur des intervalles de confiance PISA"
+            aria-label="Carte interactive montrant la largeur des intervalles de confiance par pays"
             class="responsive-iframe"
             loading="lazy"
             sandbox="allow-scripts allow-same-origin allow-forms"
           ></iframe>
 
-          <!-- Légende observée -->
-          <iframe
-            id="pisa-observed-legend"
-            src="assets/pisa_observed_legend.html"
-            title="Légende des scores PISA observés"
-            aria-label="Légende des scores PISA observés"
-            class="legend-iframe"
-            loading="lazy"
-          ></iframe>
+          <!-- petite description / légende statique si tu veux -->
+          <div class="legend-caption small text-muted" style="padding:6px 0 0 0;">
+            Survolez un pays pour voir sa largeur d'intervalle de confiance (en %).
+          </div>
         </div>
       </div>
-      <p class="small text-muted mt-2">Survolez un pays pour voir son score observé et la catégorie correspondante.</p>
     </div>
 
-    <!-- COLONNE DROITE : carte prédiction + légende + mini-info -->
+    <!-- ========== COLONNE DROITE : PREDICTIONS + IC ========== -->
     <div class="col-md-6">
       <div class="visual-container" style="padding:0; margin:0;">
         <div style="max-width:1200px; margin:0 auto; display:flex; flex-direction:column; gap:8px;">
-          <!-- Carte de prédiction (nouveau fichier, plotly interactif produit par R) -->
+          <!-- Scatter interactif (généré par saveWidget(..., file = "assets/PISA_predictions_with_IC_interactive.html")) -->
           <iframe
-            id="pisa-pred-map"
-            src="assets/pisa_prediction_map_v2.html"
-            title="Carte des prédictions PISA et largeur d'intervalle de confiance"
-            aria-label="Carte interactive des prédictions PISA avec largeur des intervalles de confiance"
-            class="responsive-iframe"
+            id="iframe-predictions-IC"
+            src="assets/PISA_predictions_with_IC_interactive.html"
+            title="Prédictions PISA par pays avec intervalles de confiance"
+            aria-label="Graphique interactif des prédictions PISA par pays avec intervalles de confiance"
+            class="responsive-iframe tall"
             loading="lazy"
             sandbox="allow-scripts allow-same-origin allow-forms"
           ></iframe>
 
-          <!-- Légende des prédictions (générée séparément) -->
-          <iframe
-            id="pisa-pred-legend"
-            src="assets/pisa_prediction_legend_v2.html"
-            title="Légende prédictions PISA"
-            aria-label="Légende des prédictions PISA"
-            class="legend-iframe"
-            loading="lazy"
-          ></iframe>
+          <div class="legend-caption small text-muted" style="padding:6px 0 0 0;">
+            Points = prédictions ; barres = intervalles de confiance. Les pays sont triés par prédiction.
+          </div>
         </div>
-      </div>
-      <p class="small text-muted">Carte interactive montrant la largeur des intervalles de confiance des prédictions.</p>
-    </div>
-  </div>
-
-  <!-- ROW additionnel : scatter interactif des prédictions avec IC -->
-  <div class="row mt-3">
-    <div class="col-12">
-      <div style="max-width:1400px; margin:0 auto;">
-        <iframe
-          id="pisa-pred-scatter"
-          src="assets/PISA_predictions_with_IC_interactive.html"
-          title="Graphique des prédictions PISA avec intervalles de confiance"
-          aria-label="Graphique interactif des prédictions PISA par pays avec intervalles de confiance"
-          class="responsive-iframe tall"
-          loading="lazy"
-          sandbox="allow-scripts allow-same-origin allow-forms"
-        ></iframe>
-        <p class="small text-muted">Graphique interactif : point = prédiction, barres = intervalle de confiance.</p>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ===== Styles utilitaires (si non présents, ajoute dans ton CSS global) ===== -->
+<style>
+  .responsive-iframe {
+    width: 100%;
+    height: 520px;
+    border: 0;
+    display: block;
+    background: transparent;
+  }
+  .responsive-iframe.tall {
+    height: 640px; /* plus haut pour le scatter */
+  }
+
+  @media (max-width: 768px) {
+    .responsive-iframe { height: 360px; }
+    .responsive-iframe.tall { height: 520px; }
+  }
+
+  /* si tu veux un petit espacement sous la carte/légende */
+  .legend-caption { margin-top: 4px; }
+</style>
+
 
 <!-- ===== Styles utilitaires (ajoute-les au CSS global de ton site) ===== -->
 <style>
