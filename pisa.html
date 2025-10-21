@@ -373,16 +373,27 @@
     <div class="col-md-6">
       <div class="visual-container" style="padding:0; margin:0;">
         <div style="max-width:1200px; margin:0 auto; display:flex; flex-direction:column; gap:8px;">
-          <!-- Carte IC (générée par saveWidget(..., file = "assets/Carte_IC.html")) -->
-          <iframe
-            id="iframe-carte-IC"
-            src="assets/Carte_IC_plotly_nolegend.html"
-            title="Carte : largeur des intervalles de confiance PISA"
-            aria-label="Carte interactive montrant la largeur des intervalles de confiance par pays"
-            class="responsive-iframe"
-            loading="lazy"
-            sandbox="allow-scripts allow-same-origin allow-forms"
-          ></iframe>
+          <!-- Carte Intervalles de confiance -->
+<div style="width:100%; max-width:1200px; margin:0 auto; padding:0; display:flex; flex-direction:column; gap:0;">
+  <iframe
+    id="map-ic-iframe"
+    src="assets/Carte_IC_nolegend.html"
+    style="width:100%; border:none; display:block; background:transparent;"
+    title="Carte Intervalles de confiance PISA"
+    loading="lazy"
+    sandbox="allow-scripts allow-same-origin allow-forms">
+  </iframe>
+
+  <!-- Légende en dessous -->
+  <iframe
+    id="legend-ic-iframe"
+    src="assets/legend_IC.html"
+    style="width:100%; max-width:900px; border:none; display:block; background:transparent;"
+    title="Légende Intervalles de confiance PISA"
+    loading="lazy">
+  </iframe>
+</div>
+
 
           <!-- petite description / légende statique si tu veux -->
           <div class="legend-caption small text-muted" style="padding:6px 0 0 0;">
