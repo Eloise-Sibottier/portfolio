@@ -10,65 +10,55 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
   <style>
-    /* ---------- Base ---------- */
     body { padding-top: 70px; font-family: 'Roboto', sans-serif; background-color: #f5f7fa; color: #333; line-height: 1.6; }
     .navbar { background-color: #2c3e50 !important; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
     .navbar-brand, .nav-link { font-weight: 500; }
     .nav-link:hover { color: #3498db !important; }
     .breadcrumb { background-color: transparent; padding-left: 0; }
     .breadcrumb-item a { color: #2c3e50; text-decoration: none; }
-
     .card-custom { background-color: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #3498db; }
     .btn-primary { background-color: #3498db; border: none; font-weight: 500; }
     .btn-primary:hover { background-color: #217dbb; }
     .text-muted { color: #6b7280; }
-
     .kpi-badge { background: #eef5ff; padding: .35rem .6rem; border-radius: 999px; font-weight: 600; color: #0b3a66; font-size: .9rem; margin-right:.5rem; margin-bottom:.5rem; display:inline-block; }
-
-    .visual-container {
-      width:100%;
-      background-color: white;
-      border-radius:8px;
-      padding:15px;
-      box-shadow:0 2px 10px rgba(0,0,0,0.05);
-      margin:15px 0;
-      text-align:center;
-      border:1px dashed #dee2e6;
-      min-height:300px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
+    .visual-container { width:100%; background-color: white; border-radius:8px; padding:15px; box-shadow:0 2px 10px rgba(0,0,0,0.05); margin:15px 0; text-align:center; border:1px dashed #dee2e6; min-height:300px; display:flex; align-items:center; justify-content:center; }
     footer { text-align:center; padding:20px 0; color:#6b7280; font-size:.9rem; margin-top:30px; }
     pre { background:#f8f9fa; padding:15px; border-radius:6px; overflow:auto; font-size:.9rem; }
 
-    /* ---------- Iframe defaults (consistent heights) ---------- */
-    .responsive-iframe { width:100%; border:0; display:block; background:transparent; overflow:hidden; -webkit-overflow-scrolling: touch; }
-    /* desktop default heights (you can tweak these) */
-    #map-iframe, #map2-iframe, #map-ic-iframe { height: 420px; min-height: 320px; }
-    /* prediction chart is taller */
-    #iframe-predictions-IC { height: 640px; min-height: 400px; }
-
-    /* legend iframes compact (only the other legends remain) */
-    #legend-iframe, #legend2-iframe { height: 110px; max-width:900px; margin-top:8px; }
-
-    /* mobile adjustments */
-    @media (max-width:768px){
-      #map-iframe, #map2-iframe, #map-ic-iframe { height: 65vh !important; min-height: 320px; }
-      #iframe-predictions-IC { height: 52vh !important; min-height: 360px; }
-      #legend-iframe, #legend2-iframe { height: 90px; }
+    /* Ensure default safe heights so if auto-resize fails the maps are visible */
+    #map-iframe, #map2-iframe {
+      height: 400px;      /* desktop default matching your left column */
+      min-height: 320px;
+      display: block;
     }
 
-    /* optional helper class if you want iframe to fill parent container */
-    .iframe-fullheight { display:flex; flex-direction:column; }
-    .iframe-fullheight iframe { flex: 1 1 auto; height: auto; }
+    /* Legends should be below maps and not overlap */
+    #legend-iframe, #legend2-iframe {
+      margin-top: 8px;
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* mobile break: adjust map height */
+    @media (max-width: 768px) {
+      #map-iframe, #map2-iframe { height: 65vh !important; min-height: 320px; }
+      #legend-iframe, #legend2-iframe { margin-top: 6px; }
+    }
+    @media (min-width: 769px) {
+      #map-iframe, #map2-iframe { height: 400px; }
+    }
+
+    /* prevent scrollbars inside iframes if possible */
+    #map-iframe, #map2-iframe, #legend-iframe, #legend2-iframe {
+      border: none;
+      background: transparent;
+      overflow: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
 
     .chart-wrap { width:100%; max-width:900px; margin:0 auto; min-height:180px; height:180px; }
-
-    /* small utility to ensure caption is full width under iframe */
-    .legend-caption { margin-top:6px; width:100%; text-align:left; padding-left:8px; color:#6b7280; font-size:0.9rem; }
   </style>
 </head>
 <body>
@@ -135,9 +125,11 @@
       </ul>
     </section>
 
-    <!-- Variables retenues & corrélations (kept) -->
+    <!-- Variables retenues & corrélations -->
     <section class="card-custom">
       <h2>Variables retenues & corrélations</h2>
+
+      <!-- Légende -->
       <div class="d-flex gap-3 mb-3" role="list" aria-label="Légende corrélations" style="flex-wrap:wrap;">
         <div class="d-flex align-items-center gap-1" style="font-size:0.9rem;">
           <span style="width:12px; height:12px; background-color:#28a745; border-radius:50%; display:inline-block;" aria-hidden="true"></span>
@@ -153,6 +145,7 @@
         </div>
       </div>
 
+      <!-- Regroupement des variables par catégorie -->
       <div class="row g-3">
         <div class="col-12 col-md-4">
           <div class="p-3 h-100" style="background:#fff; border-left: 4px solid #28a745; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
@@ -183,6 +176,7 @@
         </div>
       </div>
 
+      <!-- Graphique (Chart.js) -->
       <div class="mt-4 p-3" style="background-color: white; border-radius:8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
         <h5 style="margin:0 0 0.5rem 0;">Visualisation des corrélations (corrélation avec log PISA)</h5>
         <div class="chart-wrap">
@@ -206,8 +200,8 @@
               <!-- Carte observée (widget déjà bon) -->
               <iframe
                 id="map-iframe"
-                class="responsive-iframe"
                 src="assets/Carte_PISA_nolegend.html"
+                style="width:100%; border:none; display:block; background:transparent;"
                 title="Carte interactive PISA"
                 loading="lazy"
                 sandbox="allow-scripts allow-same-origin allow-forms"
@@ -216,8 +210,8 @@
               <!-- Légende observée (widget déjà bon) -->
               <iframe
                 id="legend-iframe"
-                class="responsive-iframe"
                 src="assets/legend_pisa.html"
+                style="width:100%; max-width:900px; border:none; display:block; background:transparent;"
                 title="Légende PISA"
                 loading="lazy"
               ></iframe>
@@ -230,19 +224,21 @@
         <div class="col-md-6">
           <div class="visual-container" style="padding: 0; margin: 0;">
             <div style="width:100%; max-width:1200px; margin:0 auto; padding:0; display:flex; flex-direction:column; gap:0;">
+              <!-- Carte prévision (plotly ggplotly converti) -->
               <iframe
                 id="map2-iframe"
-                class="responsive-iframe"
                 src="assets/Carte_prevision_interactive.html"
+                style="width:100%; border:none; display:block; background:transparent;"
                 title="Carte prévision PISA"
                 loading="lazy"
                 sandbox="allow-scripts allow-same-origin allow-forms"
               ></iframe>
 
+              <!-- Légende prévision (générée via R) -->
               <iframe
                 id="legend2-iframe"
-                class="responsive-iframe"
                 src="assets/legend_pisa2.html"
+                style="width:100%; max-width:900px; border:none; display:block; background:transparent;"
                 title="Légende prévision PISA"
                 loading="lazy"
               ></iframe>
@@ -253,171 +249,239 @@
       </div>
     </section>
 
-    <!-- Régression (je laisse tout ton contenu original — inchangé) -->
-    <section class="card-custom" id="regression-final-text" style="overflow:hidden;">
-      <div class="d-flex justify-content-between align-items-start flex-wrap">
-        <div>
-          <h2 class="mb-1" style="font-weight:600;">Régression linéaire — Modèle final</h2>
-          <p class="text-muted small mb-2">
-            Nous avons estimé plusieurs spécifications (modèle sur le score brut, modèle sur le log du score, modèles avec interactions)
-            et choisi la spécification offrant le meilleur compromis entre qualité d’ajustement et interprétabilité.
-          </p>
-        </div>
-        <div class="text-end">
-          <span class="kpi-badge" aria-hidden="true" style="font-size:.95rem;">R² ajusté ≈ 0.717</span><br>
-          <small class="text-muted">Modèle final (MCO4)</small>
-        </div>
-      </div>
 
-      <div class="mt-4 p-4 rounded shadow-sm" style="background:linear-gradient(180deg,#ffffff 0%,#f9fbfd 100%); border-left:4px solid #3498db;">
-        <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-question-circle me-1 text-primary"></i>Quel modèle avons-nous retenu — et pourquoi ?</h5>
-        <p class="text-muted small mb-3">
-          Deux spécifications initiales ont été testées : MCO1 (score PISA brut) et MCO2 (ln(PISA)).
-          MCO2 présente un R² ajusté légèrement supérieur (≈ 0.70 vs 0.68), une erreur moyenne plus faible et rend une variable supplémentaire significative.
-          Pour ces raisons, la transformation logarithmique a été retenue, puis complétée jusqu’au modèle final.
-        </p>
 
-        <h6 class="mb-2 text-primary" style="font-weight:600;">Que signifie travailler sur ln(PISA) ?</h6>
-        <ul class="text-muted small mb-0" style="padding-left:1rem;">
-          <li>La transformation logarithmique stabilise la variance et réduit l’influence des observations extrêmes.</li>
-          <li>Elle permet d’interpréter certains coefficients comme des élasticités (ex. un coefficient sur ln(PIB/hab) ≈ % de variation du score pour 1% de variation du PIB/hab).</li>
-          <li>Cette approche améliore l’ajustement et la précision des erreurs, d’où le choix définitif d’un modèle basé sur ln(PISA).</li>
-        </ul>
-      </div>
 
-      <div class="mt-4 p-4 rounded shadow-sm" style="background:#fff; border-left:4px solid #2ecc71;">
-        <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-bar-chart-line me-1 text-success"></i>Forme du modèle final (MCO4) et principaux résultats</h5>
-        <p class="text-muted small mb-3">
-          Le modèle final retenu est :
-          <br><em>ln_PISA = β₀ + β₁ · dépense_éducation + β₂ · ln(PIB/hab) + β₃ · scolarisation_primaire + β₄ · sous-alimentation + β₅ · OCDE + β₆ · (scolarisation_maternelle × OCDE) + ε</em>.
-          Ce modèle explique environ 74% de la variance (R² ajusté ≈ 0.717).
-        </p>
-
-        <p class="text-muted small mb-2"><strong>Interprétations directes :</strong></p>
-        <div class="row g-3">
-          <div class="col-md-4">
-            <div class="p-3 rounded text-center h-100" style="background:#f5faf6; border-left:4px solid #2ecc71;">
-              <strong class="d-block mb-1">ln(PIB/hab)</strong>
-              <small class="text-muted">Effet positif robuste — plus un pays est riche, meilleurs sont ses résultats PISA.</small>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-3 rounded text-center h-100" style="background:#fff8f7; border-left:4px solid #e74c3c;">
-              <strong class="d-block mb-1">Sous-alimentation</strong>
-              <small class="text-muted">Effet négatif significatif — la malnutrition est associée à des scores plus faibles.</small>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-3 rounded text-center h-100" style="background:#fdfaf2; border-left:4px solid #f1c40f;">
-              <strong class="d-block mb-1">Dépense éducative</strong>
-              <small class="text-muted">Coefficient négatif — résultat paradoxal qui doit être interprété avec prudence.</small>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-4 p-4 rounded shadow-sm" style="background:linear-gradient(180deg,#ffffff 0%,#f8faff 100%); border-left:4px solid #9b59b6;">
-        <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-shuffle me-1 text-purple"></i>Interaction : scolarisation maternelle × OCDE — ce que ça veut dire</h5>
-        <p class="text-muted small mb-2">
-          Le test d’interaction montre que seule l’interaction entre la scolarisation en maternelle et l’appartenance à l’OCDE est significative.
-          Le coefficient de cette interaction est négatif : la scolarisation en maternelle apporte un bénéfice plus fort
-          dans les pays <em>non-OCDE</em> que dans les pays OCDE — autrement dit, la hausse du taux de scolarisation maternelle est associée à un gain de score PISA plus marqué hors OCDE.
-        </p>
-        <div class="d-flex flex-wrap gap-2 mt-2">
-          <div class="flex-fill text-center p-2 rounded" style="background:#eef6ff; border-left:4px solid #3498db;">
-            <strong class="d-block">Hors OCDE</strong>
-            <small class="text-muted">Effet maternelle plus fort</small>
-          </div>
-          <div class="flex-fill text-center p-2 rounded" style="background:#faf3ff; border-left:4px solid #9b59b6;">
-            <strong class="d-block">OCDE</strong>
-            <small class="text-muted">Effet atténué</small>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-4 p-4 rounded shadow-sm" style="background:#fff; border-left:4px solid #95a5a6;">
-        <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-slash-circle me-1 text-secondary"></i>Variables supprimées / non significatives</h5>
-        <p class="text-muted small mb-2">
-          Pour obtenir le modèle final, seules les variables significatives ont été conservées et celles n’apportant pas d’explication supplémentaire ont été retirées.
-        </p>
-        <ul class="text-muted small mb-0" style="padding-left:1rem;">
-          <li>Le taux de scolarisation en primaire a été retiré du modèle final.</li>
-          <li>Le ratio élèves/enseignant a aussi été retiré dans la version finale, bien qu’il soit corrélé descriptivement.</li>
-        </ul>
-      </div>
-
-      <div class="mt-4 p-4 rounded shadow-sm" style="background:linear-gradient(180deg,#ffffff 0%,#f9fbfc 100%); border-left:4px solid #34495e;">
-        <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-lightbulb me-1 text-dark"></i>Remarques finales</h5>
-        <ul class="text-muted small mb-0" style="padding-left:1rem;">
-          <li>Le coefficient de dépense éducative doit être interprété avec prudence : un ratio élevé dépense/PIB peut refléter un PIB faible ou une efficacité moindre des dépenses.</li>
-          <li>Les prédictions pour 71 pays non testés (IC 95%) présentent des intervalles de confiance plus larges pour plusieurs pays africains, l’échantillon étant dominé par des pays économiquement proches de l’OCDE.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===== Section : Carte IC (gauche) + Prédictions (droite) ===== -->
-    <section class="card-custom" id="pisa-maps-and-preds">
-      <h2>Cartes — Observés & Prédictions PISA</h2>
-      <p class="text-muted">
-        1) Carte : largeur des intervalles de confiance (gauche) — 2) Prédictions par pays avec intervalles de confiance (droite).
+<!-- ======== RÉGRESSION — VERSION FINALE ÉPURÉE ET ESTHÉTIQUE ======== -->
+<section class="card-custom" id="regression-final-text" style="overflow:hidden;">
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-start flex-wrap">
+    <div>
+      <h2 class="mb-1" style="font-weight:600;">Régression linéaire — Modèle final</h2>
+      <p class="text-muted small mb-2">
+        Nous avons estimé plusieurs spécifications (modèle sur le score brut, modèle sur le log du score, modèles avec interactions)
+        et choisi la spécification offrant le meilleur compromis entre qualité d’ajustement et interprétabilité.
       </p>
+    </div>
+    <div class="text-end">
+      <span class="kpi-badge" aria-hidden="true" style="font-size:.95rem;">R² ajusté ≈ 0.717</span><br>
+      <small class="text-muted">Modèle final (MCO4)</small>
+    </div>
+  </div>
 
-      <div class="row">
-        <!-- ========== COLONNE GAUCHE : CARTE IC ========== -->
-        <div class="col-md-6">
-          <div class="visual-container" style="padding:0; margin:0;">
-            <div style="max-width:1200px; margin:0 auto; display:flex; flex-direction:column; gap:8px; width:100%;">
-              <!-- Carte Intervalles de confiance -->
-              <iframe
-                id="map-ic-iframe"
-                class="responsive-iframe"
-                src="assets/Carte_IC_nolegend.html"
-                title="Carte Intervalles de confiance PISA"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin allow-forms"
-              ></iframe>
+  <!-- Bloc 1 : choix du modèle -->
+  <div class="mt-4 p-4 rounded shadow-sm" style="background:linear-gradient(180deg,#ffffff 0%,#f9fbfd 100%); border-left:4px solid #3498db;">
+    <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-question-circle me-1 text-primary"></i>Quel modèle avons-nous retenu — et pourquoi ?</h5>
+    <p class="text-muted small mb-3">
+      Deux spécifications initiales ont été testées : MCO1 (score PISA brut) et MCO2 (ln(PISA)).
+      MCO2 présente un R² ajusté légèrement supérieur (≈ 0.70 vs 0.68), une erreur moyenne plus faible et rend une variable supplémentaire significative.
+      Pour ces raisons, la transformation logarithmique a été retenue, puis complétée jusqu’au modèle final.
+    </p>
 
-              <!-- Note descriptive : placée explicitement sous la carte -->
-              <div class="legend-caption">Survolez un pays pour voir sa largeur d'intervalle de confiance (en %).</div>
-            </div>
-          </div>
+    <h6 class="mb-2 text-primary" style="font-weight:600;">Que signifie travailler sur ln(PISA) ?</h6>
+    <ul class="text-muted small mb-0" style="padding-left:1rem;">
+      <li>La transformation logarithmique stabilise la variance et réduit l’influence des observations extrêmes.</li>
+      <li>Elle permet d’interpréter certains coefficients comme des élasticités (ex. un coefficient sur ln(PIB/hab) ≈ % de variation du score pour 1% de variation du PIB/hab).</li>
+      <li>Cette approche améliore l’ajustement et la précision des erreurs, d’où le choix définitif d’un modèle basé sur ln(PISA).</li>
+    </ul>
+  </div>
+
+  <!-- Bloc 2 : modèle final -->
+  <div class="mt-4 p-4 rounded shadow-sm" style="background:#fff; border-left:4px solid #2ecc71;">
+    <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-bar-chart-line me-1 text-success"></i>Forme du modèle final (MCO4) et principaux résultats</h5>
+    <p class="text-muted small mb-3">
+      Le modèle final retenu est :
+      <br><em>ln_PISA = β₀ + β₁ · dépense_éducation + β₂ · ln(PIB/hab) + β₃ · scolarisation_primaire + β₄ · sous-alimentation + β₅ · OCDE + β₆ · (scolarisation_maternelle × OCDE) + ε</em>.
+      Ce modèle explique environ 74% de la variance (R² ajusté ≈ 0.717).
+    </p>
+
+    <p class="text-muted small mb-2"><strong>Interprétations directes :</strong></p>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="p-3 rounded text-center h-100" style="background:#f5faf6; border-left:4px solid #2ecc71;">
+          <strong class="d-block mb-1">ln(PIB/hab)</strong>
+          <small class="text-muted">Effet positif robuste — plus un pays est riche, meilleurs sont ses résultats PISA.</small>
         </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 rounded text-center h-100" style="background:#fff8f7; border-left:4px solid #e74c3c;">
+          <strong class="d-block mb-1">Sous-alimentation</strong>
+          <small class="text-muted">Effet négatif significatif — la malnutrition est associée à des scores plus faibles.</small>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 rounded text-center h-100" style="background:#fdfaf2; border-left:4px solid #f1c40f;">
+          <strong class="d-block mb-1">Dépense éducative</strong>
+          <small class="text-muted">Coefficient négatif — résultat paradoxal qui doit être interprété avec prudence.</small>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <!-- ========== COLONNE DROITE : PREDICTIONS + IC ========== -->
-        <div class="col-md-6">
-          <div class="visual-container" style="padding:0; margin:0;">
-            <div style="max-width:1200px; margin:0 auto; display:flex; flex-direction:column; gap:8px; width:100%;">
-              <!-- Scatter interactif -->
-              <iframe
-                id="iframe-predictions-IC"
-                class="responsive-iframe tall"
-                src="assets/PISA_predictions_with_IC_interactive.html"
-                title="Prédictions PISA par pays avec intervalles de confiance"
-                aria-label="Graphique interactif des prédictions PISA par pays avec intervalles de confiance"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin allow-forms"
-              ></iframe>
+  <!-- Bloc 3 : interaction -->
+  <div class="mt-4 p-4 rounded shadow-sm" style="background:linear-gradient(180deg,#ffffff 0%,#f8faff 100%); border-left:4px solid #9b59b6;">
+    <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-shuffle me-1 text-purple"></i>Interaction : scolarisation maternelle × OCDE — ce que ça veut dire</h5>
+    <p class="text-muted small mb-2">
+      Le test d’interaction montre que seule l’interaction entre la scolarisation en maternelle et l’appartenance à l’OCDE est significative.
+      Le coefficient de cette interaction est négatif : la scolarisation en maternelle apporte un bénéfice plus fort
+      dans les pays <em>non-OCDE</em> que dans les pays OCDE — autrement dit, la hausse du taux de scolarisation maternelle est associée à un gain de score PISA plus marqué hors OCDE.
+    </p>
+    <div class="d-flex flex-wrap gap-2 mt-2">
+      <div class="flex-fill text-center p-2 rounded" style="background:#eef6ff; border-left:4px solid #3498db;">
+        <strong class="d-block">Hors OCDE</strong>
+        <small class="text-muted">Effet maternelle plus fort</small>
+      </div>
+      <div class="flex-fill text-center p-2 rounded" style="background:#faf3ff; border-left:4px solid #9b59b6;">
+        <strong class="d-block">OCDE</strong>
+        <small class="text-muted">Effet atténué</small>
+      </div>
+    </div>
+  </div>
 
-              <div class="legend-caption">Points = prédictions ; barres = intervalles de confiance. Les pays sont triés par prédiction.</div>
-            </div>
+  <!-- Bloc 4 : variables non significatives -->
+  <div class="mt-4 p-4 rounded shadow-sm" style="background:#fff; border-left:4px solid #95a5a6;">
+    <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-slash-circle me-1 text-secondary"></i>Variables supprimées / non significatives</h5>
+    <p class="text-muted small mb-2">
+      Pour obtenir le modèle final, seules les variables significatives ont été conservées et celles n’apportant pas d’explication supplémentaire ont été retirées.
+    </p>
+    <ul class="text-muted small mb-0" style="padding-left:1rem;">
+      <li>Le taux de scolarisation en primaire a été retiré du modèle final.</li>
+      <li>Le ratio élèves/enseignant a aussi été retiré dans la version finale, bien qu’il soit corrélé descriptivement.</li>
+    </ul>
+  </div>
+
+  <!-- Bloc 5 : remarques finales -->
+  <div class="mt-4 p-4 rounded shadow-sm" style="background:linear-gradient(180deg,#ffffff 0%,#f9fbfc 100%); border-left:4px solid #34495e;">
+    <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-lightbulb me-1 text-dark"></i>Remarques finales</h5>
+    <ul class="text-muted small mb-0" style="padding-left:1rem;">
+      <li>Le coefficient de dépense éducative doit être interprété avec prudence : un ratio élevé dépense/PIB peut refléter un PIB faible ou une efficacité moindre des dépenses.</li>
+      <li>Les prédictions pour 71 pays non testés (IC 95%) présentent des intervalles de confiance plus larges pour plusieurs pays africains, l’échantillon étant dominé par des pays économiquement proches de l’OCDE.</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ===== Section : Carte IC (gauche) + Prédictions (droite) ===== -->
+<section class="card-custom" id="pisa-maps-and-preds">
+  <h2>Cartes — Observés & Prédictions PISA</h2>
+  <p class="text-muted">
+    1) Carte : largeur des intervalles de confiance (gauche) — 2) Prédictions par pays avec intervalles de confiance (droite).
+  </p>
+
+  <div class="row">
+    <!-- ========== COLONNE GAUCHE : CARTE IC ========== -->
+    <div class="col-md-6">
+      <div class="visual-container" style="padding:0; margin:0;">
+        <div style="max-width:1200px; margin:0 auto; display:flex; flex-direction:column; gap:8px;">
+          <!-- Carte Intervalles de confiance -->
+  <iframe
+    id="map-ic-iframe"
+    src="assets/Carte_IC_nolegend.html"
+    style="width:100%; border:none; display:block; background:transparent;"
+    title="Carte Intervalles de confiance PISA"
+    loading="lazy"
+    sandbox="allow-scripts allow-same-origin allow-forms">
+  </iframe>
+</div>
+
+
+          <!-- petite description / légende statique si tu veux -->
+          <div class="legend-caption small text-muted" style="padding:6px 0 0 0;">
+            Survolez un pays pour voir sa largeur d'intervalle de confiance (en %).
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <footer>
-      <small>© Éloïse Sibottier — Analyse PISA</small>
-    </footer>
-  </main>
+    <!-- ========== COLONNE DROITE : PREDICTIONS + IC ========== -->
+    <div class="col-md-6">
+      <div class="visual-container" style="padding:0; margin:0;">
+        <div style="max-width:1200px; margin:0 auto; display:flex; flex-direction:column; gap:8px;">
+          <!-- Scatter interactif (généré par saveWidget(..., file = "assets/PISA_predictions_with_IC_interactive.html")) -->
+          <iframe
+            id="iframe-predictions-IC"
+            src="assets/PISA_predictions_with_IC_interactive.html"
+            title="Prédictions PISA par pays avec intervalles de confiance"
+            aria-label="Graphique interactif des prédictions PISA par pays avec intervalles de confiance"
+            class="responsive-iframe tall"
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-forms"
+          ></iframe>
+
+          <div class="legend-caption small text-muted" style="padding:6px 0 0 0;">
+            Points = prédictions ; barres = intervalles de confiance. Les pays sont triés par prédiction.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Styles utilitaires (si non présents, ajoute dans ton CSS global) ===== -->
+<style>
+  .responsive-iframe {
+    width: 100%;
+    height: 520px;
+    border: 0;
+    display: block;
+    background: transparent;
+  }
+  .responsive-iframe.tall {
+    height: 640px; /* plus haut pour le scatter */
+  }
+
+  @media (max-width: 768px) {
+    .responsive-iframe { height: 360px; }
+    .responsive-iframe.tall { height: 520px; }
+  }
+
+  /* si tu veux un petit espacement sous la carte/légende */
+  .legend-caption { margin-top: 4px; }
+</style>
+
+
+<!-- ===== Styles utilitaires (ajoute-les au CSS global de ton site) ===== -->
+<style>
+  /* responsive iframe containers */
+  .responsive-iframe {
+    width: 100%;
+    height: 520px;         /* hauteur par défaut pour les cartes - ajuste si besoin */
+    border: 0;
+    display: block;
+    background: transparent;
+  }
+
+  .responsive-iframe.tall {
+    height: 650px;         /* hauteur plus grande pour le scatter */
+  }
+
+  .legend-iframe {
+    width: 100%;
+    height: 110px;         /* compact pour légendes */
+    border: 0;
+    display: block;
+    background: transparent;
+  }
+
+  /* petits écrans : réduire hauteur pour éviter overflow trop grand */
+  @media (max-width: 768px) {
+    .responsive-iframe { height: 360px; }
+    .responsive-iframe.tall { height: 520px; }
+    .legend-iframe { height: 90px; }
+  }
+</style>
+
+    
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // Chart des corrélations (inchangé)
+    // Chart des corrélations
     (function() {
       document.addEventListener('DOMContentLoaded', function() {
+        // Données brutes
         const data = [
           { label: 'Dépense éducation', value: 0.3416842 },
           { label: 'Ratio élèves / enseignant', value: -0.5797436 },
@@ -426,118 +490,201 @@
           { label: 'Scolarisation primaire', value: 0.3261518 },
           { label: 'Sous alimentation', value: -0.5902695 }
         ];
+
+        // Trier les données : positives à gauche, mitigées au milieu, négatives à droite
         data.sort((a, b) => {
-          if (Math.abs(a.value) >= 0.5 && Math.abs(b.value) >= 0.5) return b.value - a.value;
-          if (Math.abs(a.value) >= 0.5) return -1;
-          if (Math.abs(b.value) >= 0.5) return 1;
-          return b.value - a.value;
+          if (Math.abs(a.value) >= 0.5 && Math.abs(b.value) >= 0.5) {
+            return b.value - a.value;
+          } else if (Math.abs(a.value) >= 0.5) {
+            return -1;
+          } else if (Math.abs(b.value) >= 0.5) {
+            return 1;
+          } else {
+            return b.value - a.value;
+          }
         });
+
         const labels = data.map(item => item.label);
         const values = data.map(item => item.value);
-        const colors = values.map(v => v >= 0.50 ? '#28a745' : (v <= -0.50 ? '#dc3545' : '#ffc107'));
+
+        const colors = values.map(v => {
+          if (v >= 0.50) return '#28a745';
+          if (v <= -0.50) return '#dc3545';
+          return '#ffc107';
+        });
+
         const ctx = document.getElementById('correlationChart').getContext('2d');
-        if (window.__correlationChart && window.__correlationChart.destroy) window.__correlationChart.destroy();
+        if (window.__correlationChart && window.__correlationChart.destroy) {
+          window.__correlationChart.destroy();
+        }
         window.__correlationChart = new Chart(ctx, {
           type: 'bar',
-          data: { labels, datasets: [{ label: 'r (corrélation avec log PISA)', data: values, backgroundColor: colors, borderColor: colors, borderWidth: 1 }]},
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'r (corrélation avec log PISA)',
+              data: values,
+              backgroundColor: colors,
+              borderColor: colors,
+              borderWidth: 1
+            }]
+          },
           options: {
-            responsive: true, maintainAspectRatio: false,
-            plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(context){ return context.parsed.y.toFixed(3); } } } },
-            scales: { y: { suggestedMin: -1, suggestedMax: 1, title: { display: true, text: 'Coefficient de corrélation' }, ticks: { stepSize: 0.25 } } }
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: function(context) { return context.parsed.y.toFixed(3); }
+                }
+              }
+            },
+            scales: {
+              y: {
+                suggestedMin: -1,
+                suggestedMax: 1,
+                title: { display: true, text: 'Coefficient de corrélation' },
+                ticks: { stepSize: 0.25 }
+              }
+            }
           }
         });
       });
     })();
   </script>
 
-  <!-- IFRAME sizing & equalizer (simplifié, fiable) -->
+  <!-- Scripts pour iframes (même logique que ton script qui fonctionnait pour la colonne gauche) -->
   <script>
     (function(){
-      const BUFFER = 4;
-      const MAP_IDS = ['map-iframe','map2-iframe','map-ic-iframe','iframe-predictions-IC'];
-
-      function setIframeHeightFromDoc(id){
-        const iframe = document.getElementById(id);
-        if(!iframe) return false;
-        try {
+      // même fonction que tu utilises : calcule la hauteur du document de l'iframe
+      function setIframeHeight(iframe){
+        try{
           const doc = iframe.contentWindow.document;
-          const h = Math.max(doc.documentElement.scrollHeight, doc.documentElement.offsetHeight, doc.body.scrollHeight, doc.body.offsetHeight);
-          if(h && h > 50){
-            iframe.style.height = (h + BUFFER) + 'px';
-            return true;
-          }
-        } catch(e){}
-        return false;
+          const h = Math.max(
+            doc.documentElement.scrollHeight, doc.documentElement.offsetHeight,
+            doc.body.scrollHeight, doc.body.offsetHeight
+          );
+          iframe.style.height = (h + 4) + 'px';
+          iframe.style.overflow = 'hidden';
+        } catch(e){
+          // silent fail si cross-origin
+        }
       }
 
-      function equalizeHeights(){
-        const els = MAP_IDS.map(id => document.getElementById(id)).filter(Boolean);
-        if(!els.length) return;
-        let maxH = 0;
-        els.forEach(el => {
-          const h = el.getBoundingClientRect().height || el.clientHeight || 0;
-          if(h > maxH) maxH = h;
+      // get elements
+      const legend = document.getElementById('legend-iframe');
+      const mapIf = document.getElementById('map-iframe');
+      const legend2 = document.getElementById('legend2-iframe');
+      const map2If = document.getElementById('map2-iframe');
+
+      // listeners load pour légendes -> ajuste hauteur
+      if (legend) legend.addEventListener('load', function(){ setIframeHeight(legend); });
+      if (legend2) legend2.addEventListener('load', function(){ setIframeHeight(legend2); });
+
+      // listeners load pour maps -> tenter de supprimer marges internes puis laisser la hauteur définie par le widget
+      if (mapIf) {
+        mapIf.addEventListener('load', function(){
+          try {
+            const md = mapIf.contentWindow.document;
+            md.documentElement.style.margin = 0;
+            md.body.style.margin = 0;
+            md.body.style.padding = 0;
+            // essayer aussi d'ajuster la hauteur si possible
+            setIframeHeight(mapIf);
+          } catch(e){}
         });
-        if(maxH < 220) maxH = 420;
-        els.forEach(el => el.style.height = Math.max(320, Math.round(maxH)) + 'px');
       }
 
-      // Try set from doc on load (same-origin) and then equalize
-      window.addEventListener('load', function(){
-        MAP_IDS.forEach(id => setIframeHeightFromDoc(id));
-        setTimeout(equalizeHeights, 300);
-        setTimeout(equalizeHeights, 800);
-      });
-
-      // When an iframe loads try to size it
-      MAP_IDS.forEach(id => {
-        const el = document.getElementById(id);
-        if(!el) return;
-        el.addEventListener('load', function(){
-          setIframeHeightFromDoc(id);
-          setTimeout(equalizeHeights, 200);
+      if (map2If) {
+        map2If.addEventListener('load', function(){
+          try {
+            const md = map2If.contentWindow.document;
+            md.documentElement.style.margin = 0;
+            md.body.style.margin = 0;
+            md.body.style.padding = 0;
+            setIframeHeight(map2If);
+          } catch(e){}
         });
-      });
+      }
 
-      // If any child posts a message with a height, handle it (legend/wrappers in R may send)
+      // gestion des postMessage (légendes ou wrappers peuvent envoyer leur hauteur)
       window.addEventListener('message', function(ev){
         if(!ev || !ev.data) return;
         const d = ev.data;
+        // légende poste {type:'legend-height', height: n}
         if(d.type === 'legend-height' && typeof d.height === 'number'){
-          // set legend heights if present
-          const legendIds = ['legend-iframe','legend2-iframe'];
-          legendIds.forEach(id => {
-            const el = document.getElementById(id);
-            if(el) el.style.height = (d.height + BUFFER) + 'px';
-          });
-          setTimeout(equalizeHeights, 120);
+          if (legend) legend.style.height = (d.height + 4) + 'px';
+          if (legend2) legend2.style.height = (d.height + 4) + 'px';
         }
+        // image/map wrapper poste {type:'image-height' or 'map-height'}
         if((d.type === 'image-height' || d.type === 'map-height') && typeof d.height === 'number'){
-          MAP_IDS.forEach(id => {
-            const el = document.getElementById(id);
-            if(el) el.style.height = (d.height + BUFFER) + 'px';
-          });
-          setTimeout(equalizeHeights, 120);
+          if (mapIf) mapIf.style.height = (d.height + 4) + 'px';
+          if (map2If) map2If.style.height = (d.height + 4) + 'px';
+        }
+        // si iframe envoie {type:'set-iframe-height', id:'legend2-iframe', height:n}
+        if(d.type === 'set-iframe-height' && d.id && typeof d.height === 'number'){
+          const el = document.getElementById(d.id);
+          if(el) el.style.height = (d.height + 4) + 'px';
         }
       });
 
-      window.addEventListener('resize', function(){ setTimeout(equalizeHeights, 120); });
-      window.addEventListener('orientationchange', function(){ setTimeout(equalizeHeights, 300); });
-
-      // final fallback: force right map to safe height if too small
-      setTimeout(function(){
+      // comportement mobile : ajuste la hauteur des cartes pour éviter boîtes trop petites / scroll internes
+      function adjustMapHeight(){
         try {
-          const right = document.getElementById('map2-iframe');
-          if (right && (right.clientHeight < 220 || right.getBoundingClientRect().height < 220)) {
-            right.style.height = '420px';
-            equalizeHeights();
+          const w = window.innerWidth;
+          const h = window.innerHeight;
+          // si mobile / petit écran, fixe une hauteur relative
+          if (mapIf) {
+            if (w <= 768) {
+              const target = Math.max(320, Math.round(h * 0.65));
+              mapIf.style.height = target + 'px';
+            } else {
+              mapIf.style.height = '';
+            }
+          }
+          if (map2If) {
+            if (w <= 768) {
+              const target2 = Math.max(320, Math.round(h * 0.65));
+              map2If.style.height = target2 + 'px';
+            } else {
+              map2If.style.height = '';
+            }
           }
         } catch(e){}
-      }, 1600);
+      }
+
+      window.addEventListener('resize', adjustMapHeight);
+      window.addEventListener('orientationchange', function(){ setTimeout(adjustMapHeight, 200); });
+      window.addEventListener('load', adjustMapHeight);
+      adjustMapHeight();
+
+      // fallbacks : retenter un ajustement après un court délai pour les fonts/images chargées tard
+      setTimeout(function(){
+        if (legend) setIframeHeight(legend);
+        if (mapIf) setIframeHeight(mapIf);
+        if (legend2) setIframeHeight(legend2);
+        if (map2If) setIframeHeight(map2If);
+      }, 300);
+
+      setTimeout(function(){
+        if (legend) setIframeHeight(legend);
+        if (mapIf) setIframeHeight(mapIf);
+        if (legend2) setIframeHeight(legend2);
+        if (map2If) setIframeHeight(map2If);
+      }, 1000);
+
+      // fallback safeguard: if after attempts right map is still very small, force a safe height
+      setTimeout(function(){
+        try {
+          if (map2If && (map2If.clientHeight < 220 || map2If.getBoundingClientRect().height < 220)) {
+            map2If.style.height = '400px';
+          }
+        } catch(e){}
+      }, 1400);
 
     })();
   </script>
 
 </body>
 </html>
-
