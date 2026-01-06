@@ -542,60 +542,7 @@
           </div>
     </section>
 
-    <script>
-// Script pour ajuster automatiquement les hauteurs des iframes
-window.addEventListener('load', function() {
-  // Ajuster la hauteur de la carte IC
-  const mapIcFrame = document.getElementById('map-ic-iframe');
-  if (mapIcFrame) {
-    mapIcFrame.onload = function() {
-      try {
-        const content = mapIcFrame.contentWindow.document.body;
-        if (content) {
-          const height = content.scrollHeight;
-          mapIcFrame.style.height = Math.max(height, 350) + 'px';
-        }
-      } catch (e) {
-        // Si on ne peut pas accéder au contenu, garder la hauteur par défaut
-        console.log('Hauteur par défaut conservée pour map-ic-iframe');
-      }
-    };
-  }
-  
-  // Ajuster la hauteur de la légende IC
-  const legendIcFrame = document.getElementById('legend-ic-iframe');
-  if (legendIcFrame) {
-    legendIcFrame.onload = function() {
-      try {
-        const content = legendIcFrame.contentWindow.document.body;
-        if (content) {
-          const height = content.scrollHeight;
-          legendIcFrame.style.height = (height + 15) + 'px';
-        }
-      } catch (e) {
-        // Hauteur par défaut
-        console.log('Hauteur par défaut conservée pour legend-ic-iframe');
-      }
-    };
-  }
-  
-  // Ajuster la hauteur du graphique de prédictions
-  const predFrame = document.getElementById('iframe-predictions-IC');
-  if (predFrame) {
-    predFrame.onload = function() {
-      try {
-        const content = predFrame.contentWindow.document.body;
-        if (content) {
-          const height = content.scrollHeight;
-          predFrame.style.height = Math.max(height, 450) + 'px';
-        }
-      } catch (e) {
-        console.log('Hauteur par défaut conservée pour iframe-predictions-IC');
-      }
-    };
-  }
-});
-</script>
+    
 
 <!-- ===== Styles utilitaires (si non présents, ajoute dans ton CSS global) ===== -->
 <style>
