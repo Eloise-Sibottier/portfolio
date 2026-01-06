@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CV - Éloïse SIBOTTIER</title>
+  <title>Accueil - Éloïse SIBOTTIER</title>
   <!-- Bootstrap + Fonts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,16 +42,10 @@
     }
     h2 {
       font-weight: 600;
-      margin-top: 30px;
+      margin-top: 20px;
       margin-bottom: 20px;
     }
-    h3 {
-      color: #34495e;
-      font-weight: 500;
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-    }
-    .cv-section {
+    .intro-card {
       background-color: white;
       border-radius: 8px;
       padding: 30px;
@@ -59,19 +53,12 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       border-left: 4px solid #3498db;
     }
-    .experience-card {
-      margin-bottom: 25px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #e9ecef;
-    }
-    .experience-card:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
     .btn-primary { 
       background-color: #3498db; 
       border: none; 
       font-weight: 500; 
+      padding: 12px 30px;
+      font-size: 1rem;
     }
     .btn-primary:hover { 
       background-color: #217dbb; 
@@ -85,12 +72,6 @@
     }
     p { 
       margin-bottom: 15px; 
-    }
-    ul {
-      margin-bottom: 15px;
-    }
-    li {
-      margin-bottom: 8px;
     }
     footer { 
       text-align:center; 
@@ -111,8 +92,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-          <li class="nav-item"><a class="nav-link active" href="cv.html">CV</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
           <li class="nav-item"><a class="nav-link" href="projets.html">Projets</a></li>
           <li class="nav-item"><a class="nav-link" href="indicateurs.html">Indicateurs</a></li>
         </ul>
@@ -120,38 +101,54 @@
     </div>
   </nav>
 
-  <!-- Fil d’Ariane -->
+  <!-- Fil d'Ariane -->
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mt-3">
         <li class="breadcrumb-item active" aria-current="page">Accueil</li>
       </ol>
     </nav>
+  </div>
 
   <!-- Contenu principal -->
-  <div class="container">
+  <div class="container my-4">
     <!-- Introduction -->
     <div class="intro-card text-center">
       <h1>Bienvenue sur mon portfolio</h1>
-      <p>Je suis <strong>Eloïse SIBOTTIER</strong>, étudiante en Master 1 Mathématiques Appliquées et Statistiques à l’Université de Rennes. Passionnée par la science des données et la statistique, je cherche à mettre mes compétences au service de projets concrets et impactants.</p>
+      <p class="lead">Je suis <strong>Éloïse SIBOTTIER</strong>, étudiante en Master 1 Mathématiques Appliquées et Statistiques à l'Université de Rennes. Passionnée par la science des données et la statistique, je cherche à mettre mes compétences au service de projets concrets et impactants.</p>
       <p>Ce site présente mon CV, mes projets, ainsi que mes travaux en visualisation et analyse de données.</p>
-      <a href="cv.html" class="btn btn-primary">Voir mon CV</a>
+      <a href="cv.html" class="btn btn-primary mt-3">
+        <i class="bi bi-file-person me-2"></i>Voir mon CV
+      </a>
     </div>
 
     <!-- Compétences et Intérêts -->
     <div class="intro-card">
-      <h2>Compétences et centres d’intérêt</h2>
+      <h2><i class="bi bi-star me-2"></i>Compétences et centres d'intérêt</h2>
       <p><strong>Compétences :</strong> Statistiques, modélisation, analyse de données, économétrie, visualisation (R, Python, SAS, SQL, Power BI).</p>
-      <p><strong>Centres d’intérêt :</strong> Mathématiques, statistiques, projets liés aux données et à la société, course à pied et parapente.</p>
+      <p><strong>Centres d'intérêt :</strong> Mathématiques, statistiques, projets liés aux données et à la société, course à pied et parapente.</p>
+    </div>
+
+    <!-- Projets récents -->
+    <div class="intro-card">
+      <h2><i class="bi bi-folder me-2"></i>Mes projets</h2>
+      <p>Découvrez mes travaux en analyse de données, visualisation et statistiques appliquées.</p>
+      <a href="projets.html" class="btn btn-primary">
+        <i class="bi bi-arrow-right me-2"></i>Voir mes projets
+      </a>
     </div>
 
     <!-- Contact rapide -->
     <div class="intro-card text-center">
-      <h2>Me contacter</h2>
-      <p>Email : <a href="mailto:eloise.sibottier@gmail.com">eloise.sibottier@gmail.com</a></p>
-      <p>LinkedIn : <a href="https://www.linkedin.com/in/eloise-sibottier" target="_blank">linkedin.com/in/eloise-sibottier</a></p>
+      <h2><i class="bi bi-envelope me-2"></i>Me contacter</h2>
+      <p><strong>Email :</strong> <a href="mailto:eloise.sibottier@gmail.com">eloise.sibottier@gmail.com</a></p>
+      <p><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/eloise-sibottier" target="_blank">linkedin.com/in/eloise-sibottier</a></p>
     </div>
   </div>
+
+  <footer>
+    <p>&copy; 2025 Éloïse SIBOTTIER - Portfolio</p>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
