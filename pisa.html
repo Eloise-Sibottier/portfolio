@@ -410,10 +410,12 @@
 
 
     <!-- SECTION : Carte IC (gauche) + Prédictions (droite) (corrigé) -->
-    <section class="card-custom" id="pisa-maps-and-preds">
-      <h2>Cartes — Observés & Prédictions PISA</h2>
-      <p class="text-muted">1) Carte : largeur des intervalles de confiance (gauche) — 2) Prédictions par pays avec intervalles de confiance (droite).</p>
-
+    <section class="card-custom" id="pisa-maps-and-preds"
+        <h2>Intervalles de confiance des prédictions PISA</h2>
+          <p class="text-muted small mb-3">
+            Cette section analyse l’incertitude associée aux scores PISA prédits à l’aide d’intervalles
+            de confiance à 95 %, afin d’évaluer la robustesse et la fiabilité des résultats selon les pays.
+          </p>
       <div class="row g-3 align-items-start">
         <!-- Carte IC (gauche) -->
         <div class="col-md-6">
@@ -450,6 +452,86 @@
           <div class="legend-caption small text-muted">Points = prédictions ; barres = intervalles de confiance. Les pays sont triés par prédiction.</div>
         </div>
       </div>
+        <div class="mt-4 p-4 rounded shadow-sm"
+             style="background:linear-gradient(180deg,#ffffff 0%,#f9fbfd 100%); border-left:4px solid #3498db;">
+          <h5 class="mb-2" style="font-weight:600;">
+            <i class="bi bi-shield-check me-1 text-primary"></i>
+            Pourquoi intégrer des intervalles de confiance ?
+          </h5>
+      
+          <ul class="text-muted small mb-0" style="padding-left:1rem;">
+            <li>Les intervalles de confiance à 95 % permettent de tenir compte de l’incertitude statistique liée aux estimations du modèle.</li>
+            <li>L’objectif n’est pas uniquement de produire des scores PISA prédits, mais aussi d’évaluer dans quelle mesure ces prédictions sont fiables.</li>
+            <li>La largeur de l’intervalle fournit une information clé sur la robustesse des résultats selon les pays.</li>
+          </ul>
+        </div>
+        <div class="mt-4 p-4 rounded shadow-sm"
+             style="background:#fff; border-left:4px solid #2ecc71;">
+          <h5 class="mb-2" style="font-weight:600;">
+            <i class="bi bi-graph-up me-1 text-success"></i>
+            Lecture du graphique des prédictions avec intervalles de confiance
+          </h5>
+      
+          <ul class="text-muted small mb-0" style="padding-left:1rem;">
+            <li>Les points représentent les scores PISA prédits pour chaque pays.</li>
+            <li>Les barres d’erreur correspondent aux intervalles de confiance à 95 %.</li>
+            <li>Plus la barre est longue, plus l’incertitude associée à la prédiction est élevée.</li>
+          </ul>
+      
+          <p class="text-muted small mt-2 mb-0">
+            Certains pays comme le Zimbabwe (ZWE) ou le Liberia (LBR) présentent des intervalles très larges
+            (supérieurs à 60 %), ce qui indique une forte incertitude. À l’inverse, des pays comme la Russie (RUS),
+            le Sri Lanka (LKA) ou l’Iran (IRN) affichent des intervalles plus étroits (autour de 27 %),
+            traduisant des prédictions plus stables.
+          </p>
+        </div>
+        <div class="mt-4 p-4 rounded shadow-sm"
+             style="background:linear-gradient(180deg,#ffffff 0%,#f8faff 100%); border-left:4px solid #9b59b6;">
+          <h5 class="mb-2" style="font-weight:600;">
+            <i class="bi bi-map me-1 text-purple"></i>
+            Lecture de la carte des intervalles de confiance
+          </h5>
+      
+          <ul class="text-muted small mb-0" style="padding-left:1rem;">
+            <li>Les couleurs indiquent la largeur des intervalles de confiance.</li>
+            <li>Le rouge correspond à une forte incertitude, tandis que le vert indique une meilleure fiabilité des prédictions.</li>
+            <li>L’Europe et l’Amérique n’apparaissent pas sur cette carte car les pays concernés disposent déjà de scores PISA observés.</li>
+          </ul>
+      
+          <p class="text-muted small mt-2 mb-0">
+            Trois grandes zones se dégagent : des intervalles plus larges en Afrique, des intervalles plus
+            resserrés au Moyen-Orient et en Asie, ce qui confirme les résultats observés sur le graphique
+            des prédictions.
+          </p>
+        </div>
+          <div class="mt-4 p-4 rounded shadow-sm"
+               style="background:#fff; border-left:4px solid #95a5a6;">
+            <h5 class="mb-2" style="font-weight:600;">
+              <i class="bi bi-diagram-3 me-1 text-secondary"></i>
+              Pourquoi ces différences de fiabilité entre régions ?
+            </h5>
+        
+            <ul class="text-muted small mb-0" style="padding-left:1rem;">
+              <li>Le modèle a été principalement entraîné sur des pays européens et américains, présentant des structures économiques et éducatives relativement proches.</li>
+              <li>Certains pays du Moyen-Orient et d’Asie partagent des caractéristiques similaires (niveau de revenu, organisation scolaire), ce qui facilite la prédiction.</li>
+              <li>Les pays africains apparaissent plus éloignés de l’échantillon d’entraînement, ce qui accroît l’incertitude des estimations.</li>
+            </ul>
+          </div>
+          <div class="mt-4 p-4 rounded shadow-sm"
+               style="background:linear-gradient(180deg,#ffffff 0%,#f9fbfc 100%); border-left:4px solid #34495e;">
+            <h5 class="mb-2" style="font-weight:600;">
+              <i class="bi bi-exclamation-triangle me-1 text-dark"></i>
+              Message clé
+            </h5>
+        
+            <p class="text-muted small mb-0">
+              Les intervalles de confiance constituent un outil essentiel pour interpréter les prédictions
+              du modèle. Ils montrent que la fiabilité des scores PISA prédits n’est pas homogène et dépend
+              de la proximité des pays avec les données utilisées pour l’entraînement du modèle. Il convient
+              donc d’interpréter avec prudence les résultats pour les pays africains, tandis que les prédictions
+              pour le Moyen-Orient et l’Asie apparaissent globalement plus robustes.
+            </p>
+          </div>
     </section>
 
 <!-- ===== Styles utilitaires (si non présents, ajoute dans ton CSS global) ===== -->
