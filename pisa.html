@@ -544,91 +544,50 @@
           </div>
     </section>
 
-   <!-- Section : Conclusion -->
+<!-- Section : Conclusion -->
 <section class="card-custom" id="conclusion">
   <h2>Conclusion</h2>
   
   <div class="conclusion-content">
-    <!-- Introduction de la conclusion -->
+    <!-- Introduction fusionnée et raccourcie -->
     <p style="line-height: 1.8; color: #333; margin-bottom: 2rem; text-align: justify;">
-      En somme, le classement PISA s'explique en grande partie par des <strong>variables socioéconomiques</strong>, en
-      particulier le PIB par habitant et le taux de sous-alimentation. On remarque que le classement PISA
-      semble plus s'expliquer par le niveau de développement des pays que par des variables directement
-      liées à l'éducation comme la part du PIB allouée à ce secteur. En effet, on constate une distinction
-      assez nette entre les pays de l'OCDE, majoritairement des pays développés, qui obtiennent des scores
-      PISA plus élevés que les pays non-OCDE.
+      En somme, le classement PISA s'explique en grande partie par des <strong>variables socioéconomiques</strong>, 
+      en particulier le PIB par habitant et le taux de sous-alimentation, plutôt que par des variables 
+      directement liées à l'éducation. Cette distinction est particulièrement nette entre les pays de l'OCDE 
+      et les pays non-OCDE, ce qui peut suggérer l'existence d'un <strong>biais culturel</strong> en faveur des 
+      pays membres, comme l'avait déjà mis en évidence <em>Scarr</em> (1981) pour les tests de QI.
     </p>
 
-    <!-- Biais culturel -->
+    <!-- Modèle et résultats fusionnés -->
     <div class="conclusion-block">
-      <h3 class="subsection-title">Biais culturel du classement PISA</h3>
+      <h3 class="subsection-title">Notre modèle et ses limites interprétatives</h3>
       <p>
-        On peut également supposer que le classement PISA est <strong>biaisé en faveur des pays de l'OCDE</strong>. En effet,
-        ce classement ayant été créé par l'OCDE, on peut imaginer l'existence d'un biais culturel, pouvant
-        passer par la formulation des questions, favorisant la réussite des pays membres de l'OCDE. En 1981,
-        <em>Scarr</em> mettait en évidence l'existence de ce même biais culturel appliqué aux tests de QI dont les
-        formulations pénalisaient les pays en développement.
+        Le modèle retenu explique <strong>74% des variations du score PISA</strong> en s'appuyant uniquement 
+        sur les variables significatives (PIB/hab, sous-alimentation, dépense éducative, scolarisation maternelle, 
+        et l'interaction avec l'OCDE). Cependant, certains résultats interrogent : la <strong>dépense publique en 
+        éducation</strong> présente un coefficient négatif, suggérant que les moyens financiers seuls ne suffisent 
+        pas sans considérer leur efficacité et leur contexte d'utilisation. De même, le <strong>ratio 
+        élèves/enseignant</strong>, bien que corrélé négativement dans l'analyse descriptive, n'est pas 
+        significatif dans le modèle final une fois les autres variables prises en compte.
       </p>
     </div>
 
-    <!-- Modèle retenu -->
-    <div class="conclusion-block">
-      <h3 class="subsection-title">Notre modèle de régression</h3>
-      <p>
-        Notre étude nous a amené à construire plusieurs modèles afin d'expliquer le classement PISA. Le
-        modèle que nous avons retenu repose uniquement sur nos <strong>variables significatives</strong>, nous avons donc
-        enlevé le taux de scolarisation en primaire et le ratio élèves-enseignant. Nous obtenons ainsi un
-        modèle satisfaisant qui explique <strong>74% des variations du score PISA</strong>.
-      </p>
-    </div>
-
-    <!-- Résultats surprenants -->
+    <!-- Prédictions et incertitude fusionnées -->
     <div class="conclusion-block highlight-block">
-      <h3 class="subsection-title">Résultats contre-intuitifs</h3>
+      <h3 class="subsection-title">Prédictions et variabilité régionale</h3>
       <p>
-        Cependant certains résultats interrogent. Le plus surprenant concerne la <strong>dépense publique en
-        éducation</strong> qui a un effet négatif sur les scores PISA dans notre modèle. Ce paradoxe peut soulever
-        certaines hypothèses comme le fait que les moyens financiers ne suffisent pas et qu'il faut aussi
-        regarder l'utilisation concrète, l'efficacité et le contexte dans lesquels ces dépenses sont faites.
-      </p>
-      <p>
-        De plus, en ce qui concerne le <strong>ratio élèves/enseignant</strong>, dans la partie descriptive, on observait une
-        corrélation assez nette : plus le ratio est élevé, plus les scores PISA sont bas. Pourtant, dans notre
-        modèle final, cette variable n'est pas significative. Cela montre que ce facteur n'explique pas à lui seul
-        les écarts de performance une fois les autres variables prises en compte.
+        Les prédictions réalisées pour 71 pays non testés ont permis d'élargir l'analyse au niveau mondial, 
+        notamment en Afrique où seul le Maroc disposait de données observées. Ces estimations révèlent des 
+        <strong>inégalités régionales</strong> marquées, principalement liées aux écarts de développement. 
+        Toutefois, les <strong>intervalles de confiance</strong> varient fortement selon les régions : larges 
+        en Afrique (forte incertitude), plus resserrés au Moyen-Orient et en Asie. Cette variabilité s'explique 
+        par le fait que notre modèle a été entraîné sur un échantillon majoritairement composé de pays 
+        occidentaux ou proches de l'OCDE, rendant les prédictions moins fiables pour les pays structurellement 
+        éloignés de cet échantillon.
       </p>
     </div>
 
-    <!-- Prédictions et élargissement -->
-    <div class="conclusion-block">
-      <h3 class="subsection-title">Élargissement géographique par prédictions</h3>
-      <p>
-        Enfin, puisque notre base de données ne prenait pas en compte un grand nombre de pays,
-        notamment du fait que le classement PISA ne porte que sur 80 pays environ, nous avons effectué des
-        <strong>prédictions</strong> afin d'agrandir notre domaine d'étude au niveau mondial. Nos estimations ont notamment
-        permis d'approfondir notre étude au niveau du continent africain qui se limitait au paravent à une
-        seule observation. Nos résultats mettent en évidence des <strong>inégalités régionales</strong> qui reposent
-        principalement sur des écarts de développement, et ainsi la nécessité de favoriser l'accès à
-        l'éducation dans certaines régions.
-      </p>
-    </div>
-
-    <!-- Intervalles de confiance -->
-    <div class="conclusion-block">
-      <h3 class="subsection-title">Variabilité des intervalles de confiance</h3>
-      <p>
-        Mais ce travail de prédiction nous a aussi permis de voir une <strong>limite de notre modèle</strong> : les intervalles
-        de confiance sont très variables d'une région à l'autre. En Afrique notamment, les intervalles sont
-        souvent larges, ce qui reflète une plus grande incertitude sur les prédictions. À l'inverse, pour des
-        pays d'Asie ou du Moyen-Orient, les prédictions sont plus stables. Une des raisons à cela, c'est que
-        notre modèle a été construit à partir d'un échantillon majoritairement composé de pays occidentaux
-        ou proches économiquement de l'OCDE. Les pays africains ou plus éloignés en termes de structure
-        éducative se retrouvent donc moins bien "représentés" dans le modèle, ce qui rend les prédictions
-        plus incertaines.
-      </p>
-    </div>
-
-    <!-- Limites méthodologiques -->
+    <!-- Limites méthodologiques (INCHANGÉ) -->
     <div class="conclusion-block warning-block">
       <h3 class="subsection-title">⚠️ Limites méthodologiques non explorées</h3>
       <p>
@@ -648,7 +607,7 @@
       </p>
     </div>
 
-    <!-- Ouverture -->
+    <!-- Ouverture (INCHANGÉ) -->
     <div class="conclusion-block final-block">
       <h3 class="subsection-title">Perspectives et réflexions</h3>
       <p>
@@ -664,7 +623,6 @@
 <!-- CSS pour la section conclusion -->
 <style>
 .conclusion-content {
-  /* Enlever le centrage pour aligner à gauche comme les autres sections */
   width: 100%;
 }
 
