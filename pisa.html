@@ -663,79 +663,120 @@
   </div>
 </section>
 
-<!-- ===== CONCLUSION GÉNÉRALE ===== -->
-<section class="card-custom" id="conclusion-pisa">
+<!-- ===== Section : Conclusion ===== -->
+<section class="card-custom" id="conclusion">
+  <h2 class="mb-3" style="font-weight:600;">Conclusion</h2>
 
-  <!-- Synthèse -->
-  <div class="mt-4 p-4 rounded shadow-sm"
+  <!-- Synthèse générale -->
+  <div class="mt-3 p-4 rounded shadow-sm"
        style="background:linear-gradient(180deg,#ffffff 0%,#f9fbfd 100%); border-left:4px solid #34495e;">
-    <h2 class="mb-2" style="font-weight:600;">
-      <i class="bi bi-flag me-1 text-dark"></i>
-      Conclusion
-    </h2>
-
-    <p class="text-muted small mb-2">
-      Cette étude montre que les performances PISA s’expliquent en grande partie par des facteurs
-      socioéconomiques, en particulier le niveau de développement des pays. Le PIB par habitant et
-      la sous-alimentation apparaissent comme des déterminants majeurs des scores observés, tandis
-      que les variables directement liées aux dépenses éducatives jouent un rôle plus ambigu.
-    </p>
-
     <p class="text-muted small mb-0">
-      Une distinction nette émerge entre les pays membres de l’OCDE, majoritairement développés,
-      qui obtiennent des scores élevés, et les pays non membres, souvent pénalisés par des contraintes
-      économiques et structurelles plus fortes.
+      En somme, le classement PISA s'explique en grande partie par des <strong>variables socioéconomiques</strong>,
+      en particulier le PIB par habitant et le taux de sous-alimentation. Les résultats suggèrent que les
+      performances scolaires reflètent davantage le niveau de développement des pays que des variables
+      directement liées à l’éducation, comme la part du PIB allouée à ce secteur. Une distinction nette
+      apparaît ainsi entre les pays de l’OCDE, majoritairement développés, et les pays non-OCDE,
+      qui obtiennent des scores plus faibles.
     </p>
   </div>
 
-  <!-- Discussion critique -->
+  <!-- Biais culturel -->
   <div class="mt-4 p-4 rounded shadow-sm"
        style="background:linear-gradient(180deg,#ffffff 0%,#f8faff 100%); border-left:4px solid #9b59b6;">
-    <h5 class="mb-2" style="font-weight:600;">
-      <i class="bi bi-eye me-1 text-purple"></i>
-      Discussion et portée de l’indicateur PISA
-    </h5>
-
+    <h5 class="mb-2" style="font-weight:600;">Biais culturel du classement PISA</h5>
     <p class="text-muted small mb-0">
-      Ces résultats invitent également à interroger la neutralité du classement PISA.
-      Construit par l’OCDE, il peut refléter un biais culturel dans la formulation des épreuves,
-      favorisant les pays membres. Des travaux antérieurs ont déjà mis en évidence l’existence
-      de biais similaires dans d’autres instruments d’évaluation standardisés, notamment les tests de QI.
+      Le classement PISA peut également être considéré comme <strong>biaisé en faveur des pays de l’OCDE</strong>.
+      Construit par cette organisation, il peut intégrer un biais culturel dans la formulation des épreuves,
+      favorisant les pays membres. Dès 1981, <em>Scarr</em> mettait en évidence des biais similaires dans les tests
+      de QI, dont certaines formulations pénalisaient les pays en développement.
     </p>
   </div>
 
-  <!-- Limites du modèle (intégrées à la conclusion) -->
+  <!-- Modèle retenu -->
+  <div class="mt-4 p-4 rounded shadow-sm"
+       style="background:#fff; border-left:4px solid #2ecc71;">
+    <h5 class="mb-2" style="font-weight:600;">Notre modèle de régression</h5>
+    <p class="text-muted small mb-0">
+      Plusieurs modèles ont été estimés afin d’expliquer le classement PISA. Le modèle final retenu
+      repose uniquement sur les <strong>variables significatives</strong>, ce qui a conduit à exclure le taux
+      de scolarisation en primaire et le ratio élèves/enseignant. Ce modèle explique environ
+      <strong>74 % des variations du score PISA</strong>.
+    </p>
+  </div>
+
+  <!-- Résultats contre-intuitifs -->
+  <div class="mt-4 p-4 rounded shadow-sm"
+       style="background:linear-gradient(180deg,#ffffff 0%,#fff8f7 100%); border-left:4px solid #e74c3c;">
+    <h5 class="mb-2" style="font-weight:600;">Résultats contre-intuitifs</h5>
+    <p class="text-muted small mb-2">
+      Certains résultats interrogent, notamment l’effet négatif de la <strong>dépense publique en éducation</strong>
+      sur les scores PISA. Ce paradoxe suggère que l’augmentation des moyens financiers ne suffit pas
+      nécessairement et que l’efficacité, l’allocation et le contexte d’utilisation des dépenses jouent
+      un rôle central.
+    </p>
+    <p class="text-muted small mb-0">
+      Par ailleurs, bien que le <strong>ratio élèves/enseignant</strong> présente une corrélation négative dans
+      l’analyse descriptive, il n’est pas significatif dans le modèle final, indiquant que ce facteur
+      n’explique pas à lui seul les écarts de performance une fois les autres variables contrôlées.
+    </p>
+  </div>
+
+  <!-- Prédictions -->
+  <div class="mt-4 p-4 rounded shadow-sm"
+       style="background:#fff; border-left:4px solid #3498db;">
+    <h5 class="mb-2" style="font-weight:600;">Élargissement géographique par prédictions</h5>
+    <p class="text-muted small mb-0">
+      En raison du nombre limité de pays couverts par PISA, des <strong>prédictions</strong> ont été réalisées
+      afin d’élargir l’analyse à l’échelle mondiale. Cette approche a permis d’approfondir l’étude
+      du continent africain, jusque-là peu représenté, et de mettre en évidence de fortes
+      <strong>inégalités régionales</strong> liées aux écarts de développement.
+    </p>
+  </div>
+
+  <!-- Intervalles de confiance -->
+  <div class="mt-4 p-4 rounded shadow-sm"
+       style="background:linear-gradient(180deg,#ffffff 0%,#f9fbfd 100%); border-left:4px solid #95a5a6;">
+    <h5 class="mb-2" style="font-weight:600;">Variabilité des intervalles de confiance</h5>
+    <p class="text-muted small mb-0">
+      L’analyse des intervalles de confiance révèle une limite importante du modèle : les prédictions
+      sont beaucoup plus incertaines pour les pays africains que pour ceux d’Asie ou du Moyen-Orient.
+      Cette hétérogénéité s’explique notamment par un échantillon d’apprentissage dominé par des pays
+      économiquement proches de l’OCDE.
+    </p>
+  </div>
+
+  <!-- Limites méthodologiques -->
   <div class="mt-4 p-4 rounded shadow-sm"
        style="background:linear-gradient(180deg,#ffffff 0%,#fffaf5 100%); border-left:4px solid #e67e22;">
-    <h5 class="mb-2" style="font-weight:600;">
-      <i class="bi bi-exclamation-triangle me-1 text-warning"></i>
-      Limites du modèle et perspectives
-    </h5>
-
+    <h5 class="mb-2" style="font-weight:600;">Limites méthodologiques</h5>
     <p class="text-muted small mb-2">
-      Si le modèle retenu explique une part importante de la variance des scores PISA
-      (R² ajusté ≈ 0.717), certaines limites méthodologiques doivent être soulignées.
+      Certaines hypothèses fondamentales de la régression linéaire n’ont pas été testées :
     </p>
-
-    <p class="text-muted small mb-2">
-      Plusieurs hypothèses fondamentales de la régression linéaire n’ont pas été testées,
-      notamment la constance de la variance des résidus, leur normalité, ainsi que la
-      présence potentielle de multicolinéarité entre variables explicatives.
-      De plus, aucune analyse de robustesse (validation croisée, stabilité des coefficients)
-      ni d’identification des observations influentes n’a été menée.
+    <ul class="text-muted small mb-0" style="padding-left:1rem;">
+      <li>absence de tests d’hétéroscédasticité et de normalité des résidus ;</li>
+      <li>absence de mesure formelle de la multicolinéarité (VIF) ;</li>
+      <li>absence d’analyse de robustesse et de validation croisée ;</li>
+      <li>absence d’identification des outliers et points influents.</li>
+    </ul>
+    <p class="text-muted small mt-2 mb-0">
+      Ces éléments constituent une limite importante et appellent à une interprétation prudente
+      des résultats.
     </p>
+  </div>
 
+  <!-- Ouverture -->
+  <div class="mt-4 p-4 rounded shadow-sm"
+       style="background:linear-gradient(180deg,#ffffff 0%,#f8faff 100%); border-left:4px solid #34495e;">
+    <h5 class="mb-2" style="font-weight:600;">Perspectives</h5>
     <p class="text-muted small mb-0">
-      Ces limites sont particulièrement visibles dans les exercices de prédiction :
-      les intervalles de confiance sont nettement plus larges pour les pays africains,
-      reflétant une incertitude accrue liée à un échantillon d’apprentissage dominé par
-      des pays proches économiquement de l’OCDE. Ce constat souligne à la fois les
-      limites du modèle et celles de l’indicateur PISA, et ouvre des pistes de réflexion
-      sur la construction d’outils d’évaluation plus inclusifs et adaptés aux pays du Sud.
+      Cette étude met en évidence les limites de l’indicateur PISA et du modèle estimé, tout en ouvrant
+      des pistes de réflexion sur la manière d’évaluer les systèmes éducatifs et de construire des
+      modèles plus inclusifs, mieux adaptés aux spécificités des pays du Sud.
     </p>
   </div>
 
 </section>
+
 
 
 <!-- ===== Styles utilitaires (si non présents, ajoute dans ton CSS global) ===== -->
