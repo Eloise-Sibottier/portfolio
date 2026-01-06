@@ -248,40 +248,53 @@
         </div>
       </div>
       <!-- Analyse des résultats -->
-<div class="mt-4">
-  <h3>Analyse des scores PISA observés</h3>
-  <p>
-    On voit clairement que les pays les plus performants sont surtout situés en Amérique du Nord,
-    en Europe et en Asie de l’Est. Beaucoup d’entre eux sont membres de l’OCDE, mais ce n’est pas
-    toujours le cas. Par exemple, des pays comme Singapour ou le Vietnam ont de très bons résultats
-    sans faire partie de l’OCDE. À l’inverse, certains pays membres comme le Mexique ou le Chili ont
-    des scores plus bas. Donc, même si l’OCDE est souvent associée à de meilleurs résultats,
-    ce n’est pas une règle absolue.
-  </p>
-
-  <h3>Apport des prédictions</h3>
-  <p>
-    Grâce à ces prévisions, nous avons pu compléter notre première carte, qui jusque-là se limitait
-    aux pays ayant participé aux enquêtes PISA. La carte est maintenant plus complète, notamment
-    pour le continent africain, où seul le Maroc avait auparavant un score mesuré.
-  </p>
-
-  <p>
-    On voit désormais que la majorité des pays africains présentent des scores PISA faibles,
-    ce qui est cohérent avec les niveaux de développement et d’investissement éducatif dans la région.
-    Une partie du Moyen-Orient et de l’Asie a également pu être renseignée. Les scores dans ces zones
-    se situent globalement dans une fourchette intermédiaire, entre 1000 et 1199.
-  </p>
-
-  <p>
-    Ce travail de prédiction a donc un double intérêt : il permet de comparer un plus grand nombre
-    de pays sur un indicateur comme le score PISA, et met en lumière des inégalités régionales en
-    matière de réussite scolaire, y compris dans des pays qui ne sont pas inclus dans les enquêtes
-    PISA. Autrement dit, ce modèle peut servir d’outil pour anticiper les zones de vulnérabilité
-    éducative même en l’absence de données directement mesurées.
-  </p>
-</div>
-
+      <!-- Analyse descriptive des scores observés -->
+      <div class="mt-4 p-4 rounded shadow-sm"
+           style="background:linear-gradient(180deg,#ffffff 0%,#f9fbfd 100%); border-left:4px solid #3498db;">
+        <h5 class="mb-2" style="font-weight:600;">
+          <i class="bi bi-globe-europe-africa me-1 text-primary"></i>
+          Répartition géographique des scores PISA observés
+        </h5>
+      
+        <p class="text-muted small mb-0">
+          On observe que les pays affichant les scores PISA les plus élevés sont majoritairement situés
+          en Amérique du Nord, en Europe et en Asie de l’Est. Une grande partie de ces pays appartient
+          à l’OCDE, ce qui suggère un lien entre niveau de développement économique et performance scolaire.
+          Toutefois, cette relation n’est pas systématique : certains pays non membres de l’OCDE, comme
+          Singapour ou le Vietnam, présentent d’excellents résultats, tandis que certains pays membres,
+          tels que le Mexique ou le Chili, obtiennent des scores plus faibles. L’appartenance à l’OCDE
+          apparaît donc comme un facteur associé à de meilleurs résultats, mais elle ne constitue pas
+          une condition suffisante.
+        </p>
+      </div>
+      <!-- Apport des prédictions et lecture régionale -->
+      <div class="mt-4 p-4 rounded shadow-sm"
+           style="background:linear-gradient(180deg,#ffffff 0%,#f8faff 100%); border-left:4px solid #9b59b6;">
+        <h5 class="mb-2" style="font-weight:600;">
+          <i class="bi bi-magic me-1 text-purple"></i>
+          Apport des prédictions et lecture des intervalles
+        </h5>
+      
+        <p class="text-muted small mb-2">
+          Grâce aux prédictions issues du modèle, il a été possible de compléter la carte initiale,
+          qui se limitait aux pays ayant participé aux enquêtes PISA. Cette extension est particulièrement
+          notable pour le continent africain, où seul le Maroc disposait auparavant d’un score mesuré.
+        </p>
+      
+        <p class="text-muted small mb-2">
+          Les résultats suggèrent que la majorité des pays africains présentent des scores PISA faibles,
+          ce qui est cohérent avec les niveaux de développement économique et d’investissement éducatif
+          observés dans la région. Une partie du Moyen-Orient et de l’Asie a également pu être renseignée ;
+          les scores y sont globalement intermédiaires, principalement compris entre 1000 et 1199.
+        </p>
+      
+        <p class="text-muted small mb-0">
+          Ce travail de prédiction présente ainsi un double intérêt : il permet d’élargir la comparaison
+          internationale des performances scolaires et met en évidence des inégalités régionales marquées,
+          y compris pour des pays absents des enquêtes PISA. Le modèle peut donc être mobilisé comme
+          un outil d’anticipation des zones de vulnérabilité éducative en l’absence de données observées.
+        </p>
+      </div>
     </section>
 
 
