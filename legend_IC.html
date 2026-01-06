@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>body{background-color:white;}</style>
+
+  <meta charset="utf-8"/>
+  <title>Légende — Intervalles de confiance PISA</title>
+  <style>
+  body {
+    font-family:Roboto,Arial,Helvetica,sans-serif;
+    margin:0;
+    padding:0;
+    color:#111;
+  }
+  h3 {
+    font-size:15px;
+    margin:0 0 8px 0;
+    text-align:center;
+    color:#333;
+    font-weight:600;
+  }
+  .legend {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding: 6px;
+  }
+  .gradient-bar {
+    width: 300px;
+    height: 20px;
+    background: linear-gradient(to right, #00FF00, #FFFF00, #FFA500, #FF0000);
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 8px;
+  }
+  .legend-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    font-size: 12px;
+    color: #333;
+  }
+  .legend-label {
+    text-align: center;
+    min-width: 50px;
+  }
+  @media (max-width:600px){ 
+    .gradient-bar { width: 250px; }
+    .legend-labels { width: 250px; font-size: 11px; }
+  }
+</style>
+</head>
+<html>
+  <body>
+    <h3>Largeur des intervalles de confiance</h3>
+    <div class="legend">
+      <div class="gradient-bar"></div>
+      <div class="legend-labels">
+        <div class="legend-label">27%</div>
+        <div class="legend-label">37%</div>
+        <div class="legend-label">46%</div>
+        <div class="legend-label">56%</div>
+        <div class="legend-label">66%</div>
+      </div>
+    </div>
+  </body>
+</html>
+</html>
