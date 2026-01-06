@@ -544,22 +544,20 @@
           </div>
     </section>
 
-<!-- Section : Conclusion -->
+    <!-- Section : Conclusion -->
 <section class="card-custom" id="conclusion">
   <h2>Conclusion</h2>
   
   <div class="conclusion-content">
-    <!-- Introduction de la conclusion -->
-    <div class="conclusion-block">
-      <p>
-        En somme, le classement PISA s'explique en grande partie par des <strong>variables socioéconomiques</strong>, en
-        particulier le PIB par habitant et le taux de sous-alimentation. On remarque que le classement PISA
-        semble plus s'expliquer par le niveau de développement des pays que par des variables directement
-        liées à l'éducation comme la part du PIB allouée à ce secteur. En effet, on constate une distinction
-        assez nette entre les pays de l'OCDE, majoritairement des pays développés, qui obtiennent des scores
-        PISA plus élevés que les pays non-OCDE.
-      </p>
-    </div>
+    <!-- Introduction de la conclusion (SANS div conclusion-block pour éviter l'espace) -->
+    <p style="line-height: 1.8; color: #333; margin-bottom: 2rem; text-align: justify;">
+      En somme, le classement PISA s'explique en grande partie par des <strong>variables socioéconomiques</strong>, en
+      particulier le PIB par habitant et le taux de sous-alimentation. On remarque que le classement PISA
+      semble plus s'expliquer par le niveau de développement des pays que par des variables directement
+      liées à l'éducation comme la part du PIB allouée à ce secteur. En effet, on constate une distinction
+      assez nette entre les pays de l'OCDE, majoritairement des pays développés, qui obtiennent des scores
+      PISA plus élevés que les pays non-OCDE.
+    </p>
 
     <!-- Biais culturel -->
     <div class="conclusion-block">
@@ -776,28 +774,6 @@
     text-align: left;
   }
 }
-</style>
-
-<!-- ===== Styles utilitaires (si non présents, ajoute dans ton CSS global) ===== -->
-<style>
-  .responsive-iframe {
-    width: 100%;
-    height: 520px;
-    border: 0;
-    display: block;
-    background: transparent;
-  }
-  .responsive-iframe.tall {
-    height: 640px; /* plus haut pour le scatter */
-  }
-
-  @media (max-width: 768px) {
-    .responsive-iframe { height: 360px; }
-    .responsive-iframe.tall { height: 520px; }
-  }
-
-  /* si tu veux un petit espacement sous la carte/légende */
-  .legend-caption { margin-top: 4px; }
 </style>
 
 
