@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projet Mortalité Infantile - Éloïse SIBOTTIER</title>
+  <!-- Bootstrap + Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    body { padding-top: 70px; font-family: 'Roboto', sans-serif; background-color: #f5f7fa; color: #333; line-height: 1.6; }
+    .navbar { background-color: #2c3e50 !important; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .navbar-brand, .nav-link { font-weight: 500; }
+    .nav-link:hover { color: #3498db !important; }
+    .breadcrumb { background-color: transparent; padding-left: 0; }
+    .breadcrumb-item a { color: #2c3e50; text-decoration: none; }
+    .card-custom { background-color: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #3498db; }
+    .btn-primary { background-color: #3498db; border: none; font-weight: 500; }
+    .btn-primary:hover { background-color: #217dbb; }
+    .text-muted { color: #6b7280; }
+    .kpi-badge { background: #eef5ff; padding: .35rem .6rem; border-radius: 999px; font-weight: 600; color: #0b3a66; font-size: .9rem; margin-right:.5rem; margin-bottom:.5rem; display:inline-block; }
+    footer { text-align:center; padding:20px 0; color:#6b7280; font-size:.9rem; margin-top:30px; }
+    pre { background:#f8f9fa; padding:15px; border-radius:6px; overflow:auto; font-size:.9rem; }
+    .chart-wrap { width:100%; max-width:900px; margin:0 auto; min-height:180px; height:180px; }
+    
+    .analysis-block {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+      border-left: 3px solid #007bff;
+      transition: all 0.3s ease;
+    }
+    
+    .analysis-block:hover {
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    
+    .analysis-block h5 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #e9ecef;
+    }
+    
+    .highlight-block {
+      background: linear-gradient(135deg, rgba(255, 243, 205, 0.3), rgba(255, 248, 220, 0.5));
+      border-left-color: #ffc107;
+    }
+    
+    .warning-block {
+      background: linear-gradient(135deg, rgba(255, 235, 235, 0.3), rgba(255, 245, 245, 0.5));
+      border-left-color: #dc3545;
+    }
+    
+    .success-block {
+      background: linear-gradient(135deg, rgba(232, 245, 233, 0.3), rgba(237, 247, 237, 0.5));
+      border-left-color: #28a745;
+    }
+    
+    .info-block {
+      background: linear-gradient(135deg, rgba(232, 244, 253, 0.3), rgba(237, 247, 253, 0.5));
+      border-left-color: #17a2b8;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Mon Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
+          <li class="nav-item"><a class="nav-link active" href="projets.html">Projets</a></li>
+          <li class="nav-item"><a class="nav-link" href="indicateurs.html">Indicateurs</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="container mt-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="projets.html">Projets</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Mortalité Infantile</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Main content -->
+  <main class="container my-4">
+    <section class="card-custom">
+      <div class="row">
+        <div class="col-lg-8">
+          <h1>Déterminants de la mortalité infantile en France</h1>
+          <p><strong>Auteurs :</strong> Louise ALBARRAN et Éloïse SIBOTTIER</p>
+          <p class="text-muted">Analyse économétrique des déterminants socio-économiques, familiaux et environnementaux de la mortalité infantile à l'échelle départementale en France.</p>
+          <div class="mt-2">
+            <span class="kpi-badge">R</span>
+            <span class="kpi-badge">Économétrie</span>
+            <span class="kpi-badge">Régression linéaire</span>
+            <span class="kpi-badge">MCO</span>
+            <span class="kpi-badge">Santé publique</span>
+            <span class="kpi-badge">Analyse spatiale</span>
+          </div>
+          <div class="mt-3">
+            <a href="pdf/rapport_mortalite_infantile.pdf" class="btn btn-primary" download>
+              <i class="bi bi-file-earmark-pdf me-1"></i>
+              Télécharger le rapport
+            </a>
+            <a href="projets.html" class="btn btn-outline-secondary">
+              <i class="bi bi-arrow-left me-1"></i>
+              Retour aux projets
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-lg-4">
+          <h5>Résumé rapide</h5>
+          <p class="text-muted small">Objectif : identifier les déterminants robustes de la mortalité infantile à l'échelle départementale. Modèle final : R² ajusté ≈ 0.401. Les familles monoparentales, les prestations familiales et les émissions de GES sont les variables clés.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contexte et problématique -->
+    <section class="card-custom">
+      <h2>Contexte et problématique</h2>
+      <div class="analysis-block info-block">
+        <h5><i class="bi bi-info-circle me-1 text-info"></i>Un indicateur de santé publique majeur</h5>
+        <p class="text-muted small">
+          La mortalité infantile, mesurée comme le nombre de décès d'enfants nés vivants de moins d'un an rapporté aux naissances vivantes (4‰ en 2023 en France), constitue un indicateur central de l'état de santé d'une population et du niveau de développement socio-économique d'un territoire.
+        </p>
+        <p class="text-muted small mb-0">
+          Malgré un système de santé performant, la France présente des <strong>disparités territoriales marquées</strong> en matière de mortalité infantile à l'échelle départementale. Ces écarts interrogent la capacité des politiques publiques à garantir une égalité réelle face aux conditions de naissance et de survie des enfants, dans un contexte d'amplification des déserts médicaux et de fermetures massives de maternités.
+        </p>
+      </div>
+
+      <div class="analysis-block">
+        <h5><i class="bi bi-question-circle me-1 text-primary"></i>Question de recherche</h5>
+        <p class="text-muted small mb-2">
+          <em>Quels sont les principaux déterminants socio-économiques, familiaux et environnementaux de la mortalité infantile à l'échelle départementale en France, et dans quelle mesure leurs effets varient-ils selon les caractéristiques territoriales ?</em>
+        </p>
+        <p class="text-muted small mb-2"><strong>Hypothèses testées :</strong></p>
+        <ul class="text-muted small mb-0">
+          <li><strong>H1 :</strong> La précarité socio-économique (pauvreté, dépendance aux prestations sociales) est positivement associée à la mortalité infantile.</li>
+          <li><strong>H2 :</strong> La structure familiale, notamment les familles monoparentales, influence la mortalité infantile.</li>
+          <li><strong>H3 :</strong> Les facteurs environnementaux (émissions de GES) exercent un effet significatif.</li>
+          <li><strong>H4 :</strong> Les effets des déterminants ne sont pas homogènes sur le territoire et varient selon l'exposition environnementale.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Compétences mobilisées -->
+    <section class="card-custom">
+      <h2>Compétences mobilisées</h2>
+      <ul class="text-muted">
+        <li>Collecte et nettoyage de données issues de sources multiples (INSEE, CNAF, Citepa, DREES)</li>
+        <li>Analyse descriptive univariée et bivariée approfondie</li>
+        <li>Gestion de la multicolinéarité (corrélations, règle de Klein, VIF)</li>
+        <li>Économétrie : estimation MCO, sélection de modèles (AIC, forward/backward/stepwise)</li>
+        <li>Introduction de variables indicatrices et termes d'interaction</li>
+        <li>Tests de robustesse (Shapiro-Wilk, Breusch-Pagan, White, Goldfeld-Quandt, Chow)</li>
+        <li>Estimation avec erreurs-types robustes</li>
+      </ul>
+    </section>
+
+    <!-- Variables retenues -->
+    <section class="card-custom">
+      <h2>Variables retenues et catégorisation</h2>
+      <p class="text-muted small mb-3">
+        Les variables explicatives ont été regroupées en trois grandes catégories pour structurer l'analyse :
+      </p>
+
+      <div class="row g-3">
+        <div class="col-12 col-md-4">
+          <div class="p-3 h-100" style="background:#fff; border-left: 4px solid #dc3545; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+            <h6 class="mb-2" style="font-weight:600; color:#dc3545;">Précarité et vulnérabilités socio-économiques</h6>
+            <ul style="padding-left:1rem; margin-bottom:0.5rem; font-size:0.9rem;">
+              <li>Taux de chômage</li>
+              <li>Taux de pauvreté</li>
+              <li>Part sans diplôme</li>
+              <li>Part des bénéficiaires du RSA</li>
+              <li>Part des bénéficiaires ALF</li>
+              <li>Taux pauvreté des monoparentales</li>
+              <li>Prestations familiales</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="p-3 h-100" style="background:#fff; border-left: 4px solid #ffc107; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+            <h6 class="mb-2" style="font-weight:600; color:#ffc107;">Structure familiale et professionnelle</h6>
+            <ul style="padding-left:1rem; margin-bottom:0.5rem; font-size:0.9rem;">
+              <li>Part familles monoparentales</li>
+              <li>Familles avec 3 enfants ou plus</li>
+              <li>Niveau de vie médian</li>
+              <li>Part des ouvriers</li>
+              <li>Part des cadres</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="p-3 h-100" style="background:#fff; border-left: 4px solid #28a745; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+            <h6 class="mb-2" style="font-weight:600; color:#28a745;">Accès logement, services et environnement</h6>
+            <ul style="padding-left:1rem; margin-bottom:0.5rem; font-size:0.9rem;">
+              <li>APL généraliste</li>
+              <li>APL sages-femmes</li>
+              <li>Population éloignée des services</li>
+              <li>Densité de population</li>
+              <li>Émissions de GES</li>
+              <li>Effectifs fonction publique territoriale</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Méthodologie -->
+    <section class="card-custom">
+      <h2>Cadre méthodologique</h2>
+      
+      <div class="analysis-block">
+        <h5><i class="bi bi-bar-chart-line me-1 text-primary"></i>Approche économétrique</h5>
+        <p class="text-muted small mb-2">
+          Le projet s'inscrit dans le cadre d'un <strong>modèle de régression linéaire estimé par MCO</strong> (Moindres Carrés Ordinaires). La variable expliquée est le taux de mortalité infantile (continue), et la méthode permet une interprétation économique directe des coefficients.
+        </p>
+        <p class="text-muted small mb-0">
+          La démarche est <strong>progressive et exploratoire</strong> : analyse descriptive approfondie, identification des outliers, transformations logarithmiques pour réduire l'influence des valeurs extrêmes, gestion rigoureuse de la multicolinéarité.
+        </p>
+      </div>
+
+      <div class="analysis-block highlight-block">
+        <h5><i class="bi bi-funnel me-1 text-warning"></i>Sélection du modèle</h5>
+        <p class="text-muted small mb-2">
+          Trois procédures de sélection automatique ont été mobilisées :
+        </p>
+        <ul class="text-muted small mb-0">
+          <li><strong>Forward (ascendante) :</strong> construction progressive à partir d'un modèle restreint</li>
+          <li><strong>Backward (descendante) :</strong> élimination progressive à partir d'un modèle saturé</li>
+          <li><strong>Stepwise (mixte) :</strong> combinaison des deux approches</li>
+        </ul>
+        <p class="text-muted small mt-2 mb-0">
+          Le modèle final est choisi en combinant critères statistiques (AIC) et cohérence économique des signes des coefficients.
+        </p>
+      </div>
+
+      <div class="analysis-block info-block">
+        <h5><i class="bi bi-shuffle me-1 text-info"></i>Variables indicatrices et interactions</h5>
+        <p class="text-muted small mb-0">
+          Pour tester l'existence d'<strong>effets de seuil et d'hétérogénéités territoriales</strong>, des variables indicatrices (basées sur le 3ème quartile des émissions de GES) et des termes d'interaction ont été introduits. Un <strong>test de Chow</strong> a confirmé l'existence de différences structurelles entre départements faiblement et fortement pollués.
+        </p>
+      </div>
+    </section>
+
+    <!-- Gestion de la multicolinéarité -->
+    <section class="card-custom">
+      <h2>Gestion de la multicolinéarité</h2>
+      <p class="text-muted small mb-3">
+        La construction du modèle a nécessité une attention particulière aux problèmes de multicolinéarité, fréquents dans les analyses territoriales. Trois itérations successives ont permis de stabiliser le modèle.
+      </p>
+
+      <div class="analysis-block warning-block">
+        <h5><i class="bi bi-exclamation-triangle me-1 text-danger"></i>Itération 1 : Modèle complet</h5>
+        <p class="text-muted small mb-2">
+          Le modèle initial incluant toutes les variables présente de <strong>fortes corrélations</strong> (plusieurs >80%) et des <strong>VIF élevés</strong> (jusqu'à 32 pour le taux de pauvreté).
+        </p>
+        <p class="text-muted small mb-0">
+          <strong>Variables retirées :</strong> taux de chômage, niveau de vie médian, densité de population (log), part des cadres (log), part des bénéficiaires du RSA (log), taux de pauvreté.
+        </p>
+      </div>
+
+      <div class="analysis-block highlight-block">
+        <h5><i class="bi bi-arrow-repeat me-1 text-warning"></i>Itération 2 : Modèle intermédiaire</h5>
+        <p class="text-muted small mb-2">
+          Après réduction, le R² ajusté est de 0.443. Les corrélations ne dépassent plus 80%, mais la règle de Klein révèle encore des redondances informationnelles.
+        </p>
+        <p class="text-muted small mb-0">
+          <strong>Variables retirées :</strong> absence de diplôme, familles avec 3 enfants ou plus, pauvreté des familles monoparentales.
+        </p>
+      </div>
+
+      <div class="analysis-block success-block">
+        <h5><i class="bi bi-check-circle me-1 text-success"></i>Itération 3 : Modèle stabilisé</h5>
+        <p class="text-muted small mb-0">
+          Le troisième modèle ne présente plus de corrélations >80%. Les VIF sont acceptables et tous les coefficients conservent des signes cohérents économiquement. Ce modèle constitue la base pour la sélection finale via AIC.
+        </p>
+      </div>
+    </section>
+
+    <!-- Modèle final -->
+    <section class="card-custom">
+      <h2>Modèle final et résultats</h2>
+      
+      <div class="d-flex justify-content-between align-items-start flex-wrap mb-3">
+        <div>
+          <h5 class="mb-1" style="font-weight:600;">Spécification retenue</h5>
+          <p class="text-muted small mb-0">
+            Modèle avec variables continues, indicatrice et terme d'interaction
+          </p>
+        </div>
+        <div class="text-end">
+          <span class="kpi-badge" aria-hidden="true" style="font-size:.95rem;">R² ajusté ≈ 0.401</span><br>
+          <small class="text-muted">Modèle final avec interaction</small>
+        </div>
+      </div>
+
+      <div class="analysis-block">
+        <h5><i class="bi bi-calculator me-1 text-primary"></i>Équation du modèle</h5>
+        <div style="background:#f8f9fa; padding:1rem; border-radius:6px; overflow-x:auto;">
+          <code style="font-size:0.9rem;">
+            Mortalité infantile<sub>i</sub> = β<sub>0</sub> + β<sub>1</sub> · log(Part familles monoparentales<sub>i</sub>) 
+            + β<sub>2</sub> · Prestations familiales<sub>i</sub> + β<sub>3</sub> · Émissions de GES<sub>i</sub> 
+            + β<sub>4</sub> · 𝟙(GES<sub>i</sub> > Q<sub>3</sub>) 
+            + β<sub>5</sub> · (log(Monoparentales<sub>i</sub>) × 𝟙(GES<sub>i</sub> > Q<sub>3</sub>)) + ε<sub>i</sub>
+          </code>
+        </div>
+      </div>
+
+      <div class="row g-3 mt-2">
+        <div class="col-md-6">
+          <div class="analysis-block success-block">
+            <h5><i class="bi bi-check2-circle me-1 text-success"></i>Variables significatives</h5>
+            <ul class="text-muted small mb-0">
+              <li><strong>Log(Part familles monoparentales)</strong> : coef = 3.244*** 
+                <br><span style="font-size:0.85rem;">→ Effet positif robuste : +1% de monoparentalité ≈ +0.032 point de mortalité infantile</span>
+              </li>
+              <li><strong>Émissions de GES</strong> : coef = 0.154*** 
+                <br><span style="font-size:0.85rem;">→ Effet positif : pollution associée à une hausse de la mortalité</span>
+              </li>
+              <li><strong>Prestations familiales</strong> : coef = 0.355* 
+                <br><span style="font-size:0.85rem;">→ Indicateur de précarité territoriale</span>
+              </li>
+              <li><strong>Indicatrice GES (Q3)</strong> : coef = 8.193** 
+                <br><span style="font-size:0.85rem;">→ Effet de seuil environnemental</span>
+              </li>
+              <li><strong>Interaction (Monoparentales × Q3_GES)</strong> : coef = -3.174*** 
+                <br><span style="font-size:0.85rem;">→ Effet de la monoparentalité moins fort dans les dpts très pollués</span>
+              </li>
+            </ul>
+            <p class="text-muted small mt-2 mb-0" style="font-style:italic;">
+              *** p<0.01, ** p<0.05, * p<0.1
+            </p>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="analysis-block info-block">
+            <h5><i class="bi bi-graph-up me-1 text-info"></i>Qualité d'ajustement</h5>
+            <ul class="text-muted small mb-2">
+              <li><strong>R² = 0.432</strong> : 43.2% de la variance expliquée</li>
+              <li><strong>R² ajusté = 0.401</strong> : ajustement intermédiaire, cohérent avec la complexité du phénomène</li>
+              <li><strong>Test de Fisher = 14.007***</strong> : modèle globalement significatif</li>
+              <li><strong>98 observations</strong> (départements, dont La Réunion et Martinique conservés)</li>
+            </ul>
+            <p class="text-muted small mb-0">
+              L'amélioration du R² ajusté par rapport au modèle sans interaction (0.36 → 0.40) justifie la prise en compte de l'hétérogénéité territoriale.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="analysis-block highlight-block mt-3">
+        <h5><i class="bi bi-lightbulb me-1 text-warning"></i>Interprétation clé : l'effet d'interaction</h5>
+        <p class="text-muted small mb-2">
+          Le terme d'interaction négatif et significatif révèle une <strong>hétérogénéité territoriale importante</strong> : 
+        </p>
+        <ul class="text-muted small mb-0">
+          <li>Dans les départements <strong>faiblement pollués</strong>, l'effet de la monoparentalité sur la mortalité infantile est <strong>plus marqué</strong>.</li>
+          <li>Dans les départements du <strong>quartile supérieur des émissions de GES</strong>, cet effet est <strong>atténué</strong>.</li>
+          <li>Cela suggère des mécanismes complexes où facteurs sociaux et environnementaux interagissent de manière non triviale selon les contextes territoriaux.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Tests de robustesse -->
+    <section class="card-custom">
+      <h2>Tests de robustesse</h2>
+      
+      <div class="analysis-block success-block">
+        <h5><i class="bi bi-shield-check me-1 text-success"></i>Hypothèses validées</h5>
+        <ul class="text-muted small mb-0">
+          <li><strong>Moyenne nulle des résidus :</strong> Test de Student confirme E(ε) = 0 (p-value = 1)</li>
+          <li><strong>Homoscédasticité :</strong> Aucune hétéroscédasticité détectée
+            <ul>
+              <li>Test de Breusch-Pagan : p = 0.1208</li>
+              <li>Test de White (restreint) : p = 0.2646</li>
+              <li>Test de White (complet) : p = 0.6167</li>
+              <li>Tests de Goldfeld-Quandt : p-values >0.05</li>
+            </ul>
+          </li>
+          <li><strong>Estimation robuste :</strong> Les coefficients et leur significativité restent stables avec erreurs-types robustes de type White</li>
+        </ul>
+      </div>
+
+      <div class="analysis-block warning-block">
+        <h5><i class="bi bi-exclamation-circle me-1 text-danger"></i>Limites identifiées</h5>
+        <ul class="text-muted small mb-2">
+          <li><strong>Normalité des résidus :</strong> Test de Shapiro-Wilk rejeté (p = 0.0024)
+            <br><span style="font-size:0.85rem;">→ Écarts aux extrémités du QQ-plot, dus à quelques observations atypiques (Lozère, Haute-Vienne, Martinique)</span>
+          </li>
+          <li><strong>Observations influentes :</strong> Distance de Cook élevée pour Martinique (97), Mayenne (54), Lozère (49)
+            <br><span style="font-size:0.85rem;">→ Ces départements ultramarins ou faiblement peuplés présentent des spécificités territoriales marquées</span>
+          </li>
+        </ul>
+        <p class="text-muted small mb-0" style="font-style:italic;">
+          Malgré la non-normalité, les résultats restent robustes grâce à l'estimation avec erreurs-types robustes.
+        </p>
+      </div>
+
+      <div class="analysis-block info-block">
+        <h5><i class="bi bi-diagram-3 me-1 text-info"></i>Test de Chow</h5>
+        <p class="text-muted small mb-2">
+          Un test global d'égalité des coefficients a été réalisé pour tester si les effets des variables sont homogènes entre départements faiblement et fortement pollués.
+        </p>
+        <p class="text-muted small mb-0">
+          <strong>Résultat :</strong> H<sub>0</sub> rejetée au seuil de 5% (F = 2.80, p = 0.044). 
+          Le modèle n'est pas homogène : l'impact des déterminants dépend du niveau de pollution, justifiant l'introduction de l'interaction.
+        </p>
+      </div>
+    </section>
+
+    <!-- Limites et perspectives -->
+    <section class="card-custom">
+      <h2>Limites méthodologiques et perspectives</h2>
+      
+      <div class="analysis-block warning-block">
+        <h5><i class="bi bi-exclamation-triangle me-1 text-danger"></i>Principales limites</h5>
+        <ul class="text-muted small mb-0">
+          <li><strong>Biais de variables omises :</strong> Facteurs médicaux (accès aux soins, qualité des maternités, suivi prénatal) et institutionnels non observés peuvent influencer les résultats. Les coefficients reflètent des associations territoriales, pas des liens causaux stricts.</li>
+          <li><strong>Biais de simultanéité :</strong> Les prestations familiales peuvent être augmentées dans des départements où la mortalité infantile est élevée, créant une relation bidirectionnelle.</li>
+          <li><strong>Erreurs de mesure et agrégation spatiale :</strong> Les émissions de GES départementales ne reflètent qu'imparfaitement l'exposition réelle des nourrissons. L'agrégation spatiale peut masquer des disparités internes importantes (erreur écologique).</li>
+          <li><strong>Données transversales :</strong> Absence de dimension temporelle, empêchant l'établissement de relations causales robustes.</li>
+          <li><strong>Spécification fonctionnelle :</strong> Le modèle est essentiellement linéaire (avec log et indicatrice). Des non-linéarités plus complexes pourraient exister.</li>
+        </ul>
+      </div>
+
+      <div class="analysis-block success-block">
+        <h5><i class="bi bi-arrow-up-right me-1 text-success"></i>Perspectives de recherche</h5>
+        <ul class="text-muted small mb-0">
+          <li><strong>Données de panel :</strong> Analyser l'évolution temporelle des disparités et mieux contrôler l'hétérogénéité non observée</li>
+          <li><strong>Intégration de données médicales :</strong> Inclure l'offre de soins, la qualité des maternités, le suivi prénatal</li>
+          <li><strong>Modèles économétriques spatiaux :</strong> Étudier les effets de voisinage et dynamiques territoriales communes</li>
+          <li><strong>Méthodes plus flexibles :</strong> Approfondir l'analyse des effets de seuil environnementaux avec des splines, GAM, etc.</li>
+          <li><strong>Approche causale :</strong> Utiliser des variables instrumentales ou des expériences naturelles pour isoler les effets causaux</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="card-custom">
+      <h2>Conclusion</h2>
+      
+      <div class="analysis-block">
+        <h5><i class="bi bi-check2-all me-1 text-primary"></i>Principaux enseignements</h5>
+        <p class="text-muted small mb-2">
+          Ce travail met en évidence le rôle central des <strong>facteurs socio-économiques et familiaux</strong> dans l'explication des disparités départementales de mortalité infantile en France. La part des familles monoparentales et la dépendance aux prestations familiales sont fortement associées à une mortalité infantile plus élevée, confirmant l'hypothèse d'un lien entre vulnérabilité sociale et santé infantile.
+        </p>
+        <p class="text-muted small mb-2">
+          Les <strong>facteurs environnementaux</strong> (émissions de GES) présentent un effet significatif, mais complexe. L'existence d'un <strong>effet de seuil</strong> suggère que la relation entre pollution et mortalité infantile n'est pas strictement linéaire. L'<strong>interaction négative</strong> entre monoparentalité et forte pollution révèle une hétérogénéité territoriale importante : les mécanismes sociaux et environnementaux interagissent différemment selon les contextes locaux.
+        </p>
+        <p class="text-muted small mb-0">
+          Sur le plan méthodologique, ce projet illustre l'importance d'une démarche économétrique rigoureuse : gestion de la multicolinéarité, sélection progressive du modèle, tests de robustesse, et prise en compte de l'hétérogénéité territoriale via indicatrices et interactions.
+        </p>
+      </div>
+
+      <div class="analysis-block highlight-block">
+        <h5><i class="bi bi-lightbulb me-1 text-warning"></i>Implications pour les politiques publiques</h5>
+        <p class="text-muted small mb-0">
+          Les résultats suggèrent que les <strong>politiques de santé infantile gagneraient à être adaptées aux spécificités territoriales</strong>, en tenant compte des inégalités sociales, familiales et environnementales. La réduction des inégalités de santé dès la naissance ne peut reposer sur des actions uniformes à l'échelle nationale, mais nécessite une approche différenciée selon les contextes locaux.
+        </p>
+      </div>
+
+      <div class="analysis-block info-block">
+        <h5><i class="bi bi-book me-1 text-info"></i>Contribution scientifique</h5>
+        <p class="text-muted small mb-0">
+          Ce mémoire constitue une première étape dans l'analyse économétrique des déterminants territoriaux de la mortalité infantile en France. Il ouvre la voie à des prolongements méthodologiques (modèles spatiaux, données de panel, approches causales) visant à mieux comprendre les mécanismes complexes à l'origine des inégalités de santé infantile.
+        </p>
+      </div>
+    </section>
+
+    <!-- Bibliographie -->
+    <section class="card-custom">
+      <h2>Bibliographie et sources</h2>
+      <div class="analysis-block">
+        <h5><i class="bi bi-book-half me-1 text-primary"></i>Références bibliographiques</h5>
+        <p class="text-muted small mb-2">
+          <strong>Branger, B., & Mouzard, A. (à paraître).</strong> <em>Évolution de la mortalité infantile en France de 1900 à 2024 : facteurs explicatifs sociaux, culturels, économiques et sanitaires.</em> Archives françaises de pédiatrie. 
+          <a href="https://hal.science/hal-05020411v1/document" target="_blank" rel="noopener">https://hal.science/hal-05020411v1/document</a>
+        </p>
+        <p class="text-muted small mb-0">
+          Cette étude analyse l'évolution temporelle de la mortalité infantile sur plus d'un siècle, identifiant des facteurs sanitaires, économiques, socio-culturels et, depuis 2000, environnementaux. Bien que centrée sur une dimension temporelle, elle a fourni des pistes pour l'identification de variables explicatives pertinentes à l'échelle spatiale.
+        </p>
+      </div>
+
+      <div class="analysis-block info-block">
+        <h5><i class="bi bi-database me-1 text-info"></i>Sources des données</h5>
+        <ul class="text-muted small mb-0">
+          <li><strong>INSEE</strong> : État civil, Recensement de la population (RP), Filosofi (revenus et pauvreté)</li>
+          <li><strong>CNAF</strong> : FILEAS, BENTRIM (prestations sociales et familiales)</li>
+          <li><strong>Citepa</strong> : Émissions de gaz à effet de serre par département</li>
+          <li><strong>DREES – SNIIR-AM</strong> : Accessibilité potentielle localisée (APL) aux professionnels de santé</li>
+          <li><strong>Observatoire des Territoires – BPE</strong> : Base permanente des équipements, accès aux services</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
