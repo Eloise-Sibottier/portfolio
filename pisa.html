@@ -544,7 +544,239 @@
           </div>
     </section>
 
-    
+   <!-- Section : Conclusion -->
+<section class="card-custom" id="conclusion">
+  <h2>Conclusion</h2>
+  
+  <div class="conclusion-content">
+    <!-- Introduction de la conclusion -->
+    <div class="conclusion-block">
+      <p>
+        En somme, le classement PISA s'explique en grande partie par des <strong>variables socioéconomiques</strong>, en
+        particulier le PIB par habitant et le taux de sous-alimentation. On remarque que le classement PISA
+        semble plus s'expliquer par le niveau de développement des pays que par des variables directement
+        liées à l'éducation comme la part du PIB allouée à ce secteur. En effet, on constate une distinction
+        assez nette entre les pays de l'OCDE, majoritairement des pays développés, qui obtiennent des scores
+        PISA plus élevés que les pays non-OCDE.
+      </p>
+    </div>
+
+    <!-- Biais culturel -->
+    <div class="conclusion-block">
+      <h3 class="subsection-title">Biais culturel du classement PISA</h3>
+      <p>
+        On peut également supposer que le classement PISA est <strong>biaisé en faveur des pays de l'OCDE</strong>. En effet,
+        ce classement ayant été créé par l'OCDE, on peut imaginer l'existence d'un biais culturel, pouvant
+        passer par la formulation des questions, favorisant la réussite des pays membres de l'OCDE. En 1981,
+        <em>Scarr</em> mettait en évidence l'existence de ce même biais culturel appliqué aux tests de QI dont les
+        formulations pénalisaient les pays en développement.
+      </p>
+    </div>
+
+    <!-- Modèle retenu -->
+    <div class="conclusion-block">
+      <h3 class="subsection-title">Notre modèle de régression</h3>
+      <p>
+        Notre étude nous a amené à construire plusieurs modèles afin d'expliquer le classement PISA. Le
+        modèle que nous avons retenu repose uniquement sur nos <strong>variables significatives</strong>, nous avons donc
+        enlevé le taux de scolarisation en primaire et le ratio élèves-enseignant. Nous obtenons ainsi un
+        modèle satisfaisant qui explique <strong>74% des variations du score PISA</strong>.
+      </p>
+    </div>
+
+    <!-- Résultats surprenants -->
+    <div class="conclusion-block highlight-block">
+      <h3 class="subsection-title">Résultats contre-intuitifs</h3>
+      <p>
+        Cependant certains résultats interrogent. Le plus surprenant concerne la <strong>dépense publique en
+        éducation</strong> qui a un effet négatif sur les scores PISA dans notre modèle. Ce paradoxe peut soulever
+        certaines hypothèses comme le fait que les moyens financiers ne suffisent pas et qu'il faut aussi
+        regarder l'utilisation concrète, l'efficacité et le contexte dans lesquels ces dépenses sont faites.
+      </p>
+      <p>
+        De plus, en ce qui concerne le <strong>ratio élèves/enseignant</strong>, dans la partie descriptive, on observait une
+        corrélation assez nette : plus le ratio est élevé, plus les scores PISA sont bas. Pourtant, dans notre
+        modèle final, cette variable n'est pas significative. Cela montre que ce facteur n'explique pas à lui seul
+        les écarts de performance une fois les autres variables prises en compte.
+      </p>
+    </div>
+
+    <!-- Prédictions et élargissement -->
+    <div class="conclusion-block">
+      <h3 class="subsection-title">Élargissement géographique par prédictions</h3>
+      <p>
+        Enfin, puisque notre base de données ne prenait pas en compte un grand nombre de pays,
+        notamment du fait que le classement PISA ne porte que sur 80 pays environ, nous avons effectué des
+        <strong>prédictions</strong> afin d'agrandir notre domaine d'étude au niveau mondial. Nos estimations ont notamment
+        permis d'approfondir notre étude au niveau du continent africain qui se limitait au paravent à une
+        seule observation. Nos résultats mettent en évidence des <strong>inégalités régionales</strong> qui reposent
+        principalement sur des écarts de développement, et ainsi la nécessité de favoriser l'accès à
+        l'éducation dans certaines régions.
+      </p>
+    </div>
+
+    <!-- Intervalles de confiance -->
+    <div class="conclusion-block">
+      <h3 class="subsection-title">Variabilité des intervalles de confiance</h3>
+      <p>
+        Mais ce travail de prédiction nous a aussi permis de voir une <strong>limite de notre modèle</strong> : les intervalles
+        de confiance sont très variables d'une région à l'autre. En Afrique notamment, les intervalles sont
+        souvent larges, ce qui reflète une plus grande incertitude sur les prédictions. À l'inverse, pour des
+        pays d'Asie ou du Moyen-Orient, les prédictions sont plus stables. Une des raisons à cela, c'est que
+        notre modèle a été construit à partir d'un échantillon majoritairement composé de pays occidentaux
+        ou proches économiquement de l'OCDE. Les pays africains ou plus éloignés en termes de structure
+        éducative se retrouvent donc moins bien "représentés" dans le modèle, ce qui rend les prédictions
+        plus incertaines.
+      </p>
+    </div>
+
+    <!-- Limites méthodologiques -->
+    <div class="conclusion-block warning-block">
+      <h3 class="subsection-title">⚠️ Limites méthodologiques non explorées</h3>
+      <p>
+        Il est important de noter que notre analyse n'a pas testé certaines <strong>hypothèses fondamentales</strong> de la
+        régression linéaire. En particulier :
+      </p>
+      <ul class="limitation-list">
+        <li><strong>Hétéroscédasticité</strong> : Nous n'avons pas vérifié si la variance des résidus était constante. La présence d'hétéroscédasticité pourrait invalider les tests de significativité et les intervalles de confiance.</li>
+        <li><strong>Normalité des résidus</strong> : Nous n'avons pas testé si les résidus suivent une distribution normale, ce qui est une hypothèse clé pour l'inférence statistique.</li>
+        <li><strong>Multicolinéarité</strong> : Bien que nos variables semblent indépendantes, nous n'avons pas calculé les facteurs d'inflation de la variance (VIF) pour confirmer l'absence de colinéarité.</li>
+        <li><strong>Robustesse du modèle</strong> : Nous n'avons pas effectué de validation croisée ni testé la stabilité des coefficients sur différents sous-échantillons.</li>
+        <li><strong>Outliers et points influents</strong> : Aucune analyse systématique des observations atypiques (distance de Cook, résidus studentisés) n'a été menée.</li>
+      </ul>
+      <p class="text-muted small mt-2">
+        Ces tests auraient permis de renforcer la validité de nos conclusions et d'identifier d'éventuels
+        problèmes dans notre modélisation. Leur absence constitue une limite importante de notre travail.
+      </p>
+    </div>
+
+    <!-- Ouverture -->
+    <div class="conclusion-block final-block">
+      <h3 class="subsection-title">Perspectives et réflexions</h3>
+      <p>
+        Notre étude souligne les <strong>limites de l'indicateur PISA</strong> et de notre modèle. Elle
+        ouvre aussi des pistes de réflexion : faut-il repenser la manière dont on évalue les systèmes éducatifs ?
+        Et comment construire des modèles plus inclusifs, capables de mieux prendre en compte les
+        spécificités des pays du Sud ?
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CSS pour la section conclusion -->
+<style>
+.conclusion-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.conclusion-block {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  border-left: 3px solid #007bff;
+  transition: all 0.3s ease;
+}
+
+.conclusion-block:hover {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.conclusion-block p {
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.conclusion-block p:last-child {
+  margin-bottom: 0;
+}
+
+.subsection-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+/* Bloc mise en évidence */
+.highlight-block {
+  background: linear-gradient(135deg, rgba(255, 243, 205, 0.3), rgba(255, 248, 220, 0.5));
+  border-left-color: #ffc107;
+}
+
+/* Bloc d'avertissement */
+.warning-block {
+  background: linear-gradient(135deg, rgba(255, 235, 235, 0.3), rgba(255, 245, 245, 0.5));
+  border-left-color: #dc3545;
+}
+
+.warning-block .subsection-title {
+  color: #dc3545;
+}
+
+/* Bloc final */
+.final-block {
+  background: linear-gradient(135deg, rgba(232, 245, 233, 0.3), rgba(237, 247, 237, 0.5));
+  border-left-color: #28a745;
+}
+
+.final-block .subsection-title {
+  color: #28a745;
+}
+
+/* Liste des limitations */
+.limitation-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 1rem 0;
+}
+
+.limitation-list li {
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  margin-bottom: 0.75rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 6px;
+  border-left: 3px solid #dc3545;
+  position: relative;
+  line-height: 1.6;
+}
+
+.limitation-list li::before {
+  content: "⚠";
+  position: absolute;
+  left: 0.75rem;
+  color: #dc3545;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.limitation-list li strong {
+  color: #dc3545;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .conclusion-block {
+    padding: 1rem;
+  }
+  
+  .subsection-title {
+    font-size: 1.1rem;
+  }
+  
+  .conclusion-block p {
+    text-align: left;
+  }
+}
+</style> 
 
 <!-- ===== Styles utilitaires (si non présents, ajoute dans ton CSS global) ===== -->
 <style>
