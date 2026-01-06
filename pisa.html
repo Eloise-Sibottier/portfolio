@@ -409,57 +409,57 @@
 </section>
 
 
-    <!-- SECTION : Carte IC (gauche) + Prédictions (droite) (corrigé) -->
-    <section class="card-custom" id="pisa-maps-and-preds"
+          <!-- SECTION : Carte IC (gauche) + Prédictions (droite) (corrigé) -->
+      <section class="card-custom" id="pisa-maps-and-preds">
         <h2>Intervalles de confiance des prédictions PISA</h2>
-          <p class="text-muted small mb-3">
-            Cette section analyse l’incertitude associée aux scores PISA prédits à l’aide d’intervalles
-            de confiance à 95 %, afin d’évaluer la robustesse et la fiabilité des résultats selon les pays.
-          </p>
-      <div class="row g-3 align-items-start">
-        <!-- Carte IC (gauche) -->
-        <div class="col-md-6">
-          <div class="visual-container" style="padding:0; margin:0;">
-            <div style="width:100%; max-width:1200px; margin:0 auto; padding:0;">
-              <iframe
-                id="map-ic-iframe"
-                class="responsive-iframe map-iframe"
-                src="assets/Carte_IC_nolegend.html"
-                title="Carte Intervalles de confiance PISA"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin allow-forms"
-              ></iframe>
-              <!-- Légende prévision (générée via R) -->
-              <iframe
-                id="legend3-iframe"
-                src="assets/legend_IC.html"
-                style="width:100%; max-width:900px; border:none; display:block; background:transparent;"
-                title="Légende IC PISA"
-                loading="lazy"
-              ></iframe>
+        <p class="text-muted small mb-3">
+          Cette section analyse l'incertitude associée aux scores PISA prédits à l'aide d'intervalles
+          de confiance à 95 %, afin d'évaluer la robustesse et la fiabilité des résultats selon les pays.
+        </p>
+        <div class="row g-3 align-items-start">
+          <!-- Carte IC (gauche) -->
+          <div class="col-md-6">
+            <div class="visual-container" style="padding:0; margin:0;">
+              <div style="width:100%; max-width:1200px; margin:0 auto; padding:0; display:flex; flex-direction:column; gap:0;">
+                <iframe
+                  id="map-ic-iframe"
+                  src="assets/Carte_IC_nolegend.html"
+                  style="width:100%; height:400px; border:none; display:block; background:transparent;"
+                  title="Carte Intervalles de confiance PISA"
+                  loading="lazy"
+                  sandbox="allow-scripts allow-same-origin allow-forms"
+                ></iframe>
+                <!-- Légende IC (générée via R) -->
+                <iframe
+                  id="legend-ic-iframe"
+                  src="assets/legend_IC.html"
+                  style="width:100%; height:80px; border:none; display:block; background:transparent;"
+                  title="Légende IC PISA"
+                  loading="lazy"
+                ></iframe>
+              </div>
             </div>
+            <div class="legend-caption small text-muted mt-2">Survolez un pays pour voir sa largeur d'intervalle de confiance (en %).</div>
           </div>
-          <div class="legend-caption small text-muted">Survolez un pays pour voir sa largeur d'intervalle de confiance (en %).</div>
-        </div>
-
-        <!-- Prédictions (droite) -->
-        <div class="col-md-6">
-          <div class="visual-container" style="padding:0; margin:0;">
-            <div style="width:100%; max-width:1200px; margin:0 auto; padding:0;">
-              <iframe
-                id="iframe-predictions-IC"
-                class="responsive-iframe pred-iframe"
-                src="assets/PISA_predictions_with_IC_interactive2.html"
-                title="Prédictions PISA par pays avec intervalles de confiance"
-                aria-label="Graphique interactif des prédictions PISA par pays avec intervalles de confiance"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin allow-forms"
-              ></iframe>
+          <!-- Prédictions (droite) -->
+          <div class="col-md-6">
+            <div class="visual-container" style="padding:0; margin:0;">
+              <div style="width:100%; max-width:1200px; margin:0 auto; padding:0;">
+                <iframe
+                  id="iframe-predictions-IC"
+                  class="responsive-iframe pred-iframe"
+                  src="assets/PISA_predictions_with_IC_interactive2.html"
+                  style="width:100%; height:500px; border:none; display:block;"
+                  title="Prédictions PISA par pays avec intervalles de confiance"
+                  aria-label="Graphique interactif des prédictions PISA par pays avec intervalles de confiance"
+                  loading="lazy"
+                  sandbox="allow-scripts allow-same-origin allow-forms"
+                ></iframe>
+              </div>
             </div>
+            <div class="legend-caption small text-muted mt-2">Points = prédictions ; barres = intervalles de confiance. Les pays sont triés par prédiction.</div>
           </div>
-          <div class="legend-caption small text-muted">Points = prédictions ; barres = intervalles de confiance. Les pays sont triés par prédiction.</div>
         </div>
-      </div>
         <div class="mt-4 p-4 rounded shadow-sm"
              style="background:linear-gradient(180deg,#ffffff 0%,#f9fbfd 100%); border-left:4px solid #3498db;">
           <h5 class="mb-2" style="font-weight:600;">
@@ -541,6 +541,61 @@
             </p>
           </div>
     </section>
+
+    <script>
+// Script pour ajuster automatiquement les hauteurs des iframes
+window.addEventListener('load', function() {
+  // Ajuster la hauteur de la carte IC
+  const mapIcFrame = document.getElementById('map-ic-iframe');
+  if (mapIcFrame) {
+    mapIcFrame.onload = function() {
+      try {
+        const content = mapIcFrame.contentWindow.document.body;
+        if (content) {
+          const height = content.scrollHeight;
+          mapIcFrame.style.height = Math.max(height, 350) + 'px';
+        }
+      } catch (e) {
+        // Si on ne peut pas accéder au contenu, garder la hauteur par défaut
+        console.log('Hauteur par défaut conservée pour map-ic-iframe');
+      }
+    };
+  }
+  
+  // Ajuster la hauteur de la légende IC
+  const legendIcFrame = document.getElementById('legend-ic-iframe');
+  if (legendIcFrame) {
+    legendIcFrame.onload = function() {
+      try {
+        const content = legendIcFrame.contentWindow.document.body;
+        if (content) {
+          const height = content.scrollHeight;
+          legendIcFrame.style.height = (height + 10) + 'px';
+        }
+      } catch (e) {
+        // Hauteur par défaut
+        console.log('Hauteur par défaut conservée pour legend-ic-iframe');
+      }
+    };
+  }
+  
+  // Ajuster la hauteur du graphique de prédictions
+  const predFrame = document.getElementById('iframe-predictions-IC');
+  if (predFrame) {
+    predFrame.onload = function() {
+      try {
+        const content = predFrame.contentWindow.document.body;
+        if (content) {
+          const height = content.scrollHeight;
+          predFrame.style.height = Math.max(height, 450) + 'px';
+        }
+      } catch (e) {
+        console.log('Hauteur par défaut conservée pour iframe-predictions-IC');
+      }
+    };
+  }
+});
+</script>
 
 <!-- ===== Styles utilitaires (si non présents, ajoute dans ton CSS global) ===== -->
 <style>
