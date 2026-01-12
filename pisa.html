@@ -332,16 +332,16 @@
   <div class="mt-4 p-4 rounded shadow-sm" style="background:linear-gradient(180deg,#ffffff 0%,#f9fbfd 100%); border-left:4px solid #3498db;">
     <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-question-circle me-1 text-primary"></i>Quel modèle avons-nous retenu — et pourquoi ?</h5>
     <p class="text-muted small mb-3">
-      Deux spécifications initiales ont été testées : MCO1 (score PISA brut) et MCO2 (ln(PISA)).
+      Deux spécifications initiales ont été testées : MCO1 (score PISA brut) et MCO2 (log(PISA)).
       MCO2 présente un R² ajusté légèrement supérieur (≈ 0.70 vs 0.68), une erreur moyenne plus faible et rend une variable supplémentaire significative.
       Pour ces raisons, la transformation logarithmique a été retenue, puis complétée jusqu’au modèle final.
     </p>
 
-    <h6 class="mb-2 text-primary" style="font-weight:600;">Que signifie travailler sur ln(PISA) ?</h6>
+    <h6 class="mb-2 text-primary" style="font-weight:600;">Que signifie travailler sur log(PISA) ?</h6>
     <ul class="text-muted small mb-0" style="padding-left:1rem;">
       <li>La transformation logarithmique stabilise la variance et réduit l’influence des observations extrêmes.</li>
-      <li>Elle permet d’interpréter certains coefficients comme des élasticités (ex. un coefficient sur ln(PIB/hab) ≈ % de variation du score pour 1% de variation du PIB/hab).</li>
-      <li>Cette approche améliore l’ajustement et la précision des erreurs, d’où le choix définitif d’un modèle basé sur ln(PISA).</li>
+      <li>Elle permet d’interpréter certains coefficients comme des élasticités (ex. un coefficient sur log(PIB/hab) ≈ % de variation du score pour 1% de variation du PIB/hab).</li>
+      <li>Cette approche améliore l’ajustement et la précision des erreurs, d’où le choix définitif d’un modèle basé sur log(PISA).</li>
     </ul>
   </div>
 
@@ -350,7 +350,7 @@
     <h5 class="mb-2" style="font-weight:600;"><i class="bi bi-bar-chart-line me-1 text-success"></i>Forme du modèle final (MCO4) et principaux résultats</h5>
     <p class="text-muted small mb-3">
       Le modèle final retenu est :
-      <br><em>ln_PISA = β₀ + β₁ · dépense_éducation + β₂ · ln(PIB/hab) + β₃ · scolarisation_primaire + β₄ · sous-alimentation + β₅ · OCDE + β₆ · (scolarisation_maternelle × OCDE) + ε</em>.
+      <br><em>log_PISA = β₀ + β₁ · dépense_éducation + β₂ · log(PIB/hab) + β₃ · scolarisation_primaire + β₄ · sous-alimentation + β₅ · OCDE + β₆ · (scolarisation_maternelle × OCDE) + ε</em>.
       Ce modèle explique environ 74% de la variance (R² ajusté ≈ 0.717).
     </p>
 
@@ -358,7 +358,7 @@
     <div class="row g-3">
       <div class="col-md-4">
         <div class="p-3 rounded text-center h-100" style="background:#f5faf6; border-left:4px solid #2ecc71;">
-          <strong class="d-block mb-1">ln(PIB/hab)</strong>
+          <strong class="d-block mb-1">log(PIB/hab)</strong>
           <small class="text-muted">Effet positif robuste — plus un pays est riche, meilleurs sont ses résultats PISA.</small>
         </div>
       </div>
