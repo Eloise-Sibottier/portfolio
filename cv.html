@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CV - Éloïse SIBOTTIER</title>
-  <!-- Bootstrap + Fonts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,6 +67,16 @@
       border-bottom: none;
       padding-bottom: 0;
     }
+    .badge-avenir {
+      background-color: #e8f4fd;
+      color: #2980b9;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
     .btn-primary { 
       background-color: #3498db; 
       border: none; 
@@ -102,7 +111,6 @@
   </style>
 </head>
 <body>
-  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">Mon Portfolio</a>
@@ -120,15 +128,13 @@
     </div>
   </nav>
 
-  <!-- Contenu principal -->
   <div class="container my-4">
-    <!-- En-tête CV -->
+
     <div class="cv-section">
       <h1>Curriculum Vitae - Éloïse SIBOTTIER</h1>
-      <p><a href="CV Eloïse SIBOTTIER.pdf" class="btn btn-primary mb-3" download><i class="bi bi-download me-2"></i>Télécharger le CV (PDF)</a></p>
+      <p><a href="CV Eloïse SIBOTTIER portfolio.pdf" class="btn btn-primary mb-3" download><i class="bi bi-download me-2"></i>Télécharger le CV (PDF)</a></p>
     </div>
 
-    <!-- Profil -->
     <div class="cv-section">
       <h2>Profil</h2>
       <p>
@@ -138,8 +144,8 @@
         Mon parcours m'a permis de développer des compétences solides en :
       </p>
       <ul>
-        <li><strong>Statistiques et modélisation</strong> (R, Python, économétrie, probabilités)</li>
-        <li><strong>Analyse et visualisation de données</strong> (Shiny, ggplot2, SQL, Plotly)</li>
+        <li><strong>Statistiques et modélisation</strong> (R, Python, économétrie, probabilités, analyse factorielle ACP/AFC/AFCM, régression linéaire MCO et MCG)</li>
+        <li><strong>Analyse et visualisation de données</strong> (Shiny, ggplot2, SQL, Plotly, Power BI)</li>
         <li><strong>Mathématiques appliquées</strong> (probabilités, optimisation, séries temporelles)</li>
         <li><strong>Économie quantitative</strong>, pour relier données et enjeux concrets</li>
       </ul>
@@ -159,23 +165,39 @@
       </p>
     </div>
 
-    <!-- Formations -->
     <div class="cv-section">
       <h2>Formations</h2>
       <ul>
-        <li><strong>Master 1 MAS – Mathématiques Appliquées, Statistiques</strong> – Université de Rennes (2025)</li>
-        <li><strong>Licence MIASHS</strong> - Mathématiques et Informatique appliquées aux Sciences Humaines et Sociales – Université de Rennes (2022-2025)</li>
-        <li><strong>Baccalauréat</strong> spécialité Mathématiques et Sciences Économiques et Sociales – Mention très bien – Lycée Paul Guerin (2020-2022)</li>
+        <li>
+          <strong>Master 1 MAS – Mathématiques Appliquées, Statistiques</strong> – Université de Rennes – 35000 Rennes (2025)
+          <ul>
+            <li>Analyse factorielle des données (ACP, AFC, AFCM)</li>
+            <li>Économétrie et modélisation économique (régression linéaire MCO et MCG)</li>
+          </ul>
+        </li>
+        <li><strong>Licence MIASHS</strong> – Mathématiques et Informatique appliquées aux Sciences Humaines et Sociales – Université de Rennes – 35000 Rennes (2022–2025)</li>
+        <li><strong>Baccalauréat</strong> spécialité Mathématiques et Sciences Économiques et Sociales – Mention très bien – Lycée Paul Guerin – 79000 Niort (2020–2022)</li>
       </ul>
     </div>
 
-    <!-- Expériences -->
     <div class="cv-section">
       <h2>Expériences</h2>
-      
+
       <div class="experience-card">
-        <h3>Stage - Centre de Recherche en Économie & Management (UMR CNRS 6211, Rennes)</h3>
-        <p><em>Mesure de l'excès de demande sur le marché immobilier français • 2025</em></p>
+        <span class="badge-avenir">À venir</span>
+        <h3>Stage – INRAE (à venir, mai–juin 2026)</h3>
+        <p><em>Projet PANORAMA – Bien-être animal en élevage porcin</em></p>
+        <ul>
+          <li>Analyse de données issues de 26 élevages porcins (comportement, santé, conditions climatiques, production).</li>
+          <li>Étude de l'impact de l'accès à l'extérieur sur le bien-être animal selon la saison et la température.</li>
+          <li>Traitement et croisement de données hétérogènes.</li>
+          <li>Travail en collaboration avec un étudiant en éthologie et la responsable du projet.</li>
+        </ul>
+      </div>
+
+      <div class="experience-card">
+        <h3>Stage – Centre de Recherche en Économie &amp; Management (UMR CNRS 6211, Rennes)</h3>
+        <p><em>Analyse de l'excès de demande sur le marché immobilier français • 2025</em></p>
         <ul>
           <li>Collecter, préparer et exploiter des données statistiques.</li>
           <li>Mettre en œuvre des méthodes économétriques et les traduire en code (R).</li>
@@ -183,7 +205,7 @@
           <li>Travailler en autonomie dans le cadre d'un projet de recherche académique.</li>
         </ul>
       </div>
-      
+
       <div class="experience-card">
         <h3>Conseillère vente chez NICOLAS vins et spiritueux</h3>
         <p><em>2024</em></p>
@@ -193,9 +215,9 @@
           <li>Gestion des stocks et des réapprovisionnements.</li>
         </ul>
       </div>
-      
+
       <div class="experience-card">
-        <h3>Stage - RADIO D4B</h3>
+        <h3>Stage – RADIO D4B</h3>
         <p><em>2019</em></p>
         <ul>
           <li>Écrire un article sur un spectacle.</li>
@@ -205,25 +227,23 @@
       </div>
     </div>
 
-    <!-- Logiciels & Projets -->
     <div class="cv-section">
       <h2>Logiciels et Projets</h2>
-      <p><strong>Logiciels et programmation :</strong> Python, R, R Shiny, SAS, SQL</p>
-      <p><strong>Visualisation :</strong> Power BI, ggplot2, Plotly</p>
+      <p><strong>Programmation et data :</strong> Python, R, R Shiny, SAS, SQL, Julia</p>
+      <p><strong>Visualisation et BI :</strong> Power BI, ggplot2, Plotly</p>
       <p><strong>Outils divers :</strong> Pack Office, LimeSurvey</p>
-      
+
       <h3 class="mt-4">Projets réalisés</h3>
       <ul>
         <li><strong>Challenge Dataviz</strong> – Premier Prix – Prix Banque de France</li>
-        <li>Rapport et tableau de bord pour expliquer les inégalités dans les pratiques culturelles avec Excel et Power BI</li>
+        <li>Rapport et tableau de bord pour comprendre les inégalités dans les pratiques culturelles avec Excel et Power BI</li>
+        <li>Réalisation d'un rapport sur les inégalités scolaires mondiales, analyse des scores PISA à travers la régression linéaire avec R</li>
         <li>Tableau de bord sur la répartition des non diplômés en France avec Python</li>
-        <li>Analyse des comptes publiques de la Belgique avec R</li>
-        <li>Création d'un questionnaire sur la mobilité étudiante avec LimeSurvey</li>
-        <li>Réalisation d'un rapport sur les inégalités scolaires mondiales via l'analyse PISA avec R</li>
+        <li>Analyse des comptes publics de la Belgique avec R</li>
+        <li>Création d'un questionnaire sur les déterminants de la mobilité étudiante avec LimeSurvey</li>
       </ul>
     </div>
 
-    <!-- Langues et Centres d'intérêt -->
     <div class="cv-section">
       <h2>Langues</h2>
       <ul>
