@@ -186,7 +186,7 @@
         </div>
       </div>
 
-      <!-- Graphique (Chart.js) -->
+      <!-- Graphique-->
       <div class="mt-4 p-3" style="background-color: white; border-radius:8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
         <h5 style="margin:0 0 0.5rem 0;">Visualisation des corrélations (corrélation avec log PISA)</h5>
         <div class="chart-wrap">
@@ -195,7 +195,6 @@
       </div>
     </section>
 
-    <!-- Cartes -->
     <!-- Cartes -->
 <section class="card-custom">
   <h2>Cartes — Scores observés & Prédictions</h2>
@@ -308,10 +307,7 @@
       </div>
     </section>
 
-
-
-
-<!-- ======== RÉGRESSION — VERSION FINALE ÉPURÉE ET ESTHÉTIQUE ======== -->
+<!-- ======== RÉGRESSION ======== -->
 <section class="card-custom" id="regression-final-text" style="overflow:hidden;">
   <!-- Header -->
   <div class="d-flex justify-content-between align-items-start flex-wrap">
@@ -418,9 +414,6 @@
     </ul>
   </div>
 </section>
-
-
-          <!-- SECTION : Carte IC (gauche) + Prédictions (droite) (corrigé) -->
       <!-- SECTION : Carte IC (gauche) + Prédictions (droite) (corrigé) -->
       <section class="card-custom" id="pisa-maps-and-preds">
         <h2>Intervalles de confiance des prédictions PISA</h2>
@@ -597,7 +590,7 @@
       </p>
     </div>
 
-    <!-- Limites méthodologiques (INCHANGÉ) -->
+    <!-- Limites méthodologiques -->
     <div class="conclusion-block warning-block">
       <h3 class="subsection-title">⚠️ Limites méthodologiques non explorées</h3>
       <p>
@@ -617,7 +610,7 @@
       </p>
     </div>
 
-    <!-- Ouverture (INCHANGÉ) -->
+    <!-- Ouverture -->
     <div class="conclusion-block final-block">
       <h3 class="subsection-title">Perspectives et réflexions</h3>
       <p>
@@ -745,7 +738,7 @@
 </style>
 
 
-<!-- ===== Styles utilitaires (ajoute-les au CSS global de ton site) ===== -->
+<!-- ===== Styles utilitaires ===== -->
 <style>
   /* responsive iframe containers */
   .responsive-iframe {
@@ -776,11 +769,9 @@
   }
 </style>
 
-    
-
   <!-- Scripts -->
 <script>
-// Script pour ajuster automatiquement les hauteurs des iframes (SEULEMENT pour la section IC)
+// Script pour ajuster automatiquement les hauteurs des iframes
 window.addEventListener('load', function() {
   // Ajuster la hauteur de la carte IC
   const mapIcFrame = document.getElementById('map-ic-iframe');
@@ -805,8 +796,6 @@ window.addEventListener('load', function() {
       predFrame.style.height = '450px';
     }, 500);
   }
-  
-  // NE PAS TOUCHER aux iframes map-iframe, legend-iframe, map2-iframe, legend2-iframe
 });
 </script>
     
@@ -890,10 +879,9 @@ window.addEventListener('load', function() {
     })();
   </script>
 
-  <!-- Scripts pour iframes (même logique que ton script qui fonctionnait pour la colonne gauche) -->
+  <!-- Scripts pour iframes -->
   <script>
     (function(){
-      // même fonction que tu utilises : calcule la hauteur du document de l'iframe
       function setIframeHeight(iframe){
         try{
           const doc = iframe.contentWindow.document;
@@ -926,7 +914,6 @@ window.addEventListener('load', function() {
             md.documentElement.style.margin = 0;
             md.body.style.margin = 0;
             md.body.style.padding = 0;
-            // essayer aussi d'ajuster la hauteur si possible
             setIframeHeight(mapIf);
           } catch(e){}
         });
@@ -944,7 +931,7 @@ window.addEventListener('load', function() {
         });
       }
 
-      // gestion des postMessage (légendes ou wrappers peuvent envoyer leur hauteur)
+      // gestion des postMessage
       window.addEventListener('message', function(ev){
         if(!ev || !ev.data) return;
         const d = ev.data;
