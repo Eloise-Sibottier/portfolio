@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projet – Voyage en Italie · Éloïse SIBOTTIER</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    body {
+      padding-top: 70px;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    .navbar {
+      background-color: #2c3e50 !important;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .navbar-brand, .nav-link {
+      font-weight: 500;
+    }
+    .nav-link:hover {
+      color: #3498db !important;
+    }
+    h1, h2 {
+      color: #2c3e50;
+      font-weight: 700;
+    }
+    h2 {
+      font-weight: 600;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+    h3 {
+      color: #34495e;
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    .cv-section {
+      background-color: white;
+      border-radius: 8px;
+      padding: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-left: 4px solid #3498db;
+    }
+    .cv-section.border-rouge {
+      border-left-color: #c0392b;
+    }
+    .cv-section.border-vert {
+      border-left-color: #1a6b4a;
+    }
+    .cv-section.border-or {
+      border-left-color: #b8860b;
+    }
+    .btn-primary {
+      background-color: #3498db;
+      border: none;
+      font-weight: 500;
+    }
+    .btn-primary:hover {
+      background-color: #217dbb;
+    }
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+    ul {
+      margin-bottom: 15px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    code {
+      font-size: 0.85em;
+      background: #f2f0ec;
+      border: 1px solid #d8d4cc;
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: #c0392b;
+    }
+
+    /* Encadré bleu foncé */
+    .encadre-bleu {
+      background: #1a3a5c;
+      color: white;
+      padding: 22px 28px;
+      margin: 20px 0;
+      border-radius: 6px;
+    }
+    .encadre-bleu p {
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 0;
+    }
+    .encadre-bleu strong { color: white; }
+
+    /* Deux approches côte à côte */
+    .deux-approches {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 20px 0;
+    }
+    .approche {
+      padding: 18px 22px;
+      border-radius: 6px;
+      border-top: 3px solid;
+    }
+    .approche.controle {
+      background: #d0dde8;
+      border-color: #1a3a5c;
+    }
+    .approche.confiance {
+      background: #d4ebe0;
+      border-color: #1a6b4a;
+    }
+    .approche .tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .approche.controle .tag { color: #1a3a5c; }
+    .approche.confiance .tag { color: #1a6b4a; }
+
+    /* Note grise */
+    .note-grise {
+      background: #f2f0ec;
+      border-left: 3px solid #d8d4cc;
+      padding: 13px 20px;
+      margin: 16px 0;
+      font-size: 0.95rem;
+      color: #4a4a4a;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* Formule scoring */
+    .formule-bloc {
+      background: #f5edcc;
+      border: 1px solid #d4a017;
+      border-left: 4px solid #b8860b;
+      padding: 14px 20px;
+      margin: 16px 0;
+      font-family: monospace;
+      font-size: 0.93rem;
+      color: #1c1c1c;
+      border-radius: 0 4px 4px 0;
+    }
+    .formule-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #b8860b;
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    /* Étapes numérotées */
+    .etapes { margin: 16px 0; }
+    .etape {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+    .etape-num {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: #c0392b;
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-top: 2px;
+    }
+
+    /* Tableau */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.92rem;
+    }
+    thead tr {
+      background: #2c3e50;
+      color: white;
+    }
+    thead th {
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    tbody tr { border-bottom: 1px solid #e9ecef; }
+    tbody tr:nth-child(even) { background: #f2f0ec; }
+    tbody td { padding: 9px 14px; color: #4a4a4a; }
+    tbody td:first-child {
+      font-family: monospace;
+      font-size: 0.82em;
+      color: #c0392b;
+    }
+
+    /* Deux colonnes limites/pistes */
+    .deux-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .col-limites, .col-pistes {
+      padding: 18px 20px;
+      border-radius: 6px;
+    }
+    .col-limites { background: #fdf5f5; border-top: 3px solid #c0392b; }
+    .col-pistes  { background: #d4eba0; border-top: 3px solid #1a6b4a; }
+    .col-pistes  { background: #d4ebe0; }
+    .col-titre {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+    .col-limites .col-titre { color: #c0392b; }
+    .col-pistes  .col-titre { color: #1a6b4a; }
+    .col-limites ul li::marker, .col-pistes ul li::marker { color: inherit; }
+
+    /* Avertissement */
+    .avertissement {
+      background: #fffbeb;
+      border: 1px solid #f59e0b;
+      border-left: 4px solid #f59e0b;
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+    .avert-titre {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #b45309;
+      margin-bottom: 10px;
+    }
+
+    /* Bloc IA */
+    .ia-fichier {
+      font-family: monospace;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #c0392b;
+      background: white;
+      border: 1px solid #d8d4cc;
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 3px;
+      margin: 12px 0 4px;
+    }
+
+    /* Auteurs */
+    .badge-auteurs {
+      display: inline-block;
+      background: #eaf3fb;
+      color: #1a3a5c;
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      color: #6b7280;
+      font-size: .9rem;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 640px) {
+      .deux-approches, .deux-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Mon Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
+          <li class="nav-item"><a class="nav-link active" href="projets.html">Projets</a></li>
+          <li class="nav-item"><a class="nav-link" href="indicateurs.html">Indicateurs</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-4">
+
+    <!-- En-tête -->
+    <div class="cv-section">
+      <p class="text-muted mb-1" style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.08em;">Projet · Application R Shiny</p>
+      <h1 class="mb-2">Voyage en Italie</h1>
+      <p class="mb-3">
+        <span class="badge-auteurs"><i class="bi bi-person me-1"></i>Éloïse Sibottier</span>
+        <span class="badge-auteurs"><i class="bi bi-person me-1"></i>Tâo-Loup El-Gouraini</span>
+        <span class="badge-auteurs"><i class="bi bi-person me-1"></i>Louise Albarran</span>
+      </p>
+      <p class="text-muted mb-3" style="font-size:0.85rem;"><i class="bi bi-calendar3 me-1"></i> Mars 2026</p>
+      <a href="https://eloise-sibottier-portfolio.shinyapps.io/Voyage_Italie-1/" target="_blank" class="btn btn-primary">
+        <i class="bi bi-box-arrow-up-right me-2"></i>Accéder à l'application Shiny
+      </a>
+    </div>
+
+    <!-- Problématique -->
+    <div class="cv-section border-rouge">
+      <h2>Problématique</h2>
+      <h3>Organiser un road trip, un vrai casse-tête</h3>
+      <blockquote class="border-start border-danger ps-3 fst-italic text-secondary mb-4">
+        Imaginez : vous voulez faire un road trip en Italie. Rome, Florence, Venise… le rêve. Vous ouvrez Airbnb, vous filtrez, vous scrollez, vous ouvrez vingt onglets, vous en fermez dix, vous perdez le logement qui vous plaisait, vous recommencez. Et quand vient le moment de comparer les prix entre Milan et Naples, de peser le quartier calme contre la proximité du centre, de jongler avec un budget global sur plusieurs nuits dans plusieurs villes… vous abandonnez ou vous faites un choix au hasard.
+      </blockquote>
+      <div class="encadre-bleu">
+        <p>Planifier un road trip multi-villes en Airbnb, c'est aujourd'hui une tâche <strong>entièrement manuelle</strong> : navigation entre plusieurs pages, mémorisation des logements intéressants, comparaisons fastidieuses, recalculs de budget à la main. Ce processus est chronophage, peu intuitif, et souvent décourageant.</p>
+      </div>
+      <p>Notre application répond à cette problématique avec <strong>deux approches complémentaires</strong> selon le profil de l'utilisateur :</p>
+      <div class="deux-approches">
+        <div class="approche controle">
+          <div class="tag">Approche 01</div>
+          <p><strong>Je veux garder le contrôle</strong> — l'application m'aide à filtrer, visualiser et comparer les logements sur une carte interactive, ville par ville, selon mes critères.</p>
+        </div>
+        <div class="approche confiance">
+          <div class="tag">Approche 02</div>
+          <p><strong>Je fais confiance à l'application</strong> — je lui donne mes préférences (budget, priorités, étapes) et elle me génère un itinéraire complet et personnalisé, logement par logement.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Données -->
+    <div class="cv-section">
+      <h2>Données : Source, nettoyage et préparation</h2>
+      <p>Les données proviennent d'<strong>Inside Airbnb</strong>, une initiative indépendante qui scrape et publie régulièrement les annonces Airbnb en accès libre. Nous avons retenu <strong>10 villes italiennes</strong> pour leur diversité géographique et touristique :</p>
+      <div class="note-grise">
+        Bergamo &nbsp;·&nbsp; Bologna &nbsp;·&nbsp; Florence &nbsp;·&nbsp; Milan &nbsp;·&nbsp; Naples &nbsp;·&nbsp; Puglia &nbsp;·&nbsp; Rome &nbsp;·&nbsp; Sicily &nbsp;·&nbsp; Trentino &nbsp;·&nbsp; Venice
+      </div>
+      <p>Chaque ville dispose de son propre fichier CSV (<code>listings_nom.csv</code>), fusionnés en un unique dataset avec la fonction <code>nettoyage_data()</code> écrite dans le fichier <code>data_prep</code>. Parmi les dizaines de variables disponibles, nous en exploitons une sélection ciblée :</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>price</td><td>Prix par nuit (brut, converti en numérique)</td></tr>
+          <tr><td>room_type</td><td>Type de logement (traduit en français)</td></tr>
+          <tr><td>latitude / longitude</td><td>Coordonnées géographiques</td></tr>
+          <tr><td>neighbourhood</td><td>Quartier déclaré</td></tr>
+          <tr><td>number_of_reviews</td><td>Popularité du logement</td></tr>
+          <tr><td>dist_centre_km</td><td>Distance calculée au centre-ville</td></tr>
+          <tr><td>dist_transport_km</td><td>Distance calculée au transport en commun le plus proche</td></tr>
+          <tr><td>dist_aeroport_km</td><td>Distance calculée à l'aéroport</td></tr>
+        </tbody>
+      </table>
+      <p>Les principales opérations réalisées sont la conversion du prix en valeur numérique, la suppression des lignes sans prix valide, la normalisation des noms de villes et la traduction des types de logement.</p>
+      <p>Les distances <em>ne sont pas fournies dans les données brutes</em>. Elles sont calculées à partir des coordonnées GPS de chaque logement, ce qui nous permet de proposer des filtres et un scoring géographique pertinents.</p>
+    </div>
+
+    <!-- Description application -->
+    <div class="cv-section border-vert">
+      <h2>Description de l'application : quatre espaces, une logique utilisateur</h2>
+      <p>L'application est structurée en <strong>quatre onglets</strong> correspondant à des besoins utilisateur distincts.</p>
+
+      <h3>1 · Accueil</h3>
+      <p>Une page d'entrée sobre qui pose le contexte et oriente l'utilisateur vers les deux fonctionnalités principales.</p>
+
+      <h3>2 · Trouver un logement — <em>"Je veux choisir moi-même"</em></h3>
+      <p>C'est l'espace de l'utilisateur autonome. Il sélectionne ses critères dans un panneau latéral :</p>
+      <ul>
+        <li><strong>Ville(s)</strong> : sélection multiple par cases à cocher</li>
+        <li><strong>Prix minimum et maximum par nuit</strong> : slider avec bornes min/max</li>
+        <li><strong>Type de logement</strong> : appartement entier, chambre privée, chambre partagée</li>
+        <li><strong>Type de quartier</strong> : centre-ville, semi-centre, proche transports, périphérie/calme</li>
+      </ul>
+      <p>Les résultats s'affichent sur une <strong>carte Leaflet interactive</strong> avec regroupement automatique des marqueurs (<code>markerClusterOptions</code>). Un clic sur un marqueur ouvre une fiche détaillée comprenant les informations du logement, sa localisation précise et ses statistiques d'avis.</p>
+      <p>La mise à jour est déclenchée par un bouton <strong>"Rechercher"</strong> via <code>eventReactive()</code>, évitant les rechargements intempestifs à chaque modification de filtre.</p>
+      <div class="note-grise">
+        L'idée est simple : <em>remplacer les vingt onglets ouverts en même temps par une interface unique, claire et réactive.</em>
+      </div>
+
+      <h3>3 · Créer votre Road Trip — <em>"Je laisse l'application décider"</em></h3>
+      <p>C'est la <strong>fonctionnalité centrale</strong> du projet. L'utilisateur n'a plus à chercher logement par logement : il définit ses préférences une seule fois, et l'application construit son itinéraire à sa place.</p>
+      <ul>
+        <li>La <strong>sélection des villes étapes</strong> et le nombre de nuits dans chacune</li>
+        <li>Un <strong>glisser-déposer</strong> pour définir l'ordre des étapes</li>
+        <li>Un <strong>budget</strong> exprimé en total ou par nuit</li>
+        <li>Le <strong>nombre de personnes</strong> et le type de logement souhaité</li>
+        <li>Un <strong>classement des priorités</strong> par glisser-déposer : Prix, Emplacement (centre-ville), Calme, Proche transports</li>
+      </ul>
+      <p>La fonction <code>recommandation_road_trip()</code> s'opère en deux étapes pour chaque ville :</p>
+      <div class="etapes">
+        <div class="etape">
+          <div class="etape-num">1</div>
+          <div>
+            <p class="mb-1"><strong>Filtrage</strong> — on retient uniquement les logements compatibles avec le budget par nuit (recalculé si le budget est exprimé en total) et le type de logement choisi.</p>
+          </div>
+        </div>
+        <div class="etape">
+          <div class="etape-num">2</div>
+          <div>
+            <p class="mb-1"><strong>Scoring</strong> — chaque logement reçoit un score composite calculé à partir de quatre critères normalisés entre 0 et 1 :</p>
+            <div class="formule-bloc">
+              <span class="formule-label">Formule de scoring</span>
+              score_final = w₁ × prix_normé + w₂ × centre_normé + w₃ × calme_normé + w₄ × transport_normé
+            </div>
+            <p>Les poids <code>(w₁, w₂, w₃, w₄) = (4, 3, 2, 1)</code> sont attribués selon le classement des priorités défini par l'utilisateur. Le logement en tête de classement reçoit le poids 4, le dernier reçoit le poids 1.</p>
+          </div>
+        </div>
+      </div>
+      <p>Le <strong>top 3</strong> est présenté pour chaque ville : le meilleur logement est sélectionné par défaut, mais l'utilisateur peut basculer vers une alternative via un bouton <strong>"Choisir"</strong>. La carte se met à jour en temps réel à chaque changement de sélection.</p>
+
+      <h3>4 · Comparer les villes et logements — <em>"Je veux comprendre le marché"</em></h3>
+      <p>Un tableau de bord statistique pour qui veut prendre du recul avant de se décider. Filtrable par ville, type de logement et fourchette de prix, il propose :</p>
+      <ul>
+        <li><strong>4 indicateurs clés</strong> : nombre de logements, prix moyen, prix médian, nombre d'avis moyen</li>
+        <li><strong>Analyse des prix</strong> : barplot par ville, boxplot de distribution, prix par type de logement et par type de quartier</li>
+        <li><strong>Localisation &amp; Prix</strong> : nuages de points distance/centre vs prix et distance/transport vs prix</li>
+        <li><strong>Offre &amp; Popularité</strong> : nombre de logements par ville, répartition des types (camembert), avis moyens</li>
+        <li><strong>Disponibilité</strong> : disponibilité moyenne par ville et corrélation disponibilité/prix</li>
+      </ul>
+      <p>Tous les graphiques sont produits avec <strong>Plotly</strong> pour permettre l'interactivité (zoom, hover, filtrage par clic sur la légende).</p>
+    </div>
+
+    <!-- Limites et perspectives -->
+    <div class="cv-section border-or">
+      <h2>Limites et perspectives</h2>
+      <div class="deux-col">
+        <div class="col-limites">
+          <div class="col-titre">Limites actuelles</div>
+          <ul>
+            <li>Les données sont des <strong>instantanés</strong> à une date donnée — les prix ne sont pas garantis comme actuels.</li>
+            <li>La catégorisation des quartiers repose sur des distances GPS, <em>pas sur des zonages officiels</em> — c'est une approximation.</li>
+            <li>Le scoring est <strong>linéaire</strong> et ne modélise pas d'interactions entre critères.</li>
+          </ul>
+        </div>
+        <div class="col-pistes">
+          <div class="col-titre">Pistes d'amélioration</div>
+          <ul>
+            <li>Calcul des <strong>temps de trajet réels</strong> entre les villes étapes via une API de routing.</li>
+            <li>Possibilité d'<strong>exporter l'itinéraire</strong> en PDF ou de le partager.</li>
+            <li>Critère de scoring basé sur les <strong>avis utilisateurs</strong> pour intégrer la réputation.</li>
+            <li><strong>Mise à jour automatique</strong> des données depuis l'API Inside Airbnb.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="avertissement">
+        <div class="avert-titre"><i class="bi bi-exclamation-triangle me-1"></i>Limitation connue — Onglet "Trouver un logement"</div>
+        <p>En raison des contraintes de mémoire du plan gratuit de shinyapps.io, afficher un trop grand nombre de logements simultanément sur la carte peut provoquer une déconnexion du serveur (<em>"Disconnected from the server"</em>).</p>
+        <p>Pour éviter ce problème, il est recommandé de <strong>ne pas dépasser un intervalle de 50 €</strong> sur le slider de prix (ex : 0 €–50 €, 100 €–150 €…). Plus la fourchette est large, plus le risque de plantage est élevé.</p>
+        <p class="mb-0">Ce bug est lié aux limitations d'hébergement et non au code de l'application. Une limitation automatique du nombre de points affichés pourrait être implémentée dans une version future.</p>
+      </div>
+    </div>
+
+    <!-- Transparence IA -->
+    <div class="cv-section">
+      <h2>Transparence d'utilisation de l'IA</h2>
+      <p>L'IA a été utilisée de manière ponctuelle pour résoudre des problèmes techniques spécifiques, et non pour générer le code principal de l'application.</p>
+
+      <div class="ia-fichier">ui.R</div>
+      <ul>
+        <li>Intégration du <code>withSpinner()</code> pour afficher un indicateur de chargement sur les cartes et graphiques.</li>
+      </ul>
+
+      <div class="ia-fichier">server.R</div>
+      <ul>
+        <li>Détection du clic sur un marqueur Leaflet via <code>input$carte_marker_click</code> — Leaflet génère automatiquement cet événement, ce que nous ne savions pas.</li>
+        <li>Création de boutons avec des IDs dynamiques (ex : <code>choisir_Rome_2</code>) et utilisation de <code>lapply</code> imbriqués à la place de boucles <code>for</code> pour les <code>observeEvent</code> dynamiques. Les boucles <code>for</code> ne fonctionnent pas dans ce contexte car R capture la dernière valeur de la variable au lieu de la valeur courante.</li>
+      </ul>
+
+      <div class="ia-fichier">ui.R — Road Trip</div>
+      <ul>
+        <li>La fonction <code>rank_list()</code> du package <code>sortable</code> pour le drag &amp; drop des priorités a été trouvée grâce à l'IA.</li>
+      </ul>
+
+      <div class="ia-fichier">styles.css</div>
+      <ul>
+        <li>L'intégralité du fichier CSS a été générée avec l'aide de l'IA. Nous maîtrisons les bases du HTML/CSS mais pas assez pour l'écrire entièrement. Nous avons donc délégué la mise en forme.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Éloïse SIBOTTIER - Portfolio</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
