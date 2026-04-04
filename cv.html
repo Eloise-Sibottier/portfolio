@@ -3,181 +3,441 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CV - Éloïse SIBOTTIER</title>
+  <title>CV – Éloïse SIBOTTIER</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
-    body { 
-      padding-top: 70px; 
-      font-family: 'Roboto', sans-serif; 
-      background-color: #f5f7fa; 
-      color: #333; 
-      line-height: 1.6; 
+    :root {
+      --ink: #1a1a2e;
+      --ink-mid: #3d3d56;
+      --ink-light: #7a7a96;
+      --cream: #faf9f6;
+      --white: #ffffff;
+      --accent: #2c5f8a;
+      --accent-light: #e8f0f7;
+      --accent-warm: #c8a96e;
+      --rule: #e0ddd6;
+      --success-bg: #eef5f0;
+      --success-text: #2d6a45;
+      --upcoming-bg: #fdf6ec;
+      --upcoming-text: #8a5e1a;
     }
-    .navbar { 
-      background-color: #2c3e50 !important; 
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--cream);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.7;
+      padding-top: 64px;
     }
-    .navbar-brand, .nav-link { 
-      font-weight: 500; 
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background-color: var(--ink) !important;
+      border-bottom: 2px solid var(--accent-warm);
     }
-    .nav-link:hover { 
-      color: #3498db !important; 
-    }
-    .breadcrumb { 
-      background-color: transparent; 
-      padding-left: 0; 
-    }
-    .breadcrumb-item a { 
-      color: #2c3e50; 
-      text-decoration: none; 
-    }
-    h1, h2 {
-      color: #2c3e50;
-      font-weight: 700;
-    }
-    h2 {
-      font-weight: 600;
-      margin-top: 30px;
-      margin-bottom: 20px;
-    }
-    h3 {
-      color: #34495e;
-      font-weight: 500;
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
       font-size: 1.1rem;
-      margin-bottom: 10px;
+      color: var(--cream) !important;
+      letter-spacing: 0.03em;
     }
-    .cv-section {
-      background-color: white;
-      border-radius: 8px;
-      padding: 30px;
+    .nav-link {
+      color: rgba(255,255,255,0.7) !important;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent-warm) !important;
+    }
+
+    /* ── LAYOUT ── */
+    .page-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    /* ── HERO HEADER ── */
+    .cv-hero {
+      background-color: var(--ink);
+      color: var(--cream);
+      border-radius: 4px;
+      padding: 48px 52px;
+      margin-bottom: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cv-hero::before {
+      content: '';
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 40px solid rgba(200,169,110,0.12);
+      pointer-events: none;
+    }
+    .cv-hero::after {
+      content: '';
+      position: absolute;
+      right: 60px;
+      bottom: -60px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 30px solid rgba(200,169,110,0.08);
+      pointer-events: none;
+    }
+    .cv-hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      margin-bottom: 6px;
+      color: #ffffff;
+    }
+    .cv-hero-title {
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      font-weight: 400;
       margin-bottom: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      border-left: 4px solid #3498db;
     }
-    .experience-card {
-      margin-bottom: 25px;
+    .cv-hero-pitch {
+      max-width: 520px;
+      font-size: 0.95rem;
+      color: rgba(250,249,246,0.78);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .cv-hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.82rem;
+      color: rgba(250,249,246,0.6);
+    }
+    .cv-hero-meta span { display: flex; align-items: center; gap: 6px; }
+    .cv-hero-meta i { color: var(--accent-warm); font-size: 0.85rem; }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      background: transparent;
+      border: 1px solid rgba(200,169,110,0.5);
+      color: var(--accent-warm);
+      padding: 8px 20px;
+      border-radius: 2px;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-download:hover {
+      background: rgba(200,169,110,0.12);
+      border-color: var(--accent-warm);
+      color: var(--accent-warm);
+    }
+
+    /* ── SECTION ── */
+    .cv-section {
+      background-color: var(--white);
+      border-radius: 4px;
+      padding: 36px 44px;
+      margin-bottom: 10px;
+      border-top: 3px solid transparent;
+    }
+    .cv-section.accent-blue { border-top-color: var(--accent); }
+    .cv-section.accent-gold { border-top-color: var(--accent-warm); }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ── COMPÉTENCES PILLS ── */
+    .skills-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .skill-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .skill-cat {
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      min-width: 130px;
+      flex-shrink: 0;
+    }
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .pill {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      padding: 3px 12px;
+      border-radius: 2px;
+      font-weight: 500;
+    }
+    .pill.gold {
+      background: #fdf3e3;
+      color: #7a5210;
+    }
+
+    /* ── PROJETS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 600px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+    .project-card {
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 18px 20px;
+      background: var(--cream);
+      position: relative;
+    }
+    .project-card.featured {
+      background: var(--accent-light);
+      border-color: rgba(44,95,138,0.2);
+    }
+    .project-award {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: #7a5210;
+      background: #fdf3e3;
+      padding: 2px 8px;
+      border-radius: 2px;
+      margin-bottom: 8px;
+    }
+    .project-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .project-desc {
+      font-size: 0.82rem;
+      color: var(--ink-mid);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .project-tools {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .tool-tag {
+      font-size: 0.7rem;
+      color: var(--ink-light);
+      background: var(--white);
+      border: 1px solid var(--rule);
+      padding: 1px 7px;
+      border-radius: 2px;
+    }
+    .project-card.featured .tool-tag {
+      background: rgba(255,255,255,0.6);
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 10px;
+      bottom: 10px;
+      width: 1px;
+      background: var(--rule);
+    }
+    .timeline-item { position: relative; margin-bottom: 28px; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -25px;
+      top: 9px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .dot-done { background: var(--accent); }
+    .dot-upcoming {
+      background: var(--cream);
+      border: 2px dashed var(--ink-light);
+    }
+    .tl-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 2px 9px;
+      border-radius: 2px;
+      margin-bottom: 6px;
+    }
+    .tl-badge.done { background: var(--success-bg); color: var(--success-text); }
+    .tl-badge.upcoming { background: var(--upcoming-bg); color: var(--upcoming-text); }
+    .tl-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 0 0 2px;
+    }
+    .tl-sub {
+      font-size: 0.83rem;
+      color: var(--ink-light);
+      font-style: italic;
+      margin: 0 0 10px;
+    }
+    .tl-list {
+      margin: 0;
+      padding-left: 16px;
+      font-size: 0.85rem;
+      color: var(--ink-mid);
+      line-height: 1.75;
+    }
+
+    /* ── FORMATION ── */
+    .edu-item {
+      display: flex;
+      gap: 20px;
       padding-bottom: 20px;
-      border-bottom: 1px solid #e9ecef;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--rule);
     }
-    .experience-card:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-    .badge-avenir {
-      background-color: #e8f4fd;
-      color: #2980b9;
+    .edu-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+    .edu-year {
+      min-width: 52px;
       font-size: 0.8rem;
       font-weight: 500;
-      padding: 3px 10px;
-      border-radius: 20px;
-      display: inline-block;
-      margin-bottom: 8px;
+      color: var(--accent);
+      padding-top: 2px;
+      text-align: right;
     }
-    .btn-primary { 
-      background-color: #3498db; 
-      border: none; 
-      font-weight: 500; 
+    .edu-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 0 0 2px;
     }
-    .btn-primary:hover { 
-      background-color: #217dbb; 
+    .edu-school {
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      margin: 0 0 6px;
     }
-    a { 
-      color: #3498db; 
-      text-decoration: none; 
+    .edu-details {
+      font-size: 0.82rem;
+      color: var(--ink-mid);
+      margin: 0;
+      padding-left: 14px;
     }
-    a:hover { 
-      text-decoration: underline; 
+    .edu-details li { margin-bottom: 2px; }
+
+    /* ── LANGUES & INTÉRÊTS ── */
+    .info-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
-    p { 
-      margin-bottom: 15px; 
+    @media (max-width: 480px) { .info-cols { grid-template-columns: 1fr; } }
+    .info-block-title {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 10px;
     }
-    ul {
-      margin-bottom: 15px;
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 0.85rem;
+      padding: 4px 0;
+      border-bottom: 1px solid var(--rule);
     }
-    li {
-      margin-bottom: 8px;
+    .info-row:last-child { border-bottom: none; }
+    .info-row-label { color: var(--ink); font-weight: 400; }
+    .info-row-value { color: var(--ink-light); font-size: 0.8rem; }
+    .interest-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--ink-mid);
+      padding: 4px 0;
     }
-    footer { 
-      text-align:center; 
-      padding:20px 0; 
-      color:#6b7280; 
-      font-size:.9rem; 
-      margin-top:30px; 
+    .interest-item i { color: var(--accent-warm); font-size: 0.9rem; }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: var(--ink-light);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
     }
-    .timeline {
-  position: relative;
-  padding-left: 32px;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 9px;
-  top: 12px;
-  bottom: 12px;
-  width: 2px;
-  background-color: #dee2e6;
-}
-.timeline-item {
-  position: relative;
-  margin-bottom: 2rem;
-}
-.timeline-dot {
-  position: absolute;
-  left: -28px;
-  top: 10px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-}
-.dot-upcoming {
-  background-color: #fff;
-  border: 2.5px dashed #adb5bd;
-}
-.dot-done {
-  background-color: #d0e8f7;
-  border: 2.5px solid #2980b9;
-}
-.timeline-content {
-  background-color: white;
-  border: 1px solid #e9ecef;
-  border-radius: 8px;
-  padding: 1rem 1.25rem;
-}
-.upcoming-content {
-  opacity: 0.85;
-  background-color: #f8f9fa;
-}
-.timeline-badge {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 2px 10px;
-  border-radius: 20px;
-  margin-bottom: 8px;
-}
-.badge-upcoming {
-  background-color: #fff3cd;
-  color: #856404;
-}
-.badge-done {
-  background-color: #d0e8f7;
-  color: #1a5f8a;
-}
+
+    @media (max-width: 640px) {
+      .cv-hero { padding: 32px 24px; }
+      .cv-hero-name { font-size: 2rem; }
+      .cv-section { padding: 28px 20px; }
+    }
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Mon Portfolio</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
+      <a class="navbar-brand" href="index.html">Éloïse Sibottier</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto gap-1">
           <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
           <li class="nav-item"><a class="nav-link active" href="cv.html">CV</a></li>
           <li class="nav-item"><a class="nav-link" href="projets.html">Projets</a></li>
@@ -187,132 +447,227 @@
     </div>
   </nav>
 
-  <div class="container my-4">
+  <div class="page-wrapper">
 
-    <div class="cv-section">
-      <h1>Curriculum Vitae - Éloïse SIBOTTIER</h1>
-      <p><a href="CV Eloïse SIBOTTIER portfolio.pdf" class="btn btn-primary mb-3" download><i class="bi bi-download me-2"></i>Télécharger le CV (PDF)</a></p>
+    <!-- HERO -->
+    <div class="cv-hero">
+      <p class="cv-hero-title">Curriculum Vitæ</p>
+      <h1 class="cv-hero-name">Éloïse<br>SIBOTTIER</h1>
+      <p class="cv-hero-pitch">
+        Étudiante en Master Mathématiques Appliquées &amp; Statistiques, je transforme des données complexes en analyses lisibles et en décisions concrètes. Disponible en alternance à partir de septembre 2026.
+      </p>
+      <div class="cv-hero-meta">
+        <span><i class="bi bi-geo-alt"></i> Rennes, France</span>
+        <span><i class="bi bi-mortarboard"></i> M1 MAS – Université de Rennes</span>
+        <span><i class="bi bi-code-slash"></i> R · Python · SQL</span>
+      </div>
+      <a href="CV Eloïse SIBOTTIER portfolio.pdf" class="btn-download" download>
+        <i class="bi bi-download"></i> Télécharger le CV
+      </a>
     </div>
 
-    <div class="cv-section">
-      <h2>Profil</h2>
-      <p>
-        <strong>Étudiante en Master 1 Mathématiques Appliquées et Statistiques (MAS)</strong> à l'Université de Rennes, après une Licence MIASHS, je me spécialise dans l'analyse de données, les statistiques et l'économétrie appliquées aux sciences sociales et économiques.
-      </p>
-      <p>
-        Mon parcours m'a permis de développer des compétences solides en :
-      </p>
-      <ul>
-        <li><strong>Statistiques et modélisation</strong> (R, Python, économétrie, probabilités, analyse factorielle ACP/AFC/AFCM, régression linéaire MCO et MCG)</li>
-        <li><strong>Analyse et visualisation de données</strong> (Shiny, ggplot2, SQL, Plotly, Power BI)</li>
-        <li><strong>Mathématiques appliquées</strong> (probabilités, optimisation, séries temporelles)</li>
-        <li><strong>Économie quantitative</strong>, pour relier données et enjeux concrets</li>
-      </ul>
-      <p>
-        Si mon cursus est ancré en économie, je suis particulièrement intéressée par les applications de la data et des statistiques à des thématiques transversales comme l'environnement, la santé publique ou la biostatistique.
-      </p>
-      <p>
-        Lors de mon stage au CREM (UMR CNRS 6211), j'ai mené un projet de recherche appliquée sur l'excès de demande sur le marché immobilier français, qui m'a appris à :
-      </p>
-      <ul>
-        <li>Traduire des concepts économiques en modèles et en code</li>
-        <li>Mobiliser des données complexes pour éclairer des enjeux concrets</li>
-        <li>Travailler avec rigueur et autonomie sur un projet de recherche</li>
-      </ul>
-      <p>
-        Mon objectif : mettre mes compétences en data/statistiques au service de projets ayant un impact concret, qu'ils concernent l'économie, la nature ou la santé.
-      </p>
+    <!-- PROJETS (MIS EN AVANT) -->
+    <div class="cv-section accent-gold">
+      <p class="section-label">Ce que je fais concrètement</p>
+      <h2 class="section-title">Projets & réalisations</h2>
+
+      <div class="projects-grid">
+
+        <div class="project-card featured">
+          <div class="project-award"><i class="bi bi-trophy"></i> 1er Prix · Banque de France</div>
+          <p class="project-title">Challenge Dataviz — Inégalités culturelles</p>
+          <p class="project-desc">Rapport et tableau de bord analysant les inégalités de pratiques culturelles en France.</p>
+          <div class="project-tools">
+            <span class="tool-tag">Excel</span>
+            <span class="tool-tag">Power BI</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <p class="project-title">Inégalités scolaires mondiales (PISA)</p>
+          <p class="project-desc">Analyse des scores PISA via régression linéaire pour identifier les déterminants des écarts scolaires à l'échelle internationale.</p>
+          <div class="project-tools">
+            <span class="tool-tag">R</span>
+            <span class="tool-tag">Régression MCO</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <p class="project-title">Non-diplômés en France</p>
+          <p class="project-desc">Tableau de bord interactif sur la répartition géographique et sociologique des non-diplômés.</p>
+          <div class="project-tools">
+            <span class="tool-tag">Python</span>
+            <span class="tool-tag">Plotly</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <p class="project-title">Comptes publics belges</p>
+          <p class="project-desc">Analyse et visualisation des finances publiques de la Belgique, mise en perspective par indicateurs clés.</p>
+          <div class="project-tools">
+            <span class="tool-tag">R</span>
+            <span class="tool-tag">ggplot2</span>
+          </div>
+        </div>
+
+        <div class="project-card" style="grid-column: 1 / -1;">
+          <p class="project-title">Mobilité étudiante — Enquête LimeSurvey</p>
+          <p class="project-desc">Conception d'un questionnaire structuré sur les déterminants de la mobilité étudiante, de la définition des hypothèses à l'analyse des résultats.</p>
+          <div class="project-tools">
+            <span class="tool-tag">LimeSurvey</span>
+            <span class="tool-tag">Statistiques descriptives</span>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <div class="cv-section">
-      <h2>Formations</h2>
-      <ul>
-        <li>
-          <strong>Master 1 MAS – Mathématiques Appliquées, Statistiques</strong> – Université de Rennes – 35000 Rennes (2025)
-          <ul>
-            <li>Analyse factorielle des données (ACP, AFC, AFCM)</li>
-            <li>Économétrie et modélisation économique (régression linéaire MCO et MCG)</li>
+    <!-- EXPÉRIENCES -->
+    <div class="cv-section accent-blue">
+      <p class="section-label">Terrain</p>
+      <h2 class="section-title">Expériences</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot dot-upcoming"></div>
+          <span class="tl-badge upcoming">À venir · mai–juin 2026</span>
+          <p class="tl-title">Stage — INRAE</p>
+          <p class="tl-sub">Projet PANORAMA – Bien-être animal en élevage porcin</p>
+          <ul class="tl-list">
+            <li>Analyse de données issues de 26 élevages porcins (comportement, santé, climat, production).</li>
+            <li>Étude de l'impact de l'accès à l'extérieur sur le bien-être selon la saison et la température.</li>
+            <li>Traitement et croisement de données hétérogènes en collaboration avec un étudiant en éthologie.</li>
           </ul>
-        </li>
-        <li><strong>Licence MIASHS</strong> – Mathématiques et Informatique appliquées aux Sciences Humaines et Sociales – Université de Rennes – 35000 Rennes (2022–2025)</li>
-        <li><strong>Baccalauréat</strong> spécialité Mathématiques et Sciences Économiques et Sociales – Mention très bien – Lycée Paul Guerin – 79000 Niort (2020–2022)</li>
-      </ul>
-    </div>
+        </div>
 
-    <div class="cv-section">
-  <h2>Expériences</h2>
+        <div class="timeline-item">
+          <div class="timeline-dot dot-done"></div>
+          <span class="tl-badge done">mai–juin 2025</span>
+          <p class="tl-title">Stage — Centre de Recherche en Économie &amp; Management (UMR CNRS 6211)</p>
+          <p class="tl-sub">Analyse de l'excès de demande sur le marché immobilier français</p>
+          <ul class="tl-list">
+            <li>Collecte, préparation et exploitation de données statistiques complexes.</li>
+            <li>Mise en œuvre de méthodes économétriques traduites en code (R).</li>
+            <li>Production de visualisations interactives (ggplot2, Plotly, Shiny).</li>
+            <li>Travail en autonomie dans un cadre de recherche académique.</li>
+          </ul>
+        </div>
 
-  <div class="timeline">
-
-    <div class="timeline-item upcoming">
-      <div class="timeline-dot dot-upcoming"></div>
-      <div class="timeline-content upcoming-content">
-        <div class="timeline-badge badge-upcoming">À venir · mai–juin 2026</div>
-        <h3>Stage – INRAE</h3>
-        <p><em>Projet PANORAMA – Bien-être animal en élevage porcin</em></p>
-        <ul>
-          <li>Analyse de données issues de 26 élevages porcins (comportement, santé, conditions climatiques, production).</li>
-          <li>Étude de l'impact de l'accès à l'extérieur sur le bien-être animal selon la saison et la température.</li>
-          <li>Traitement et croisement de données hétérogènes.</li>
-          <li>Travail en collaboration avec un étudiant en éthologie et la responsable du projet.</li>
-        </ul>
       </div>
     </div>
 
-    <div class="timeline-item">
-      <div class="timeline-dot dot-done"></div>
-      <div class="timeline-content">
-        <div class="timeline-badge badge-done">mai–juin 2025</div>
-        <h3>Stage – Centre de Recherche en Économie &amp; Management (UMR CNRS 6211)</h3>
-        <p><em>Analyse de l'excès de demande sur le marché immobilier français</em></p>
-        <ul>
-          <li>Collecter, préparer et exploiter des données statistiques.</li>
-          <li>Mettre en œuvre des méthodes économétriques et les traduire en code (R).</li>
-          <li>Produire des graphiques et visualisations (ggplot2, Plotly, Shiny).</li>
-          <li>Travailler en autonomie dans le cadre d'un projet de recherche académique.</li>
-        </ul>
+    <!-- COMPÉTENCES -->
+    <div class="cv-section accent-blue">
+      <p class="section-label">Boîte à outils</p>
+      <h2 class="section-title">Compétences</h2>
+      <div class="skills-grid">
+        <div class="skill-row">
+          <span class="skill-cat">Langages</span>
+          <div class="skill-pills">
+            <span class="pill">R</span>
+            <span class="pill">Python</span>
+            <span class="pill">SQL</span>
+            <span class="pill">Julia</span>
+            <span class="pill">SAS</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-cat">Statistiques</span>
+          <div class="skill-pills">
+            <span class="pill">Régression MCO / MCG</span>
+            <span class="pill">ACP / AFC / AFCM</span>
+            <span class="pill">Séries temporelles</span>
+            <span class="pill">Probabilités</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-cat">Visualisation</span>
+          <div class="skill-pills">
+            <span class="pill">ggplot2</span>
+            <span class="pill">Plotly</span>
+            <span class="pill">R Shiny</span>
+            <span class="pill gold">Power BI</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-cat">Outils</span>
+          <div class="skill-pills">
+            <span class="pill">Pack Office</span>
+            <span class="pill">LimeSurvey</span>
+          </div>
+        </div>
       </div>
     </div>
 
-  </div>
-</div>
+    <!-- FORMATION -->
+    <div class="cv-section accent-blue">
+      <p class="section-label">Parcours académique</p>
+      <h2 class="section-title">Formation</h2>
 
-    <div class="cv-section">
-      <h2>Logiciels et Projets</h2>
-      <p><strong>Programmation et data :</strong> Python, R, R Shiny, SAS, SQL, Julia</p>
-      <p><strong>Visualisation et BI :</strong> Power BI, ggplot2, Plotly</p>
-      <p><strong>Outils divers :</strong> Pack Office, LimeSurvey</p>
+      <div class="edu-item">
+        <div class="edu-year">2025</div>
+        <div>
+          <p class="edu-title">Master 1 MAS — Mathématiques Appliquées, Statistiques</p>
+          <p class="edu-school">Université de Rennes · Rennes</p>
+          <ul class="edu-details">
+            <li>Analyse factorielle (ACP, AFC, AFCM)</li>
+            <li>Économétrie et modélisation (régression MCO et MCG)</li>
+          </ul>
+        </div>
+      </div>
 
-      <h3 class="mt-4">Projets réalisés</h3>
-      <ul>
-        <li><strong>Challenge Dataviz</strong> – Premier Prix – Prix Banque de France</li>
-        <li>Rapport et tableau de bord pour comprendre les inégalités dans les pratiques culturelles avec Excel et Power BI</li>
-        <li>Réalisation d'un rapport sur les inégalités scolaires mondiales, analyse des scores PISA à travers la régression linéaire avec R</li>
-        <li>Tableau de bord sur la répartition des non diplômés en France avec Python</li>
-        <li>Analyse des comptes publics de la Belgique avec R</li>
-        <li>Création d'un questionnaire sur les déterminants de la mobilité étudiante avec LimeSurvey</li>
-      </ul>
+      <div class="edu-item">
+        <div class="edu-year">2022–25</div>
+        <div>
+          <p class="edu-title">Licence MIASHS</p>
+          <p class="edu-school">Mathématiques et Informatique appliquées aux Sciences Humaines et Sociales · Université de Rennes</p>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-year">2022</div>
+        <div>
+          <p class="edu-title">Baccalauréat — Mention très bien</p>
+          <p class="edu-school">Spécialité Mathématiques &amp; SES · Lycée Paul Guerin, Niort</p>
+        </div>
+      </div>
+
     </div>
 
-    <div class="cv-section">
-      <h2>Langues</h2>
-      <ul>
-        <li><strong>Français :</strong> Langue maternelle</li>
-        <li><strong>Anglais :</strong> B1</li>
-      </ul>
+    <!-- LANGUES & INTÉRÊTS -->
+    <div class="cv-section accent-gold">
+      <p class="section-label">Divers</p>
+      <h2 class="section-title">Langues &amp; centres d'intérêt</h2>
 
-      <h2>Centres d'intérêt</h2>
-      <ul>
-        <li>Vidéaste amateur</li>
-        <li>Sport : course à pied / parapente</li>
-      </ul>
+      <div class="info-cols">
+        <div>
+          <p class="info-block-title">Langues</p>
+          <div class="info-row">
+            <span class="info-row-label">Français</span>
+            <span class="info-row-value">Langue maternelle</span>
+          </div>
+          <div class="info-row">
+            <span class="info-row-label">Anglais</span>
+            <span class="info-row-value">B1</span>
+          </div>
+        </div>
+        <div>
+          <p class="info-block-title">Centres d'intérêt</p>
+          <div class="interest-item"><i class="bi bi-camera-video"></i> Vidéaste amateur</div>
+          <div class="interest-item"><i class="bi bi-person-running"></i> Course à pied</div>
+          <div class="interest-item"><i class="bi bi-wind"></i> Parapente</div>
+        </div>
+      </div>
     </div>
+
   </div>
 
   <footer>
-    <p>&copy; 2026 Éloïse SIBOTTIER - Portfolio</p>
+    &copy; 2026 Éloïse SIBOTTIER — Portfolio
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
