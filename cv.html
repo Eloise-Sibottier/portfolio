@@ -108,6 +108,65 @@
       font-size:.9rem; 
       margin-top:30px; 
     }
+    .timeline {
+  position: relative;
+  padding-left: 32px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background-color: #dee2e6;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.timeline-dot {
+  position: absolute;
+  left: -28px;
+  top: 10px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+.dot-upcoming {
+  background-color: #fff;
+  border: 2.5px dashed #adb5bd;
+}
+.dot-done {
+  background-color: #d0e8f7;
+  border: 2.5px solid #2980b9;
+}
+.timeline-content {
+  background-color: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+.upcoming-content {
+  opacity: 0.85;
+  background-color: #f8f9fa;
+}
+.timeline-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+.badge-upcoming {
+  background-color: #fff3cd;
+  color: #856404;
+}
+.badge-done {
+  background-color: #d0e8f7;
+  color: #1a5f8a;
+}
   </style>
 </head>
 <body>
@@ -183,29 +242,38 @@
     <div class="cv-section">
   <h2>Expériences</h2>
 
-  <div class="experience-card upcoming">
-    <div class="card-header">
-      <span class="badge-avenir">À venir</span>
-      <h3>Stage – INRAE (mai–juin 2026)</h3>
-    </div>
-    <p><em>Projet PANORAMA – Bien-être animal en élevage porcin</em></p>
-    <ul>
-      <li>Analyse de données issues de 26 élevages porcins (comportement, santé, conditions climatiques, production).</li>
-      <li>Étude de l'impact de l'accès à l'extérieur sur le bien-être animal selon la saison et la température.</li>
-      <li>Traitement et croisement de données hétérogènes.</li>
-      <li>Travail en collaboration avec un étudiant en éthologie et la responsable du projet.</li>
-    </ul>
-  </div>
+  <div class="timeline">
 
-  <hr class="experience-divider"> <div class="experience-card">
-    <h3>Stage – Centre de Recherche en Économie &amp; Management (UMR CNRS 6211)</h3>
-    <p><em>Analyse de l'excès de demande sur le marché immobilier français • <strong>mai–juin 2025</strong></em></p>
-    <ul>
-      <li>Collecter, préparer et exploiter des données statistiques.</li>
-      <li>Mettre en œuvre des méthodes économétriques et les traduire en code (R).</li>
-      <li>Produire des graphiques et visualisations (ggplot2, Plotly, Shiny).</li>
-      <li>Travailler en autonomie dans le cadre d'un projet de recherche académique.</li>
-    </ul>
+    <div class="timeline-item upcoming">
+      <div class="timeline-dot dot-upcoming"></div>
+      <div class="timeline-content upcoming-content">
+        <div class="timeline-badge badge-upcoming">À venir · mai–juin 2026</div>
+        <h3>Stage – INRAE</h3>
+        <p><em>Projet PANORAMA – Bien-être animal en élevage porcin</em></p>
+        <ul>
+          <li>Analyse de données issues de 26 élevages porcins (comportement, santé, conditions climatiques, production).</li>
+          <li>Étude de l'impact de l'accès à l'extérieur sur le bien-être animal selon la saison et la température.</li>
+          <li>Traitement et croisement de données hétérogènes.</li>
+          <li>Travail en collaboration avec un étudiant en éthologie et la responsable du projet.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot dot-done"></div>
+      <div class="timeline-content">
+        <div class="timeline-badge badge-done">mai–juin 2025</div>
+        <h3>Stage – Centre de Recherche en Économie &amp; Management (UMR CNRS 6211)</h3>
+        <p><em>Analyse de l'excès de demande sur le marché immobilier français</em></p>
+        <ul>
+          <li>Collecter, préparer et exploiter des données statistiques.</li>
+          <li>Mettre en œuvre des méthodes économétriques et les traduire en code (R).</li>
+          <li>Produire des graphiques et visualisations (ggplot2, Plotly, Shiny).</li>
+          <li>Travailler en autonomie dans le cadre d'un projet de recherche académique.</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </div>
 
